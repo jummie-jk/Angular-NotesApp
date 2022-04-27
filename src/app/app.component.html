@@ -1,17 +1,18 @@
-<!-- NAVBAR  -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<section class="content">
+  <!-- NAVBAR  -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Notes</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">HTML</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Integration</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,7 +26,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Angular</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -36,12 +37,27 @@
   </div>
 </nav>
 
-<section class="sec">
+  <p class="dummyText">Content here!</p>
+</section>
+
+
+
+
+
+
+<!-- BOOTSTRAP TEST -->
+<!-- <section class="sec">
   This page works!
-<button class="btn btn-primary"> Test </button>
+<button class="btn btn-primary test-btn"> Test </button> -->
 <!-- ACCORDION -->
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-  <ngb-panel title="Simple">
+<!-- <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+  <ngb-panel id="custom-panel-1">
+    <ng-template ngbPanelHeader let-opened="opened">
+      <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
+        <p class="m-0">First panel - {{ opened ? 'opened' : 'collapsed' }}</p>
+        <button ngbPanelToggle class="btn btn-link p-0">Toggle first</button>
+      </div>
+    </ng-template>
     <ng-template ngbPanelContent>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
       aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
@@ -52,8 +68,17 @@
     </ng-template>
   </ngb-panel>
   <ngb-panel>
-    <ng-template ngbPanelTitle>
-      <span>&#9733; <b>Fancy</b> title &#9733;</span>
+    <ng-template ngbPanelHeader let-opened="opened">
+      <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
+        <p class="m-0">Second panel</p>
+        <div>
+          <button ngbPanelToggle class="btn btn-sm btn-outline-primary ms-2">Toggle second</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary ms-2" (click)="disabled = !disabled">
+            {{ disabled ? 'En' : 'Dis' }}able third
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-danger ms-2" (click)="a.collapseAll()">Collapse all</button>
+        </div>
+      </div>
     </ng-template>
     <ng-template ngbPanelContent>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
@@ -64,7 +89,13 @@
       labore sustainable VHS.
     </ng-template>
   </ngb-panel>
-  <ngb-panel title="Disabled" [disabled]="true">
+  <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
+    <ng-template ngbPanelHeader let-opened="opened">
+      <div class="accordion-button custom-header" [class.collapsed]="!opened">
+        <button ngbPanelToggle class="p-0 btn btn-link container-fluid text-start ps-0">Third panel</button>
+        <p *ngIf="disabled" class="text-muted m-0 small">[I'm&nbsp;disabled]</p>
+      </div>
+    </ng-template>
     <ng-template ngbPanelContent>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
       aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
@@ -74,5 +105,18 @@
       labore sustainable VHS.
     </ng-template>
   </ngb-panel>
-</ngb-accordion>
-</section>
+  <ngb-panel>
+    <ng-template ngbPanelHeader>
+      <button ngbPanelToggle class="accordion-button">Default-looking "custom" panel</button>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+      craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+      occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+      labore sustainable VHS.
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion> -->
+<!-- </section> -->
