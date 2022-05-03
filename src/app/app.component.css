@@ -1,17 +1,29 @@
 body{
-  background-color: rgb(59, 59, 61);
+  /* background-color: rgb(59, 59, 61); */
+  padding: 1rem 6rem;
+  background-image: url("https://image.shutterstock.com/image-illustration/abstract-connected-dots-technology-concept-600w-580895215.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;}
+
+p{
+  color: aliceblue;
+}
+
+.content-section{
+  padding: 1rem 6rem;
+  background-color: #f2e8d0;
 }
 
 .test-btn {
   color: rgb(223, 223, 255);
 }
-.content{
+/* .content{
   background-image: url("https://image.shutterstock.com/image-illustration/abstract-connected-dots-technology-concept-600w-580895215.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 700px;
   width: 100%;
-}
+} */
 
 .dummyText{
   text-align: center;
