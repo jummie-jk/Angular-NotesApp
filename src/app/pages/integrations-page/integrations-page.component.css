@@ -1,0 +1,21 @@
+img{
+  border-radius: 1rem;
+}
+.link {
+  color: bisque;
+}
+.link:hover{
+  color: yellow;
+}
+.frame{
+  width: auto;
+  min-height: fit-content;
+  margin-right: 40%;
+  border: 2px solid;
+  border-left: 6px solid #005282;
+  padding: 1rem;
+  background-color: azure;
+  /* OVERFLOW BELOW MAKES IT SCROLL */
+  overflow-x: auto;
+  overflow-y: auto;
+}

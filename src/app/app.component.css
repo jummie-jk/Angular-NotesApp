@@ -5,9 +5,9 @@ body{
   background-repeat: no-repeat;
   background-size: cover;}
 
-p{
-  color: aliceblue;
-}
+  footer{
+    margin-top: 14rem;
+    }
 
 .content-section{
   padding: 1rem 6rem;
@@ -28,6 +28,10 @@ p{
 .dummyText{
   text-align: center;
   color: greenyellow;
+}
+
+.text{
+  color: aliceblue;
 }
 
 .sec {
