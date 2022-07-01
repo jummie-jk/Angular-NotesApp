@@ -1,0 +1,17 @@
+.second-section{
+  padding: 1rem 6rem;
+  background-color: #f2e8d0;
+}
+
+.center {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+.back{
+  margin: auto; width: 40%; height: 1.7rem; text-align: center; align-items: center;
+  margin-bottom: 2rem;
+}
+.justify{
+  justify-content: center;
+}

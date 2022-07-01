@@ -1,0 +1,164 @@
+<section class="text">
+
+  <div style="color: black;" class="card">
+    <div style="font-size:x-large" class="card-header">
+      Create Warrant
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="warrantForm">
+
+        <div class="justify row">
+          <p>What type of Warrant are you creating?</p>
+          <div class="col-md-3">
+            Market Warrant <span><input type="radio" formControlName="WarrantType" value="MarketWarrant" name="Market Warrant"
+                id="WarrantType"></span>
+          </div>
+          <div class="col-md-3">
+            Housing Warrant(general) <span><input type="radio" formControlName="WarrantType" value="HousingWarrant" name="Market Warrant"
+                id="WarrantType"></span>
+          </div>
+          <div class="col-md-3">
+            Market Warrant(specific) <span><input type="radio" formControlName="WarrantType" value="MarketWarrantSpecific" name="Market Warrant"
+                id="WarrantType"></span>
+          </div>
+          <div class="col-md-3">
+            Share Holding Warrant <span><input type="radio" formControlName="WarrantType" value="ShareholdingWarrant" name="Market Warrant"
+                id="WarrantType"></span>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div style="padding-top: 20px; padding-bottom: 20px;">
+          <!-- Amount -->
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">Amount</label>
+            <div class="col-md-8">
+              <input class="form-control" id="" type="text" placeholder="Please enter an amount" formControlName="Amount" />
+            </div>
+          </div>
+
+          <!-- Holder's Name -->
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">Holder's Name</label>
+            <div class="col-md-8">
+              <input class="form-control" id="" type="text" placeholder="Who is the holder" formControlName="HolderName" />
+            </div>
+          </div>
+
+          <!-- Holder's WM ID -->
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">Holder's WM ID</label>
+            <div class="col-md-8">
+              <input class="form-control" id="" type="text" placeholder="Enter holder's ID" formControlName="HolderId" />
+            </div>
+          </div>
+
+          <!-- Receiving Agent -->
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">Receiving Agent</label>
+            <div class="col-md-8">
+              <input class="form-control" id="" type="text" placeholder="Enter receiving agent" formControlName="ReceivingAgent" />
+            </div>
+          </div>
+
+          <!-- Issuing Agent -->
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">Issuing Agent</label>
+            <div class="col-md-8">
+              <input class="form-control" id="" type="text" placeholder="Enter issuing agent" formControlName="IssuingAgent" />
+            </div>
+          </div>
+
+          <!-- Branch Location -->
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">Branch Location</label>
+            <div class="col-md-8">
+              <select class="form-control" formControlName="BranchLocation">
+                <option>Branch 1</option>
+                <option>Branch 2</option>
+                <option>Branch 3</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- !form.form.valid -->
+        <div class="center">
+          <button (click)="onSubmit()" style="width: 100%;" class="btn btn-outline-dark center" type="submit"
+            [disabled]="">
+            Save
+          </button>
+        </div>
+        <div class="back">
+          <button style="width: 100%;" class="btn btn-outline-dark " type="" [disabled]="">
+            Back
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <h1>2nd Assignment</h1>
+
+  <div class="card">
+    <div style="font-size:x-large; color: black;" class="card-header">
+      View Warrant Data
+    </div>
+
+    <div style="margin-top: 2rem;" class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="firstNameId"></label>
+      <div class="col-md-8">
+        <p style="color:black">Please select data to display</p>
+        <select aria-placeholder="Select data to display" class="form-control">
+          <option>Market Warrant</option>
+          <option>Housing Warrant(general)</option>
+          <option>Housing Warrant(specific)</option>
+          <option>Shareholding Warrant</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body">
+      <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 20px">#</th>
+            <th scope="col">Parameter</th>
+            <th scope="col">Details</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let item of list">
+            <th scope="row">{{item.number}}</th>
+            <td>{{item.parameter}}</td>
+            <td>{{item.detail}}</td>
+          </tr>
+
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td></td>
+            <td colspan="2" style="text-align: center;"></td>
+
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+</section>

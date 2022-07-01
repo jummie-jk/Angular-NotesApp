@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HmtlPageComponent } from './hmtl-page.component';
+import { TestingPageComponent } from './testing-page.component';
 
-describe('HmtlPageComponent', () => {
-  let component: HmtlPageComponent;
-  let fixture: ComponentFixture<HmtlPageComponent>;
+describe('TestingPageComponent', () => {
+  let component: TestingPageComponent;
+  let fixture: ComponentFixture<TestingPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HmtlPageComponent ]
+      declarations: [ TestingPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HmtlPageComponent);
+    fixture = TestBed.createComponent(TestingPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

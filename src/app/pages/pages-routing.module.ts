@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HmtlPageComponent } from './hmtl-page/hmtl-page.component';
+import { TestingPageComponent } from './testing-page/testing-page.component';
 import { IntegrationsPageComponent } from './integrations-page/integrations-page.component';
 import { PagesComponent } from './pages.component';
 

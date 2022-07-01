@@ -1,5 +1,6 @@
 img{
   border-radius: 1rem;
+  margin-bottom: 4rem;
 }
 .link {
   color: bisque;
@@ -18,4 +19,8 @@ img{
   /* OVERFLOW BELOW MAKES IT SCROLL */
   overflow-x: auto;
   overflow-y: auto;
+}
+
+.codeC2 {
+  color: yellow;
 }

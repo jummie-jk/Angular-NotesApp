@@ -2,11 +2,11 @@ import { IntegrationsPageComponent } from './pages/integrations-page/integration
 import { PagesComponent } from './pages/pages.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HmtlPageComponent } from './pages/hmtl-page/hmtl-page.component';
+import { TestingPageComponent } from './pages/testing-page/testing-page.component';
 
 const routes: Routes = [
   {path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: PagesComponent},
-  {path: 'pages/html', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: HmtlPageComponent},
+  {path: 'pages/testing', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: TestingPageComponent},
   {path: 'pages/integrations', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: IntegrationsPageComponent},
 ];
 

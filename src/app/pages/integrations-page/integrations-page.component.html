@@ -74,8 +74,15 @@
     the component code (reactive form). <br>
     Angular is able to watch for changes in the state of a reactive form. Untouched, it's called "pristine", touched it's "dirty".<br>
   <img src="/assets/Images/page-states.png" alt=""></p>
-  <p>Reactive forms are better suited for complex scenarios. <br>
-  To build a reactive form first import form control and form groups from angular forms.</p>
+  <p>Reactive forms are better suited for complex scenarios.</p> <br>
+<div>
+  <p><b>Steps to building a reactive form</b><br>
+    To build a reactive form first</p>
+  <ol>
+    <li> Import form control and form groups from angular forms.    </li>
+  </ol>
+
+</div>
 
   <h2>Rename Glossary</h2>
   <ul>
@@ -123,7 +130,7 @@ It's provided as a service so uses dependency injection.</p>
   <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=653319b8-da9b-467e-8036-d7350c0d18d2">The checklist of module 7 shows the features of the form that were taught.</a> If ever lost, check the intro or the checklist for what happened in that module.</li>
   <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">Getting product ID to display corresponding UI.</a></li>
   <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=ff42b4cc-01de-4b15-aaae-314f2c833d13">Faking a backend server</a></li>
-  <li>Module 9 particularly shows how to fake backend, get, post, to it etc which is the same process with a real server. Take out the fake to use the real then it's all the same. </li>
+  <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=5fb25354-6e62-42e3-8308-5ecc5c3d23a6">Module 9 particularly shows how to fake backend, get, post, to it etc which is the same process with a real server. Take out the fake to use the real then it's all the same.</a> </li>
 </ul>
 
 <p>debounceTime - ignores all events until a specific amount of time has passed without another event. <br>
@@ -145,9 +152,9 @@ debounceTime(1000) waits 1 second before another event. <br></p>
 <p>You can get the id of an item to make the page display the UI linked to that ID by using a snapshot or an observable. Use an observable if you expect the parameter to change while you're still on the page. The below image shows snapshot first then observable method below it.</p>
 <img src="/assets/Images/get id via route.png" alt="">
 <br>
-<h4>Integrating to Backend</h4>
+<h2>CRUD Operations: Integrating to Backend</h2>
 <ol>
-  <li>Create a data access service</li>
+  <li>Create a data-access-service <i>(to separate concerns and for reusability)</i></li>
   <li>Set up the backend server</li>
 </ol>
 
@@ -158,11 +165,12 @@ debounceTime(1000) waits 1 second before another event. <br></p>
 <img src="/assets/Images/setting up backend server.png" alt="">
 
 <br>&nbsp;<br>
-<h4>HTTP Get Request Syntax</h4>
+<h4>CRUD Service File Syntax</h4>
 <div class="frame">
   <code>
-    <p>import {{ '{' }} HttpClient } from '@angular/common/http';       <br>
-       import {{ '{' }} Observable } from 'rxjs';       <br>
+    <p>import {{ '{' }} HttpClient, HttpHeaders } from '@angular/common/http';       <br>
+       import {{ '{' }} Observable, of, throwError } from 'rxjs';       <br>
+       import {{ '{' }} catchError, tap, map } from 'rxjs/operators';       <br>
        <br>&nbsp;<br>
        @Injectable ({{ '{' }}        <br>
        &nbsp;&nbsp; providedIn: 'root'        <br>
@@ -181,9 +189,47 @@ debounceTime(1000) waits 1 second before another event. <br></p>
       </p>
   </code>
 </div>
-<h4>Faking a Backend</h4>
+<p>Create using <code class="codeC2">http.post</code>, read using <code class="codeC2">http.get</code>, update using <code class="codeC2">http.put</code>, and delete using <code class="codeC2">http.delete</code>. </p> <br>
+
+<h1>Faking a Backend</h1>
 <img src="/assets/Images/faking a backend.png" alt="">
-<p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order of how they'll happen. </p>
+<p>Hard coding doesn't make use of http services so it won't do. Using the Json method, you can get the data but can't post to it. Hence the in-memory-web-api is a better choice.</p> <br>
+<p><b>Using and In-Memory-Web-API</b></p>
+<ol>
+<li>install the in-memory web api: <code class="codeC2">npm install angular-in-memory-web-api --save-dev</code></li>
+<li>Import InMemoryWebApiModule to the imports section of relevant module of the page that needs to call from that back.</li>
+<li>Create your backend data file(class) <ul>
+                                    <li>import <code class="codeC2">InMemoryDbService</code> from 'angular-in-memory-web-api' so that you can implement class on InMemoryDbService, also to access the <code class="codeC2">createDb</code> method.</li>
+                                    <li>create an interface file to define the data types for strong typing and import it here</li>
+                                  </ul>
+</li>
+<li>Import your backend data file(class) which you just made to the same module</li>
+<li>In the imports section of the module, InMemoryWebApiModule.forRoot(dataFile)</li>
+</ol>
+
+<br><p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order of how they'll happen. </p>
+
+
+<h1>CRUD Operations</h1>
+<ol>
+  <li>Import HttpClientModule in imports array of module</li>
+  <li>Build data-access-service (passing HttpClient in the constructor and importing necessary things)</li>
+  <li>Create a method for each http request (pass in url to desired server in methods, & any arguments)</li>
+  <li>Add error handling</li>
+  <li>To use your data-access-service in any page, inject it into that page's constructor</li>
+  <li>For each of the data-access-service's methods called up, sub to the observable</li>
+  <li>Provide a function to run when the observable brings an item. Add an error function to handle any errors.</li>
+  <li>Repeat 1-7 whenever you need to perform a data service operation from your data-access-service.</li>
+</ol>
+<p>Create using post, read using get update using put and delete using delete. </p>
+
+<h3>Notes From Using CRUD Practically.</h3>
+<p>Here's the syntax to route to a specific code ID: <br></p>
+  <div class="frame">
+    <code>[routerLink]="['/products', product.id, 'edit']"</code>
+  </div>
+
+
 
 
 
@@ -225,11 +271,11 @@ debounceTime(1000) waits 1 second before another event. <br></p>
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
+          <h5 class="text-uppercase" >Links</h5>
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">Link 1</a>
+              <a href="#!"class="text-white">Link 1</a>
             </li>
           </ul>
         </div>

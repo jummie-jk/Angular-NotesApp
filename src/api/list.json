@@ -1,0 +1,42 @@
+[
+  {
+    "number": 1 ,
+    "parameter":"Issue date",
+    "detail":"20/4/2011"
+  },
+  {
+    "number": 2 ,
+    "parameter":"Value date",
+    "detail":"12/4/2011"
+  },
+  {
+    "number": 3 ,
+    "parameter":"Amount",
+    "detail":"100"
+  },
+  {
+    "number": 4 ,
+    "parameter":"Index holder's name",
+    "detail":"Onna"
+  },
+  {
+    "number": 1 ,
+    "parameter":"ngRepeatDummy",
+    "detail":"ngRepeatDummy"
+  },
+  {
+    "number": 1 ,
+    "parameter":"ngRepeatDummy",
+    "detail":"ngRepeatDummy"
+  },
+  {
+    "number": 1 ,
+    "parameter":"ngRepeatDummy",
+    "detail":"ngRepeatDummy"
+  },
+  {
+    "number": 1 ,
+    "parameter":"ngRepeatDummy",
+    "detail":"ngRepeatDummy"
+  }
+]
