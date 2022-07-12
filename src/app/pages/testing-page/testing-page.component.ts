@@ -1,8 +1,12 @@
+import { CrudServices } from '../../crud.service';
+import { Data } from './data-interface';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, NgForm, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Http } from '@angular/http';
+
+// I was trying to get the data by importing this to gain access to "const data",
+// but really how to get the data is to call the get method, which brings "const data", sub to the observable, then do whatever I want with "const data" now that I have it
+import { BackData } from 'src/app/BackData'
 
 @Component({
   selector: 'app-testing-page',
@@ -12,55 +16,58 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class TestingPageComponent implements OnInit {
 
   warrantForm: FormGroup;
+  listData: Data[] = [];
 
-  // Hardcoded: I want to take this out ant put in a separate file like a backend
-  list: any[] =[
-    {
-      "number": 1 ,
-      "parameter":'Issue date',
-      "detail":'20/4/2011'
-    },
-    {
-      "number": 2 ,
-      "parameter":'Value date',
-      "detail":'12/4/2011'
-    },
-    {
-      "number": 3 ,
-      "parameter":'Amount',
-      "detail":'100'
-    },
-    {
-      "number": 4 ,
-      "parameter":"Index holder's name",
-      "detail":'Onna'
-    },
-    {
-      "number": 1 ,
-      "parameter":'ngRepeatDummy',
-      "detail":'ngRepeatDummy'
-    },
-    {
-      "number": 1 ,
-      "parameter":'ngRepeatDummy',
-      "detail":'ngRepeatDummy'
-    },
-    {
-      "number": 1 ,
-      "parameter":'ngRepeatDummy',
-      "detail":'ngRepeatDummy'
-    },
-    {
-      "number": 1 ,
-      "parameter":'ngRepeatDummy',
-      "detail":'ngRepeatDummy'
-    },
-  ]
+  // OldHardcoded: I took this out and put a fake backend
+  // list: Data[] =[
+  //   {
+  //     "id": 1 ,
+  //     "parameter":'Issue date',
+  //     "detail":'20/4/2011'
+  //   },
+  //   {
+  //     "id": 2 ,
+  //     "parameter":'Value date',
+  //     "detail":'12/4/2011'
+  //   },
+  //   {
+  //     "id": 3 ,
+  //     "parameter":'Amount',
+  //     "detail":'100'
+  //   },
+  //   {
+  //     "id": 4 ,
+  //     "parameter":"Index holder's name",
+  //     "detail":'Onna'
+  //   },
+  //   {
+  //     "id": 1 ,
+  //     "parameter":'ngRepeatDummy',
+  //     "detail":'ngRepeatDummy'
+  //   },
+  //   {
+  //     "id": 1 ,
+  //     "parameter":'ngRepeatDummy',
+  //     "detail":'ngRepeatDummy'
+  //   },
+  //   {
+  //     "id": 1 ,
+  //     "parameter":'ngRepeatDummy',
+  //     "detail":'ngRepeatDummy'
+  //   },
+  //   {
+  //     "id": 1 ,
+  //     "parameter":'ngRepeatDummy',
+  //     "detail":'ngRepeatDummy'
+  //   },
+  // ]
 
   // private fb: FormBuilder is needed in the constructor for form builder to work!
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private service: CrudServices,) { }
 
   ngOnInit() {
+    // The Form Model
     this.warrantForm = this.fb.group({
       Amount: ['',[Validators.required, Validators.maxLength(6)]],
       HolderName: ['',[Validators.required, ]],
@@ -70,19 +77,18 @@ export class TestingPageComponent implements OnInit {
       BranchLocation: '',
       WarrantType: 'MarketWarrant',
     })
+
+// Getting the List Data
+    this.service.getData().subscribe({
+      next: data => { this.listData = data; },
+    });
   }
 
-  // log customer form value using this
+  // call data and log customer form value using this
   onSubmit(): void {
-    console.log(this.warrantForm.value);
+    // console.log(this.warrantForm.value);
+    this.service.getData().subscribe(response => {console.log(response)});
   }
 
-  /** POST: add a new warrant to the database */
-//   addWarrant(warrant: Warrant): Observable<Warrant> {
-//   return this.http.post<Warrant>(this.list, warrant, httpOptions)
-//     .pipe(
-//       catchError(this.handleError('addWarrant', warrant))
-//     );
-// }
 
 }

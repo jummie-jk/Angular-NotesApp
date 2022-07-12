@@ -11,19 +11,19 @@
         <div class="justify row">
           <p>What type of Warrant are you creating?</p>
           <div class="col-md-3">
-            Market Warrant <span><input type="radio" formControlName="WarrantType" value="MarketWarrant" name="Market Warrant"
+            Market Warrant <span><input type="radio" formControlName="WarrantType" value="MarketWarrant" name="WarrantType"
                 id="WarrantType"></span>
           </div>
           <div class="col-md-3">
-            Housing Warrant(general) <span><input type="radio" formControlName="WarrantType" value="HousingWarrant" name="Market Warrant"
+            Housing Warrant(general) <span><input type="radio" formControlName="WarrantType" value="HousingWarrant" name="WarrantType"
                 id="WarrantType"></span>
           </div>
           <div class="col-md-3">
-            Market Warrant(specific) <span><input type="radio" formControlName="WarrantType" value="MarketWarrantSpecific" name="Market Warrant"
+            Market Warrant(specific) <span><input type="radio" formControlName="WarrantType" value="MarketWarrantSpecific" name="WarrantType"
                 id="WarrantType"></span>
           </div>
           <div class="col-md-3">
-            Share Holding Warrant <span><input type="radio" formControlName="WarrantType" value="ShareholdingWarrant" name="Market Warrant"
+            Share Holding Warrant <span><input type="radio" formControlName="WarrantType" value="ShareholdingWarrant" name="WarrantType"
                 id="WarrantType"></span>
           </div>
         </div>
@@ -134,8 +134,8 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let item of list">
-            <th scope="row">{{item.number}}</th>
+          <tr *ngFor="let item of listData">
+            <th scope="row">{{item.id}}</th>
             <td>{{item.parameter}}</td>
             <td>{{item.detail}}</td>
           </tr>

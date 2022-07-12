@@ -8,8 +8,6 @@ import { PagesComponent } from './pages.component';
 import { IntegrationsPageComponent } from './integrations-page/integrations-page.component';
 import { TestingPageComponent } from './testing-page/testing-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 
 @NgModule({
@@ -23,8 +21,6 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
     PagesRoutingModule,
     ReactiveFormsModule,
     NgbModule,
-    HttpClientModule,
-    InMemoryWebApiModule,
   ]
 })
 export class PagesModule { }

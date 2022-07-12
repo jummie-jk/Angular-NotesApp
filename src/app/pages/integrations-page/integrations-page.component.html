@@ -196,16 +196,31 @@ debounceTime(1000) waits 1 second before another event. <br></p>
 <p>Hard coding doesn't make use of http services so it won't do. Using the Json method, you can get the data but can't post to it. Hence the in-memory-web-api is a better choice.</p> <br>
 <p><b>Using and In-Memory-Web-API</b></p>
 <ol>
-<li>install the in-memory web api: <code class="codeC2">npm install angular-in-memory-web-api --save-dev</code></li>
-<li>Import InMemoryWebApiModule to the imports section of relevant module of the page that needs to call from that back.</li>
+<li>Install the in-memory web api: <code class="codeC2">npm install angular-in-memory-web-api --save-dev</code></li>
 <li>Create your backend data file(class) <ul>
-                                    <li>import <code class="codeC2">InMemoryDbService</code> from 'angular-in-memory-web-api' so that you can implement class on InMemoryDbService, also to access the <code class="codeC2">createDb</code> method.</li>
-                                    <li>create an interface file to define the data types for strong typing and import it here</li>
-                                  </ul>
+                                        <li>Import <code class="codeC2">InMemoryDbService</code> from 'angular-in-memory-web-api' so the class can implement InMemoryDbService, also to gain access the <code class="codeC2">createDb</code> method.</li>
+                                        <li>Create an interface file to define the data types for strong typing and import it here too</li>
+                                        <li>Use the createDb method to create the object holding the array of data.<br>
+                                        <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] }{{ '{' }} <br>
+                                          &ensp;&ensp; &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
+                                          &ensp;&ensp; &nbsp;&nbsp;return {{ '{' }} data }; <br>
+                                            } </code> </div>
+                                          </li>
+                                        </ul>
 </li>
+<li>Import <code class="codeC2">HttpClientInMemoryWebApiModule</code> to the imports section of relevant module of the page that needs to call from that back (or app.module).</li>
 <li>Import your backend data file(class) which you just made to the same module</li>
-<li>In the imports section of the module, InMemoryWebApiModule.forRoot(dataFile)</li>
+<li>Add to the imports section of the module, <code class="codeC2">InMemoryWebApiModule.forRoot(dataFileClass)</code></li>
+<li>Create a service for your CRUD. <br>
+  Inject the service in the constructor of the .ts file of the relevant page that needs the service.</li>
+<li>Write code to read the http path (in the service). <br>
+  It usually starts with 'api' then the name of the object holding the data array. E.g "api/data"</li>
+<li>Inject http of type HttpClient to the constructor like so: <code class="codeC2">constructor (private http: HttpClient)</code></li>
+  <li>Write the get method (subscribing to the observable in it) and test that it works.</li>
 </ol>
+
+<h4>The Get Method </h4>
+<p>Use this method to test that your back end works</p>
 
 <br><p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order of how they'll happen. </p>
 
