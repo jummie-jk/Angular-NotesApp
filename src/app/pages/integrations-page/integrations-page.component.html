@@ -1,255 +1,265 @@
 <section class="text">
-  <!-- <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
-    <ngb-panel id="custom-panel-1">
-      <ng-template ngbPanelHeader let-opened="opened">
-        <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
-          <p class="m-0">General Notes - {{ opened ? 'opened' : 'collapsed' }}</p>
-          <div>
-            <button ngbPanelToggle class="btn btn-sm btn-outline-primary ms-2">General notes</button>
-            <button ngbPanelToggle class="btn btn-sm btn-outline-primary ms-2">Toggle second</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary ms-2" (click)="disabled = !disabled">
-              {{ disabled ? 'En' : 'Dis' }}able third
-            </button>
-            <button type="button" class="btn btn-sm btn-outline-danger ms-2" (click)="a.collapseAll()">Collapse all</button>
+    <!-- <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+      <ngb-panel id="custom-panel-1">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
+            <p class="m-0">General Notes - {{ opened ? 'opened' : 'collapsed' }}</p>
+            <div>
+              <button ngbPanelToggle class="btn btn-sm btn-outline-primary ms-2">General notes</button>
+              <button ngbPanelToggle class="btn btn-sm btn-outline-primary ms-2">Toggle second</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary ms-2" (click)="disabled = !disabled">
+                {{ disabled ? 'En' : 'Dis' }}able third
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-danger ms-2" (click)="a.collapseAll()">Collapse all</button>
+            </div>
           </div>
-        </div>
-      </ng-template>
-      <ng-template ngbPanelContent>
-        <p>Forms can be made using html and data binding (template-driven form) or defining the form model and validation in
-    the component code (reactive form).</p>
-      </ng-template>
-    </ngb-panel>
-    <ngb-panel>
-      <ng-template ngbPanelHeader let-opened="opened">
-        <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
-          <p class="m-0">Second panel</p>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <p>Forms can be made using html and data binding (template-driven form) or defining the form model and validation in
+      the component code (reactive form).</p>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel>
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
+            <p class="m-0">Second panel</p>
 
-        </div>
-      </ng-template>
-      <ng-template ngbPanelContent>
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-        labore sustainable VHS.
-      </ng-template>
-    </ngb-panel>
-    <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
-      <ng-template ngbPanelHeader let-opened="opened">
-        <div class="accordion-button custom-header" [class.collapsed]="!opened">
-          <button ngbPanelToggle class="p-0 btn btn-link container-fluid text-start ps-0">Third panel</button>
-          <p *ngIf="disabled" class="text-muted m-0 small">[I'm&nbsp;disabled]</p>
-        </div>
-      </ng-template>
-      <ng-template ngbPanelContent>
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-        labore sustainable VHS.
-      </ng-template>
-    </ngb-panel>
-    <ngb-panel>
-      <ng-template ngbPanelHeader>
-        <button ngbPanelToggle class="accordion-button">Default-looking "custom" panel</button>
-      </ng-template>
-      <ng-template ngbPanelContent>
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-        labore sustainable VHS.
-      </ng-template>
-    </ngb-panel>
-  </ngb-accordion> -->
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+          sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+          labore sustainable VHS.
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel [disabled]="disabled" [cardClass]="disabled ? 'disabled' : ''">
+        <ng-template ngbPanelHeader let-opened="opened">
+          <div class="accordion-button custom-header" [class.collapsed]="!opened">
+            <button ngbPanelToggle class="p-0 btn btn-link container-fluid text-start ps-0">Third panel</button>
+            <p *ngIf="disabled" class="text-muted m-0 small">[I'm&nbsp;disabled]</p>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+          sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+          labore sustainable VHS.
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel>
+        <ng-template ngbPanelHeader>
+          <button ngbPanelToggle class="accordion-button">Default-looking "custom" panel</button>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+          sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+          craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+          occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+          labore sustainable VHS.
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion> -->
 
-  <h2>General notes</h2>
-  <p><b>Remember the goal is to understand what the heck I'm doing, and also be able to use this as a point of reference like my notes webpage when working</b><br>
-        The API connection is the key thing I need to get from here, but making html and ts files talk to eachother in the exercises ups my overall knowledge of integrations.</p>
-  <hr>
-  <p>Forms can be made using html and data binding (template-driven form) or defining the form model and validation in
-    the component code (reactive form). <br>
-    Angular is able to watch for changes in the state of a reactive form. Untouched, it's called "pristine", touched it's "dirty".<br>
-  <img src="/assets/Images/page-states.png" alt=""></p>
-  <p>Reactive forms are better suited for complex scenarios.</p> <br>
-<div>
-  <p><b>Steps to building a reactive form</b><br>
-    To build a reactive form first</p>
-  <ol>
-    <li> Import form control and form groups from angular forms.    </li>
-  </ol>
+    <h2>General notes</h2>
+    <p><b>Remember the goal is to understand what the heck I'm doing, and also be able to use this as a point of reference like my notes webpage when working</b><br>
+          The API connection is the key thing I need to get from here, but making html and ts files talk to eachother in the exercises ups my overall knowledge of integrations.</p>
+    <hr>
+    <p>Forms can be made using html and data binding (template-driven form) or defining the form model and validation in
+      the component code (reactive form). <br>
+      Angular is able to watch for changes in the state of a reactive form. Untouched, it's called "pristine", touched it's "dirty".<br>
+    <img src="/assets/Images/page-states.png" alt=""></p>
+    <p>Reactive forms are better suited for complex scenarios.</p> <br>
+  <div>
+    <p><b>Steps to building a reactive form</b><br>
+      To build a reactive form first</p>
+    <ol>
+      <li> Import form control and form groups from angular forms.    </li>
+    </ol>
 
-</div>
-
-  <h2>Rename Glossary</h2>
-  <ul>
-    <li>Form controls = stuff like input elements</li>
-    <li>Form group = form itself</li>
-    <li>Form model = html structure of form</li>
-    <li>Directive = component of a dependency import</li>
-    <li>Root FormGroup = main FormGroup holding other FormGroups</li>
-    <li>key = var from the ts file holding the value inputed in the checkbox </li>
-    <li>value = value of the key as inputed in the textbox</li>
-    <li>FormArray = a group of formControls and/or FormGroups. They're accessed by index instead of name.</li>
-  </ul>
-
-  <p><b>Binding to HTML</b><br>
-    --formControlName is used to bind each input element to its associated formControl.<br>
-    --formControlName is added to every directive we want to track in the input element of the form. The string names them.<br>
-    --Sometimes we need to have the HTML access the data/properties of the form in order to take actions like display its style. Here's a pic of how that's done. <br>
-     <img src="/assets/Images/Accessing-form-properties.png" alt="">
-  </p>
-  <p>setValue and patchValue are used to update info on the form from the component file.<br>
-  setValue is used to set the value of every formControl in the module and won't work except you have a value for every formControl. <br>
-  setValue is used to set the values of all the formControls while patchValue is used to set kust specified ones.
-</p>
-
-<p><b>Form Builder</b>
-Is used to generate formGroups and formControls for you.<br>
-It shortens the boilerplate code for the form.<br>
-It's provided as a service so uses dependency injection.</p>
-
-<p><b>Binding html to ts</b></p><img src="/assets/Images/Binding-ts-to-html.png" alt="">
-
-<h4>Cross-Field Validation</h4>
-<p>The trick to cross field validation is to make a nested form group within the larger form which would then be validated together.</p> <br>
-<img src="/assets/Images/Cross-field-validation-nested-FB.png" alt="">
-<br>&nbsp;<br>
-
-<h4>Reference links</h4>
-<p>
-  Overall, I've seen that to actually do these, I'll need to reference the tutorial again to follow it step by step until I get so used to it I never have to reference the tutorial again.<br>
-  It is advisable to watch the intro and the checklist (outro) first before actually going in to revisit videos in a module you're revisiting.
-</p>
-<ul>
-  <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=efc2e9cf-30ea-440c-bef7-14e40af503c7">Reacting by changing validation rules </a></li>
-  <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=e1cdcfcb-352d-4a9e-ba3b-5bbbc9f5ebbc">Using debounceTime</a></li>
-  <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=653319b8-da9b-467e-8036-d7350c0d18d2">The checklist of module 7 shows the features of the form that were taught.</a> If ever lost, check the intro or the checklist for what happened in that module.</li>
-  <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">Getting product ID to display corresponding UI.</a></li>
-  <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=ff42b4cc-01de-4b15-aaae-314f2c833d13">Faking a backend server</a></li>
-  <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=5fb25354-6e62-42e3-8308-5ecc5c3d23a6">Module 9 particularly shows how to fake backend, get, post, to it etc which is the same process with a real server. Take out the fake to use the real then it's all the same.</a> </li>
-</ul>
-
-<p>debounceTime - ignores all events until a specific amount of time has passed without another event. <br>
-debounceTime(1000) waits 1 second before another event. <br></p>
-
-<p>It's important to know how to watch something for changes by subcribing to the necessary observable </p>
-<img src="/assets/Images/watching-with-observable.png" alt="">
-
-<p>After watching, you should be able to react to it. The highlighted function is called when the value change is noticed by the observable. Below is the syntax to react to a change with setNotification(value) being a function you predefined already.</p>
-<img src="/assets/Images/reacting-to-change.png" alt="">
-
-<p>debounceTime is often used in forms and here's the syntax with the part of the code that actually adds the debounceTime highlighted. <span style="color: rgb(218, 218, 31);">.pipe(debounceTime(1000))</span></p>
-
-<p>Here are the stepds to duplicating a formGroup instance</p>
-<img src="/assets/Images/steps-to-duplicate-elements.png" alt="">
-<br>
-
-<h4>Getting ID from Route</h4>
-<p>You can get the id of an item to make the page display the UI linked to that ID by using a snapshot or an observable. Use an observable if you expect the parameter to change while you're still on the page. The below image shows snapshot first then observable method below it.</p>
-<img src="/assets/Images/get id via route.png" alt="">
-<br>
-<h2>CRUD Operations: Integrating to Backend</h2>
-<ol>
-  <li>Create a data-access-service <i>(to separate concerns and for reusability)</i></li>
-  <li>Set up the backend server</li>
-</ol>
-
-<h6 id="service" >Creating a Data Access Service</h6>
-<img src="/assets/Images/steps to building data access service.png" alt="">
-
-<h6 id="backend" >Setting up the Backend Server</h6>
-<img src="/assets/Images/setting up backend server.png" alt="">
-
-<br>&nbsp;<br>
-<h4>CRUD Service File Syntax</h4>
-<div class="frame">
-  <code>
-    <p>import {{ '{' }} HttpClient, HttpHeaders } from '@angular/common/http';       <br>
-       import {{ '{' }} Observable, of, throwError } from 'rxjs';       <br>
-       import {{ '{' }} catchError, tap, map } from 'rxjs/operators';       <br>
-       <br>&nbsp;<br>
-       @Injectable ({{ '{' }}        <br>
-       &nbsp;&nbsp; providedIn: 'root'        <br>
-       })        <br>
-       <br>&nbsp;<br>
-       export class ProductService {{ '{' }}        <br>
-         &nbsp;&nbsp; private baseUrl = 'www.myWebService.com/api/products';        <br>
-         <br>
-         &nbsp;&nbsp; constructor(private http: HttpClient) {{ '{' }}}        <br>
-         <br>
-         &nbsp;&nbsp; getProduct(id:number): Observable&lt;Product&gt; {{ '{' }}       <br>
-         &nbsp;&nbsp;  &nbsp;&nbsp;const url = `${{ '{' }}this.baseUrl}/${{ '{' }}id}`;       <br>
-         &nbsp;&nbsp;  &nbsp;&nbsp;return this.http.get&lt;Product&gt;(url);       <br>
-          }
-       }
-      </p>
-  </code>
-</div>
-<p>Create using <code class="codeC2">http.post</code>, read using <code class="codeC2">http.get</code>, update using <code class="codeC2">http.put</code>, and delete using <code class="codeC2">http.delete</code>. </p> <br>
-
-<h1>Faking a Backend</h1>
-<img src="/assets/Images/faking a backend.png" alt="">
-<p>Hard coding doesn't make use of http services so it won't do. Using the Json method, you can get the data but can't post to it. Hence the in-memory-web-api is a better choice.</p> <br>
-<p><b>Using and In-Memory-Web-API</b></p>
-<ol>
-<li>Install the in-memory web api: <code class="codeC2">npm install angular-in-memory-web-api --save-dev</code></li>
-<li>Create your backend data file(class) <ul>
-                                        <li>Import <code class="codeC2">InMemoryDbService</code> from 'angular-in-memory-web-api' so the class can implement InMemoryDbService, also to gain access the <code class="codeC2">createDb</code> method.</li>
-                                        <li>Create an interface file to define the data types for strong typing and import it here too</li>
-                                        <li>Use the createDb method to create the object holding the array of data.<br>
-                                        <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] }{{ '{' }} <br>
-                                          &ensp;&ensp; &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
-                                          &ensp;&ensp; &nbsp;&nbsp;return {{ '{' }} data }; <br>
-                                            } </code> </div>
-                                          </li>
-                                        </ul>
-</li>
-<li>Import <code class="codeC2">HttpClientInMemoryWebApiModule</code> to the imports section of relevant module of the page that needs to call from that back (or app.module).</li>
-<li>Import your backend data file(class) which you just made to the same module</li>
-<li>Add to the imports section of the module, <code class="codeC2">InMemoryWebApiModule.forRoot(dataFileClass)</code></li>
-<li>Create a service for your CRUD. <br>
-  Inject the service in the constructor of the .ts file of the relevant page that needs the service.</li>
-<li>Write code to read the http path (in the service). <br>
-  It usually starts with 'api' then the name of the object holding the data array. E.g "api/data"</li>
-<li>Inject http of type HttpClient to the constructor like so: <code class="codeC2">constructor (private http: HttpClient)</code></li>
-  <li>Write the get method (subscribing to the observable in it) and test that it works.</li>
-</ol>
-
-<h4>The Get Method </h4>
-<p>Use this method to test that your back end works</p>
-
-<br><p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order of how they'll happen. </p>
-
-
-<h1>CRUD Operations</h1>
-<ol>
-  <li>Import HttpClientModule in imports array of module</li>
-  <li>Build data-access-service (passing HttpClient in the constructor and importing necessary things)</li>
-  <li>Create a method for each http request (pass in url to desired server in methods, & any arguments)</li>
-  <li>Add error handling</li>
-  <li>To use your data-access-service in any page, inject it into that page's constructor</li>
-  <li>For each of the data-access-service's methods called up, sub to the observable</li>
-  <li>Provide a function to run when the observable brings an item. Add an error function to handle any errors.</li>
-  <li>Repeat 1-7 whenever you need to perform a data service operation from your data-access-service.</li>
-</ol>
-<p>Create using post, read using get update using put and delete using delete. </p>
-
-<h3>Notes From Using CRUD Practically.</h3>
-<p>Here's the syntax to route to a specific code ID: <br></p>
-  <div class="frame">
-    <code>[routerLink]="['/products', product.id, 'edit']"</code>
   </div>
 
+    <h2>Rename Glossary</h2>
+    <ul>
+      <li>Form controls = stuff like input elements</li>
+      <li>Form group = form itself</li>
+      <li>Form model = html structure of form</li>
+      <li>Directive = component of a dependency import</li>
+      <li>Root FormGroup = main FormGroup holding other FormGroups</li>
+      <li>key = var from the ts file holding the value inputed in the checkbox </li>
+      <li>value = value of the key as inputed in the textbox</li>
+      <li>FormArray = a group of formControls and/or FormGroups. They're accessed by index instead of name.</li>
+    </ul>
+
+    <p><b>Binding to HTML</b><br>
+      --formControlName is used to bind each input element to its associated formControl.<br>
+      --formControlName is added to every directive we want to track in the input element of the form. The string names them.<br>
+      --Sometimes we need to have the HTML access the data/properties of the form in order to take actions like display its style. Here's a pic of how that's done. <br>
+      <img src="/assets/Images/Accessing-form-properties.png" alt="">
+    </p>
+    <p>setValue and patchValue are used to update info on the form from the component file.<br>
+    setValue is used to set the value of every formControl in the module and won't work except you have a value for every formControl. <br>
+    setValue is used to set the values of all the formControls while patchValue is used to set kust specified ones.
+  </p>
+
+  <p><b>Form Builder</b>
+  Is used to generate formGroups and formControls for you.<br>
+  It shortens the boilerplate code for the form.<br>
+  It's provided as a service so uses dependency injection.</p>
+
+  <p><b>Binding html to ts</b></p><img src="/assets/Images/Binding-ts-to-html.png" alt="">
+
+  <h4>Cross-Field Validation</h4>
+  <p>The trick to cross field validation is to make a nested form group within the larger form which would then be validated together.</p> <br>
+  <img src="/assets/Images/Cross-field-validation-nested-FB.png" alt="">
+  <br>&nbsp;<br>
+
+  <h4>Reference links</h4>
+  <p>
+    Overall, I've seen that to actually do these, I'll need to reference the tutorial again to follow it step by step until I get so used to it I never have to reference the tutorial again.<br>
+    It is advisable to watch the intro and the checklist (outro) first before actually going in to revisit videos in a module you're revisiting.
+  </p>
+  <ul>
+    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=efc2e9cf-30ea-440c-bef7-14e40af503c7">Reacting by changing validation rules </a></li>
+    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=e1cdcfcb-352d-4a9e-ba3b-5bbbc9f5ebbc">Using debounceTime</a></li>
+    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=653319b8-da9b-467e-8036-d7350c0d18d2">The checklist of module 7 shows the features of the form that were taught.</a> If ever lost, check the intro or the checklist for what happened in that module.</li>
+    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">Getting product ID to display corresponding UI.</a></li>
+    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=ff42b4cc-01de-4b15-aaae-314f2c833d13">Faking a backend server</a></li>
+    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=5fb25354-6e62-42e3-8308-5ecc5c3d23a6">Module 9 particularly shows how to fake backend, get, post, to it etc which is the same process with a real server. Take out the fake to use the real then it's all the same.</a> </li>
+  </ul>
+
+  <p>debounceTime - ignores all events until a specific amount of time has passed without another event. <br>
+  debounceTime(1000) waits 1 second before another event. <br></p>
+
+  <p>It's important to know how to watch something for changes by subcribing to the necessary observable </p>
+  <img src="/assets/Images/watching-with-observable.png" alt="">
+
+  <p>After watching, you should be able to react to it. The highlighted function is called when the value change is noticed by the observable. Below is the syntax to react to a change with setNotification(value) being a function you predefined already.</p>
+  <img src="/assets/Images/reacting-to-change.png" alt="">
+
+  <p>debounceTime is often used in forms and here's the syntax with the part of the code that actually adds the debounceTime highlighted. <span style="color: rgb(218, 218, 31);">.pipe(debounceTime(1000))</span></p>
+
+  <p>Here are the stepds to duplicating a formGroup instance</p>
+  <img src="/assets/Images/steps-to-duplicate-elements.png" alt="">
+  <br>
+
+  <h4>Getting ID from Route</h4>
+  <p>You can get the id of an item to make the page display the UI linked to that ID by using a snapshot or an observable. Use an observable if you expect the parameter to change while you're still on the page. The below image shows snapshot first then observable method below it.</p>
+  <img src="/assets/Images/get id via route.png" alt="">
+  <br>
+  <h2>CRUD Operations: Integrating to Backend</h2>
+  <ol>
+    <li>Create a data-access-service <i>(to separate concerns and for reusability)</i></li>
+    <li>Set up the backend server</li>
+  </ol>
+
+  <h6 id="service" >Creating a Data Access Service</h6>
+  <img src="/assets/Images/steps to building data access service.png" alt="">
+
+  <h6 id="backend" >Setting up the Backend Server</h6>
+  <img src="/assets/Images/setting up backend server.png" alt="">
+
+  <br>&nbsp;<br>
+  <h4>CRUD Service File Syntax</h4>
+  <div class="frame">
+    <code>
+      <p>import {{ '{' }} HttpClient, HttpHeaders } from '@angular/common/http';       <br>
+        import {{ '{' }} Observable, of, throwError } from 'rxjs';       <br>
+        import {{ '{' }} catchError, tap, map } from 'rxjs/operators';       <br>
+        <br>&nbsp;<br>
+        @Injectable ({{ '{' }}        <br>
+        &nbsp;&nbsp; providedIn: 'root'        <br>
+        })        <br>
+        <br>&nbsp;<br>
+        export class ProductService {{ '{' }}        <br>
+          &nbsp;&nbsp; private baseUrl = 'www.myWebService.com/api/products';        <br>
+          <br>
+          &nbsp;&nbsp; constructor(private http: HttpClient) {{ '{' }}}        <br>
+          <br>
+          &nbsp;&nbsp; getProduct(id:number): Observable&lt;Product&gt; {{ '{' }}       <br>
+          &nbsp;&nbsp;  &nbsp;&nbsp;const url = `${{ '{' }}this.baseUrl}/${{ '{' }}id}`;       <br>
+          &nbsp;&nbsp;  &nbsp;&nbsp;return this.http.get&lt;Product&gt;(url);       <br>
+            }
+        }
+        </p>
+    </code>
+  </div>
+  <p>Create using <code class="codeC2">http.post</code>, read using <code class="codeC2">http.get</code>, update using <code class="codeC2">http.put</code>, and delete using <code class="codeC2">http.delete</code>. </p> <br>
+
+  <h1>Faking a Backend</h1>
+  <img src="/assets/Images/faking a backend.png" alt="">
+  <p>Hard coding doesn't make use of http services so it won't do. Using the Json method, you can get the data but can't post to it. Hence the in-memory-web-api is a better choice.</p> <br>
+  <p><b>Using and In-Memory-Web-API</b></p>
+  <ol>
+  <li>Install the in-memory web api: <code class="codeC2">npm install angular-in-memory-web-api --save-dev</code></li>
+  <li>Create your backend data file(class) <ul>
+                                          <li>Import <code class="codeC2">InMemoryDbService</code> from 'angular-in-memory-web-api' so the class can implement InMemoryDbService, also to gain access the <code class="codeC2">createDb</code> method.</li>
+                                          <li>Create an interface file to define the data types for strong typing and import it here too</li>
+                                          <li>Use the createDb method to create the object holding the array of data.<br>
+                                          <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] }{{ '{' }} <br>
+                                            &ensp;&ensp; &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
+                                            &ensp;&ensp; &nbsp;&nbsp;return {{ '{' }} data }; <br>
+                                              } </code> </div>
+                                            </li>
+                                          </ul>
+  </li>
+  <li>Import <code class="codeC2">HttpClientInMemoryWebApiModule</code> to the imports section of relevant module of the page that needs to call from that back (or app.module).</li>
+  <li>Import your backend data file(class) which you just made to the same module</li>
+  <li>Add to the imports section of the module, <code class="codeC2">InMemoryWebApiModule.forRoot(dataFileClass)</code></li>
+  <li>Create a service for your CRUD. <br>
+    Inject the service in the constructor of the .ts file of the relevant page that needs the service.</li>
+  <li>Write code to read the http path (in the service). <br>
+    It usually starts with 'api' then the name of the object holding the data array. E.g "api/data"</li>
+  <li>Inject http of type HttpClient to the constructor like so: <code class="codeC2">constructor (private http: HttpClient)</code></li>
+    <li>Write the get method (subscribing to the observable in it) and test that it works.</li>
+  </ol>
+
+  <h4>The Get Method </h4>
+  <p>Use this method to test that your back end works</p>
+
+  <br><p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order of how they'll happen. </p>
+
+
+  <h1>CRUD Operations</h1>
+  <ol>
+    <li>Import HttpClientModule in imports array of module</li>
+    <li>Build data-access-service (passing HttpClient in the constructor and importing necessary things)</li>
+    <li>Create a method for each http request (pass in url to desired server in methods, & any arguments)</li>
+    <li>Add error handling</li>
+    <li>To use your data-access-service in any page, inject it into that page's constructor</li>
+    <li>For each of the data-access-service's methods called up, sub to the observable</li>
+    <li>Provide a function to run when the observable brings an item. Add an error function to handle any errors.</li>
+    <li>Repeat 1-7 whenever you need to perform a data service operation from your data-access-service.</li>
+  </ol>
+  <p>Create using post, read using get update using put and delete using delete. </p>
+
+  <h3>Notes From Using CRUD Practically.</h3>
+  <p>Here's the syntax to route to a specific code ID: <br></p>
+    <div class="frame">
+      <code>[routerLink]="['/products', product.id, 'edit']"</code>
+    </div>
+
+  <h1>Notes to Remember</h1>
+  <p><b>Property Binding</b>: Things like routerlink, class, style, src etc can be used with square braces [] to use data binding on their values. E.g, <code class="codeC2">[src]= product.imgUrl.</code> <br>
+    That must be the same concept with things like *ngIf and [(ngModel)], where something that says more about a html tag is altered using square braces [] or a star * or square braces and a bracket [()]. </p>
+    <p><b>Routing With Property Binding</b>: Normally, routing is done going forward from one path to the other with the previous path appended at the beginning of the new path. With property binding, you can make it route from one path directly to an entirely different path, which is not a child of the current view.<br>
+    To ropute to a different location, use property binding like so: <code class="codeC2"> [routerLink]="<code>['route/route']</code>"</code> where the red text is the bound content of the quotation of the routerLink.</p>
+    <p><b>Event Binding</b> : () being used is for event binding. E.g (click), (change), etc. That makes the code listen for the event in the parenthesis. </p>
+    <p>Both property and event binding can be used on the same input element that's why sometimes we see something like <span class="codeC2"> [(ngModel)] = 'listFilter ' </span>. To remember the syntax, remember banana in a box [()]. The property binding is used send imput from the html to the ts. </p>
 
 
 
 
 
 
+
+<br>
+<div class="frame"> THIS IS THE END</div>
 </section>
 
 <!-- Footer -->
