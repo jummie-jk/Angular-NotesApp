@@ -79,9 +79,9 @@ export class TestingPageComponent implements OnInit {
     })
 
 // Getting the List Data
-    this.service.getData().subscribe({
-      next: data => { this.listData = data; },
-    });
+    this.service.getData().subscribe(
+      { next: data => { this.listData = data; },}
+      );
   }
 
   // call data and log customer form value using this

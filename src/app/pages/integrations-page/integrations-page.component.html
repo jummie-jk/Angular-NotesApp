@@ -243,6 +243,24 @@
     <div class="frame">
       <code>[routerLink]="['/products', product.id, 'edit']"</code>
     </div>
+    <br>
+
+    <p><B>Signing Into Swagger</B>:</p>
+    <ol>
+      <li>Go to user auth  -->   click "try it out"   -->   replace 'string' with username then password   -->   put client's ID and Key (from environments.ts).   -->   click execute</li>
+      <li>It returns a token at the end of the response   -->   copy token   -->   scroll to top and click 'authorize'   -->   in vlaue field type 'bearer pasteTokenNumber'   -->   click authorize. </li>
+    </ol>
+
+    <p><b>Getting Data to UI</b>: When trying to get data from Swagger to the UI, these were the steps:</p>
+  <ol>
+    <li>Create an interface for the data expected to come in from Swagger (backened) to perfectly match the data types expected for each thing. A parent interface and a child interface (which would be used as a data type in the parent). <br>
+    Between the use of parent and child interfaces all the objects in the response body should be properly accounted for in the interfaces. </li>
+    <li>I wrote a function in the service.ts to get the data from Swagger, of an observable interface type (<i>remember the [] should be ommitted so that child interfaces can be accessed</i>), passing in the userId which it's to get the data by. It returns a get method that uses the link to the Swagger data (or relevant backend) and passing in the userId to get it by.    </li>
+    <li>I then wrote in the ts file, a get method calling the function from the service, passing in the userId and .subscribe to it.</li>
+    <li>In the response after the .subscribe, I passed the response into an object "jobs" (which would have to be defined with it's correct type in the definitions section, prolly an interface). </li>
+    <li>In ngOnInit call <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run automatically when the page is loaded and you can actually have access to the data. </li>
+    <li>In the HTML, bind the object "jobs" (which you passed the response into), then you can use .whatever from the interface child or JavaScript method and it'll show.</li>
+  </ol>
 
   <h1>Notes to Remember</h1>
   <p><b>Property Binding</b>: Things like routerlink, class, style, src etc can be used with square braces [] to use data binding on their values. E.g, <code class="codeC2">[src]= product.imgUrl.</code> <br>
@@ -251,6 +269,7 @@
     To ropute to a different location, use property binding like so: <code class="codeC2"> [routerLink]="<code>['route/route']</code>"</code> where the red text is the bound content of the quotation of the routerLink.</p>
     <p><b>Event Binding</b> : () being used is for event binding. E.g (click), (change), etc. That makes the code listen for the event in the parenthesis. </p>
     <p>Both property and event binding can be used on the same input element that's why sometimes we see something like <span class="codeC2"> [(ngModel)] = 'listFilter ' </span>. To remember the syntax, remember banana in a box [()]. The property binding is used send imput from the html to the ts. </p>
+    <p>When working with an interface, the [] means be restricted to that particular interface but it doesn't drill down to the child interfaces. That bracket makes it specific, limited to the parent interface.</p>
 
 
 

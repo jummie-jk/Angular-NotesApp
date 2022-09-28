@@ -8,13 +8,15 @@ import { PagesComponent } from './pages.component';
 import { IntegrationsPageComponent } from './integrations-page/integrations-page.component';
 import { TestingPageComponent } from './testing-page/testing-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Testing2Component } from './testing2/testing2.component';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
     TestingPageComponent,
-    IntegrationsPageComponent
+    IntegrationsPageComponent,
+    Testing2Component
   ],
   imports: [
     CommonModule,
