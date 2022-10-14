@@ -15,3 +15,23 @@
 .justify{
   justify-content: center;
 }
+.newButton{
+  /* background-color: rgb(234, 234, 117); */
+  margin-bottom: 5px;
+  position: absolute;
+  right: 20px;
+}
+.newButton:hover{
+  color: rgb(255, 255, 255);
+}
+.actionBtn{
+  display: inline;
+  margin: 0 2px;
+  background-color: #6ebbca;
+}
+.actionBtn:hover{
+  color: rgb(255, 255, 255);
+}
+.parameter:hover{
+  color: #009ebd
+}

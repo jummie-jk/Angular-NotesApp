@@ -1,113 +1,10 @@
 <section class="text">
 
-  <div style="color: black;" class="card">
-    <div style="font-size:x-large" class="card-header">
-      Create Warrant
-    </div>
-
-    <div class="card-body">
-      <form [formGroup]="warrantForm">
-
-        <div class="justify row">
-          <p>What type of Warrant are you creating?</p>
-          <div class="col-md-3">
-            Market Warrant <span><input type="radio" formControlName="WarrantType" value="MarketWarrant" name="WarrantType"
-                id="WarrantType"></span>
-          </div>
-          <div class="col-md-3">
-            Housing Warrant(general) <span><input type="radio" formControlName="WarrantType" value="HousingWarrant" name="WarrantType"
-                id="WarrantType"></span>
-          </div>
-          <div class="col-md-3">
-            Market Warrant(specific) <span><input type="radio" formControlName="WarrantType" value="MarketWarrantSpecific" name="WarrantType"
-                id="WarrantType"></span>
-          </div>
-          <div class="col-md-3">
-            Share Holding Warrant <span><input type="radio" formControlName="WarrantType" value="ShareholdingWarrant" name="WarrantType"
-                id="WarrantType"></span>
-          </div>
-        </div>
-
-        <!-- Form -->
-        <div style="padding-top: 20px; padding-bottom: 20px;">
-          <!-- Amount -->
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="firstNameId">Amount</label>
-            <div class="col-md-8">
-              <input class="form-control" id="" type="text" placeholder="Please enter an amount" formControlName="Amount" />
-            </div>
-          </div>
-
-          <!-- Holder's Name -->
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="firstNameId">Holder's Name</label>
-            <div class="col-md-8">
-              <input class="form-control" id="" type="text" placeholder="Who is the holder" formControlName="HolderName" />
-            </div>
-          </div>
-
-          <!-- Holder's WM ID -->
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="firstNameId">Holder's WM ID</label>
-            <div class="col-md-8">
-              <input class="form-control" id="" type="text" placeholder="Enter holder's ID" formControlName="HolderId" />
-            </div>
-          </div>
-
-          <!-- Receiving Agent -->
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="firstNameId">Receiving Agent</label>
-            <div class="col-md-8">
-              <input class="form-control" id="" type="text" placeholder="Enter receiving agent" formControlName="ReceivingAgent" />
-            </div>
-          </div>
-
-          <!-- Issuing Agent -->
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="firstNameId">Issuing Agent</label>
-            <div class="col-md-8">
-              <input class="form-control" id="" type="text" placeholder="Enter issuing agent" formControlName="IssuingAgent" />
-            </div>
-          </div>
-
-          <!-- Branch Location -->
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="firstNameId">Branch Location</label>
-            <div class="col-md-8">
-              <select class="form-control" formControlName="BranchLocation">
-                <option>Branch 1</option>
-                <option>Branch 2</option>
-                <option>Branch 3</option>
-              </select>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- !form.form.valid -->
-        <div class="center">
-          <button (click)="onSubmit()" style="width: 100%;" class="btn btn-outline-dark center" type="submit"
-            [disabled]="">
-            Save
-          </button>
-        </div>
-        <div class="back">
-          <button style="width: 100%;" class="btn btn-outline-dark " type="" [disabled]="">
-            Back
-          </button>
-        </div>
-
-      </form>
-    </div>
-  </div>
-
-
-
-  <h1>2nd Assignment</h1>
+  <!-- WHAT WAS HERE BEFORE IS NOW IN THE FILE NAMED REMOVED.HTML -->
 
   <div class="card">
     <div style="font-size:x-large; color: black;" class="card-header">
-      View Warrant Data
+      List of Data
     </div>
 
     <div style="margin-top: 2rem;" class="form-group row mb-2">
@@ -123,21 +20,28 @@
       </div>
     </div>
     <div class="card-body">
+      <button class="btn btn-info newButton" routerLink="/pages/testing/create-new">New&ensp;<b>+</b></button>
       <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
         <thead>
           <tr>
-            <th scope="col" style="width: 20px">#</th>
+            <th scope="col" style="width: 90px">SN</th>
             <th scope="col">Parameter</th>
-            <th scope="col">Details</th>
+            <th scope="col">Type</th>
+            <th scope="col">Actions</th>
 
           </tr>
         </thead>
         <tbody>
 
           <tr *ngFor="let item of listData">
-            <th scope="row">{{item.id}}</th>
-            <td>{{item.parameter}}</td>
-            <td>{{item.detail}}</td>
+            <th scope="row">{{item.serialNo}}</th>
+            <td class="parameter"
+                routerLink="/pages/testing/view-detail-page">{{item.parameter}}</td>
+            <td>{{item.type}}</td>
+            <!-- (click)="function()" -->
+            <!-- REMEMBER ROUTERLINK ALWAYS STARTS WITH A / -->
+            <td> <div class="actionBtn btn" routerLink="/pages/testing/edit-page" >Edit</div>
+                 <div class="actionBtn btn" (click)="function()">Delete</div> </td>
           </tr>
 
         </tbody>

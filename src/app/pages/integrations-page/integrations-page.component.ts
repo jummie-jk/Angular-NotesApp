@@ -22,4 +22,8 @@ export class IntegrationsPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  backToTop(){
+    window.scroll(0,0)
+  }
+
 }

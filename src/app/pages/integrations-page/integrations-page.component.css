@@ -1,3 +1,7 @@
+body{
+  background-attachment: scroll;
+}
+
 img{
   border-radius: 1rem;
   margin-bottom: 4rem;
@@ -23,4 +27,20 @@ img{
 
 .codeC2 {
   color: yellow;
+}
+
+.backToTopBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  vertical-align: auto;
+  /* background-color: rgb(190, 190, 190); */
+  opacity: 40%;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 60px;
+  font-weight: bolder;
 }

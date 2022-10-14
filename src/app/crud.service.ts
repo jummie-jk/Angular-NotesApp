@@ -1,6 +1,6 @@
 import { tap } from 'rxjs/operators';
-import { Data } from './pages/testing-page/data-interface';
-import { HttpClient } from '@angular/common/http';
+import { IData } from './pages/testing-page/data-interface';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable,  } from "@angular/core";
 // import observable cuz backend returns assynchronous data
 import { Observable } from 'rxjs';
@@ -18,20 +18,14 @@ export class CrudServices {
 
 
 // -READ (http.get)    get stuff
-getData(): Observable<Data[]> {
-  return this.http.get<Data[]>(this.baseUrl)
+getData(): Observable<IData[]> {
+  return this.http.get<IData[]>(this.baseUrl)
   .pipe(
     tap(response => console.log(JSON.stringify(response)) )
     )
   }
-
-  //  -CREATE (http.post)    post stuff
-  // postData(): Data {
-  //   return this.http.post<Data[]>(this.baseUrl, data) {}
-  // }
-
-  // -UPDATE (http.put)   update/put stuff
-
-  // -DELETE (http.delete)   delete stuff
-
+//get the specific data of the list by its id.  this.http.get<any>(`${}/${}`)  specifies the link to pass into the fn
+getDataById(id: number): Observable<IData>{
+  return this.http.get<any>(`${this.baseUrl}/${id}`)
+}
 }

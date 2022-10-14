@@ -1,5 +1,7 @@
-export interface Data {
+export interface IData {
   id: number;
+  serialNo: number;
   parameter: string;
-  detail: string;
+  type: string;
+  description: string;
 }

@@ -9,6 +9,9 @@ import { IntegrationsPageComponent } from './integrations-page/integrations-page
 import { TestingPageComponent } from './testing-page/testing-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Testing2Component } from './testing2/testing2.component';
+import { EditPageComponent } from './testing-page/edit-page/edit-page.component';
+import { ViewDetailPageComponent } from './testing-page/view-detail-page/view-detail-page.component';
+import { CreateNewComponent } from './testing-page/create-new/create-new.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { Testing2Component } from './testing2/testing2.component';
     PagesComponent,
     TestingPageComponent,
     IntegrationsPageComponent,
-    Testing2Component
+    Testing2Component,
+    EditPageComponent,
+    ViewDetailPageComponent,
+    CreateNewComponent
   ],
   imports: [
     CommonModule,

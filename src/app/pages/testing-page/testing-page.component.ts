@@ -1,5 +1,5 @@
 import { CrudServices } from '../../crud.service';
-import { Data } from './data-interface';
+import { IData } from './data-interface';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
@@ -16,7 +16,7 @@ import { BackData } from 'src/app/BackData'
 export class TestingPageComponent implements OnInit {
 
   warrantForm: FormGroup;
-  listData: Data[] = [];
+  listData: IData[] = [];
 
   // OldHardcoded: I took this out and put a fake backend
   // list: Data[] =[
@@ -67,7 +67,7 @@ export class TestingPageComponent implements OnInit {
               private service: CrudServices,) { }
 
   ngOnInit() {
-    // The Form Model
+    // The Form Model.   (this form has been removed)
     this.warrantForm = this.fb.group({
       Amount: ['',[Validators.required, Validators.maxLength(6)]],
       HolderName: ['',[Validators.required, ]],
@@ -90,5 +90,8 @@ export class TestingPageComponent implements OnInit {
     this.service.getData().subscribe(response => {console.log(response)});
   }
 
+  function() {
+    alert('Button Clicked')
+  }
 
 }
