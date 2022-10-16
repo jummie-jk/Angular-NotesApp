@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-integrations-page',
@@ -17,9 +18,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class IntegrationsPageComponent implements OnInit {
   disabled = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  goToreadRoute() {
+    this.router.navigate([], { fragment: "readRoute" });
   }
 
   backToTop(){

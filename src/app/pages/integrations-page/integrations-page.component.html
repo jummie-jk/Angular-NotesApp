@@ -260,7 +260,39 @@
     <li>In the response after the .subscribe, I passed the response into an object "jobs" (which would have to be defined with it's correct type in the definitions section, prolly an interface). </li>
     <li>In ngOnInit call <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run automatically when the page is loaded and you can actually have access to the data. </li>
     <li>In the HTML, bind the object "jobs" (which you passed the response into), then you can use .whatever from the interface child or JavaScript method and it'll show.</li>
+  </ol><br>
+
+  <!-- ----------------  Reading Route Parameter  ------------------------- -->
+
+  <div><h4 id="readRoute">Reading a route parameter</h4>
+    <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(Reference1)</a> &ensp; <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(reference2)</a>
+    the way your functions by id know the id of the product for it to bring the specific details of that product is by reading the id in the route. To do that,
+  <ul>
+    <li>First bind the id to the route path so that that id shows in the top bar when you're on the destination page. Bind it like so: <p> <b class="codeC2">[routerLink]="['/pages/testing', item.id , 'edit-page']"</b> in the html button, and <code class="codeC2">{{ '{' }} path: 'pages/testing/:id/edit-page', component: EditPageComponent {{ '}' }}</code> in the routing component. </p> </li>
+    <li>in the destination (edit) page's ts: import ActivatedRoute, inject it in the constructor, </li>
+    <li>utilizing ActivatedRoute to get the id, use snapshot or an observable following this code:<br> <img class="img" src="/assets/Images/reading routes to get id.png"> the id in the fn is read straight from the route </li>
+    <li>set up the reading of the route parameter in ngOninit.</li>
+  </ul></div>
+<br>
+  <h1><u>Doing CRUD</u></h1>
+  <p>These are notes on the basic steps taken in each of the crud operations.</p>
+  <h3>EDIT(3am)</h3>
+  <p><b>Retrieving Specific Item To Form</b>: When trting to populate a form with existing data, say for editing, these are the steps:</p>
+  <ol>
+    <li>Write your getById function in the service file (passing in the id).</li>
+    <li>Write another getById function in the ts file (passing in the id), which'll call the service file's fn somewhere in it <code class="codeC2">this.service.getById</code></li>
+    <li>It must read the id of the specific data to be retrieved, by the route.</li>
+    <li>In the edit-page ts file, Get and pass in 'id' (to the get fn that uses id) in ngOnInit. Then that get fn runs the display function. </li>
   </ol>
+
+  <h3>VIEW(4am)</h3>
+  <p>Use the routing to let the code know which item you're viewing by binding the id to the route as shown in the <button (click)="goToreadRoute()">reading a route parameter</button>  section above.</p>
+
+  <H3>CREATE(5am)</H3>
+  <br>
+
+  <p><b>Field duplication(6am)</b>:</p>
+  <p><b>Refresh</b>:</p>
 
   <h1>Notes to Remember</h1>
   <p><b>Property Binding</b>: Things like routerlink, class, style, src etc can be used with square braces [] to use data binding on their values. E.g, <code class="codeC2">[src]= product.imgUrl.</code> <br>

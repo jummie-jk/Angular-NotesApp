@@ -36,11 +36,11 @@
           <tr *ngFor="let item of listData">
             <th scope="row">{{item.serialNo}}</th>
             <td class="parameter"
-                routerLink="/pages/testing/view-detail-page">{{item.parameter}}</td>
+                [routerLink]="['/pages/testing', item.id,'view-detail-page']">{{item.parameter}}</td>
             <td>{{item.type}}</td>
             <!-- (click)="function()" -->
-            <!-- REMEMBER ROUTERLINK ALWAYS STARTS WITH A / -->
-            <td> <div class="actionBtn btn" routerLink="/pages/testing/edit-page" >Edit</div>
+            <!-- REMEMBER ROUTERLINK ALWAYS STARTS WITH A /  ALSO SEE HOW ITEM.ID IS BOUND IN THE ROUTERLINK AND THE OMMISSION OF SLASHES AFTER THE FIRST PART-->
+            <td> <div class="actionBtn btn" [routerLink]="['/pages/testing', item.id , 'edit-page']" >Edit</div>
                  <div class="actionBtn btn" (click)="function()">Delete</div> </td>
           </tr>
 

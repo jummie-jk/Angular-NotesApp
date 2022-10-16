@@ -14,8 +14,8 @@ const routes: Routes = [
   {path: 'pages/testing', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: TestingPageComponent},
   {path: 'pages/integrations', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: IntegrationsPageComponent},
   {path: 'pages/testing2', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: Testing2Component},
-  { path: 'pages/testing/edit-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: EditPageComponent },
-  { path: 'pages/testing/view-detail-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: ViewDetailPageComponent },
+  { path: 'pages/testing/:id/edit-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: EditPageComponent },
+  { path: 'pages/testing/:id/view-detail-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: ViewDetailPageComponent },
   { path: 'pages/testing/create-new', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: CreateNewComponent },
 ];
 

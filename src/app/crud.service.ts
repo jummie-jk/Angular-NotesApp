@@ -16,6 +16,16 @@ export class CrudServices {
     http.get(this.baseUrl).subscribe(response => {console.log(response);});
 }
 
+private newItem(): IData {
+  return {
+    id: 0,
+    serialNo: 0,
+    parameter: 'null',
+    type: 'null',
+    description: 'null'
+    //I used null in quotes for now, I'll have to find how Deborah did it as a value.
+  };
+}
 
 // -READ (http.get)    get stuff
 getData(): Observable<IData[]> {
@@ -24,8 +34,10 @@ getData(): Observable<IData[]> {
     tap(response => console.log(JSON.stringify(response)) )
     )
   }
-//get the specific data of the list by its id.  this.http.get<any>(`${}/${}`)  specifies the link to pass into the fn
+//get the specific data of the list by its id.  this.http.get<any>(`${}/${}`)  <- that's a 'template literal' which specifies the link to pass into the fn
 getDataById(id: number): Observable<IData>{
   return this.http.get<any>(`${this.baseUrl}/${id}`)
+  .pipe(tap(data => console.log('Specific item:' + data)
+  ))
 }
 }
