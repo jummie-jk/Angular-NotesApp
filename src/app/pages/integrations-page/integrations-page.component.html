@@ -202,8 +202,8 @@
                                           <li>Create an interface file to define the data types for strong typing and import it here too</li>
                                           <li>Use the createDb method to create the object holding the array of data.<br>
                                           <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] }{{ '{' }} <br>
-                                            &ensp;&ensp; &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
-                                            &ensp;&ensp; &nbsp;&nbsp;return {{ '{' }} data }; <br>
+                                               &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
+                                               &nbsp;&nbsp;return {{ '{' }} data }; <br>
                                               } </code> </div>
                                             </li>
                                           </ul>
@@ -265,7 +265,7 @@
   <!-- ----------------  Reading Route Parameter  ------------------------- -->
 
   <div><h4 id="readRoute">Reading a route parameter</h4>
-    <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(Reference1)</a> &ensp; <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(reference2)</a>
+    <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(Reference1)</a> &nbsp; <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(reference2)</a>
     the way your functions by id know the id of the product for it to bring the specific details of that product is by reading the id in the route. To do that,
   <ul>
     <li>First bind the id to the route path so that that id shows in the top bar when you're on the destination page. Bind it like so: <p> <b class="codeC2">[routerLink]="['/pages/testing', item.id , 'edit-page']"</b> in the html button, and <code class="codeC2">{{ '{' }} path: 'pages/testing/:id/edit-page', component: EditPageComponent {{ '}' }}</code> in the routing component. </p> </li>
@@ -285,8 +285,43 @@
     <li>In the edit-page ts file, Get and pass in 'id' (to the get fn that uses id) in ngOnInit. Then that get fn runs the display function. </li>
   </ol>
 
-  <h3>VIEW(4am)</h3>
-  <p>Use the routing to let the code know which item you're viewing by binding the id to the route as shown in the <button (click)="goToreadRoute()">reading a route parameter</button>  section above.</p>
+  <!-- --------------------------VIEW CRUD------------------------------------ -->
+
+  <h3>VIEW</h3>
+  <p>Use the routing to let the code know which item you're viewing by binding the id to the route as shown in the <button (click)="goToreadRoute()">reading a route parameter</button>  section above.<br>
+  Go to the ts file of the view page then:</p>
+  <ol>
+    <li>  Import Subscription from rxjs, make a private sub: Subscription in the definitions section.   </li>
+    <li>  Import and inject ActivatedRoute(in constructor).</li>
+    <li>  Create an <b>object: IData</b> to hold your res.    </li>
+    <li>  Write your getById method calling the getById of the service.ts, subscribing and passing the res into the <b>object</b>.      </li>
+    <li>  In ngOnInit, write code to read the route parameter and in the same fn run your getById method, passing in the id you just read.    </li>
+    <li>  Data bind it in the html using <code class="codeC2" >{{'{'}}{{'{'}}object.parameter{{'}'}}{{'}'}}</code>     </li>
+  </ol>
+  <p>Here's the code example for numbers 4 and 5 (5 first). &nbsp;&nbsp; <i>Both show different ways (syntaxes) to write the response after a subscribe.</i></p>
+  <div class="frame">
+    <code>
+      ngOnInit(): void {{'{'}}      <br>
+        <!-- //reading the id of an item from the id in the path at the top bar of the page      <br> -->
+       &nbsp; this.sub = this.route.paramMap.subscribe(      <br>
+       &nbsp;&nbsp;  params => {{'{'}}       <br>
+          <!-- //this pulls the id from the parameters array and puts into the const which is then put into the getItemForViewingById method. <br> -->
+       &nbsp;&nbsp;&nbsp;&nbsp;    const id = +params.get('id')!;        <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;    this.getItemForViewingById(id);      <br>
+       &nbsp;&nbsp;  {{'}'}}      <br>
+       &nbsp; )      <br>
+      {{'}'}}      <br>
+<br>
+      getItemForViewingById(id: number): void {{'{'}}       <br>
+       &nbsp; this.service.getDataById(id)      <br>
+       &nbsp;&nbsp; .subscribe({{'{'}}       <br>
+        &nbsp;&nbsp;  <!-- // next: (res: IData) => console.log(res),      <br> -->
+        &nbsp;&nbsp;  next: res => this.item = res,      <br>
+        &nbsp; {{'}'}});      <br>
+      {{'}'}}      <br>
+  </code>
+  </div>
+  <br>
 
   <H3>CREATE(5am)</H3>
   <br>

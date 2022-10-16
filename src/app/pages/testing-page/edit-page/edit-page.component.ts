@@ -14,6 +14,7 @@ export class EditPageComponent implements OnInit {
   //Definitions
   listDataForm: FormGroup;
   private sub: Subscription;
+  item: IData;
   //!End Definitions
 
   constructor(private fb: FormBuilder,
@@ -29,23 +30,29 @@ export class EditPageComponent implements OnInit {
       description: [''],
     })
 
-    //reading the id of an item route from the route of the page
+//---------------------THE NEXT TWO FNS ARE GOOD EXAMPLES OF DIFFERENT WAYS TO WRITE RESPONSES TO OBSERVABLES --------------------
+
+    //reading the id of an item route from the path at the top bar of the page
     this.sub = this.route.paramMap.subscribe(
       params => {
-        const id = +params.get('id')!;  //this pulls the id from the parameters array and puts into the const which is then put into the getItemForEditing method.
-        this.getItemForEditing(id);
+        const id = +params.get('id')!;  //this pulls the id from the parameters array and puts into the const which is then put into the getItemForEditingById method.  <- 'params' can be named anything just like 'response' when subscribing to any observable.
+        this.getItemForEditingById(id);
       }
     )
 /*BCUZ IT'S NOT BRINGING THE ID OF THE ITEM CLICKED IN THE ROUTE THAT'S WHY THIS 👆 IS GETTING NULL.
-update: it's bringing the link now, but it still needs the ! for some
+update: it's bringing the link now, but it still needs the ! for some reason
 */
   }
 
-  getItemForEditing(id: number): void {
+  getItemForEditingById(id: number): void {
     this.service.getDataById(id)
     .subscribe({
       next: (res: IData) => console.log(res) //display fn here
     });
+  }
+
+  displayItems(itemsForDisplay: IData) {
+    this.item = itemsForDisplay; //this sends all the items meant to be displayed (that came from the observable in the getDataById method) into the object called 'item'
   }
 
   deleteFn() {
