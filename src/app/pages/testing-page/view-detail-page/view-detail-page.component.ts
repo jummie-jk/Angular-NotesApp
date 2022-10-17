@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CrudServices } from 'src/app/crud.service';
 import { IData } from '../data-interface';
@@ -16,7 +16,8 @@ export class ViewDetailPageComponent implements OnInit {
 
 //!END DEFINITIONS
   constructor(private service: CrudServices,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router,) { }
 
   ngOnInit(): void {
     //reading the id of an item from the id in the path at the top bar of the page
@@ -32,15 +33,20 @@ export class ViewDetailPageComponent implements OnInit {
     this.service.getDataById(id)
     .subscribe({
       // next: (res: IData) => console.log(res),
-      next: res => this.item = res,
+      next: res => this.item = res, //putting the response into the item
     });
   }
 
-  deleteFn3() {
-    alert('uhn was deleted')
+  deleteFn(): void {
+    this.service.deleteItemById(this.item.id)
+    .subscribe({
+      next: () => this.onSaveComplete(),
+    })
   }
 
-  saveFn3(){
-    alert('SAVED')
+  onSaveComplete(): void {
+    // this.listDataForm.reset();
+    this.router.navigate(["/pages/testing"]);
   }
+
 }

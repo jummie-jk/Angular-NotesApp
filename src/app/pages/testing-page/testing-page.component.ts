@@ -7,6 +7,7 @@ import { Http } from '@angular/http';
 // I was trying to get the data by importing this to gain access to "const data",
 // but really how to get the data is to call the get method, which brings "const data", sub to the observable, then do whatever I want with "const data" now that I have it
 import { BackData } from 'src/app/BackData'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-testing-page',
@@ -17,6 +18,7 @@ export class TestingPageComponent implements OnInit {
 
   warrantForm: FormGroup;
   listData: IData[] = [];
+  item: IData;
 
   // OldHardcoded: I took this out and put a fake backend
   // list: Data[] =[
@@ -64,7 +66,8 @@ export class TestingPageComponent implements OnInit {
 
   // private fb: FormBuilder is needed in the constructor for form builder to work!
   constructor(private fb: FormBuilder,
-              private service: CrudServices,) { }
+              private service: CrudServices,
+              private router: Router,) { }
 
   ngOnInit() {
     // The Form Model.   (this form has been removed)
@@ -90,8 +93,16 @@ export class TestingPageComponent implements OnInit {
     this.service.getData().subscribe(response => {console.log(response)});
   }
 
-  function() {
-    alert('Button Clicked')
+  deleteFn(id: number): void {
+    this.service.deleteItemById(id)
+    .subscribe({
+      next: () => this.onDeleteComplete(),
+    })
+  }
+
+  onDeleteComplete(): void {
+    alert('Deleted!')
+    this.ngOnInit();
   }
 
 }

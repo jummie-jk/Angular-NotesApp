@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,10 +18,16 @@ import { Router } from '@angular/router';
 })
 export class IntegrationsPageComponent implements OnInit {
   disabled = false;
+  showDiv = false;
+  noteArea: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.noteArea = this.fb.group({
+      note: '',
+    })
   }
 
   goToreadRoute() {
@@ -29,6 +36,10 @@ export class IntegrationsPageComponent implements OnInit {
 
   backToTop(){
     window.scroll(0,0)
+  }
+
+  showOrHide(): void {
+    this.showDiv = !this.showDiv;
   }
 
 }

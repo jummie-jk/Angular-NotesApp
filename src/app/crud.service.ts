@@ -37,7 +37,25 @@ getData(): Observable<IData[]> {
 //get the specific data of the list by its id.  this.http.get<any>(`${}/${}`)  <- that's a 'template literal' which specifies the link to pass into the fn
 getDataById(id: number): Observable<IData>{
   return this.http.get<any>(`${this.baseUrl}/${id}`)
-  .pipe(tap(data => console.log('Specific item:' + data)
-  ))
+  // .pipe(tap(data => console.log('Specific item:' + data)
+  // ))
+}
+
+updateItem(updatedItem: IData) {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); //specifies that the content will be in json format
+  return this.http.put<IData[]>(`${this.baseUrl}/${updatedItem.id}`, updatedItem, { headers }) // remember `${}/${}` cone,dollar braces/dollar braces.   Also remember headers has to be in braces {headers}
+}
+
+createItem(savedItem: IData) {
+  const headers = new HttpHeaders ({'Content-Type' : 'application/json'});   //specifies that the content will be in json format
+  return this.http.post<IData>(this.baseUrl, savedItem, { headers })
+  .pipe(
+    tap(() => console.log('updateItem: ' + savedItem.id)),
+  );
+}
+
+deleteItemById(id: number): Observable<{}> {
+  const headers = new HttpHeaders ({'Content-Type' : 'application/json'});     //specifies that the content will be in json format
+  return this.http.delete<IData>(`${this.baseUrl}/${id}`, { headers })
 }
 }

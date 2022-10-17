@@ -1,5 +1,5 @@
 <section class="text">
-    <!-- <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+  <!-- <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
       <ngb-panel id="custom-panel-1">
         <ng-template ngbPanelHeader let-opened="opened">
           <div class="accordion-button custom-header justify-content-between" [class.collapsed]="!opened">
@@ -66,90 +66,117 @@
       </ngb-panel>
     </ngb-accordion> -->
 
-    <h2>General notes</h2>
-    <p><b>Remember the goal is to understand what the heck I'm doing, and also be able to use this as a point of reference like my notes webpage when working</b><br>
-          The API connection is the key thing I need to get from here, but making html and ts files talk to eachother in the exercises ups my overall knowledge of integrations.</p>
-    <hr>
-    <p>Forms can be made using html and data binding (template-driven form) or defining the form model and validation in
-      the component code (reactive form). <br>
-      Angular is able to watch for changes in the state of a reactive form. Untouched, it's called "pristine", touched it's "dirty".<br>
+  <h2>General notes</h2>
+  <p><b>Remember the goal is to understand what the heck I'm doing, and also be able to use this as a point of reference
+      like my notes webpage when working</b><br>
+    The API connection is the key thing I need to get from here, but making html and ts files talk to eachother in the
+    exercises ups my overall knowledge of integrations.</p>
+  <hr>
+  <p>Forms can be made using html and data binding (template-driven form) or defining the form model and validation in
+    the component code (reactive form). <br>
+    Angular is able to watch for changes in the state of a reactive form. Untouched, it's called "pristine", touched
+    it's "dirty".<br>
     <img src="/assets/Images/page-states.png" alt=""></p>
-    <p>Reactive forms are better suited for complex scenarios.</p> <br>
+  <p>Reactive forms are better suited for complex scenarios.</p> <br>
   <div>
     <p><b>Steps to building a reactive form</b><br>
       To build a reactive form first</p>
     <ol>
-      <li> Import form control and form groups from angular forms.    </li>
+      <li> Import form control and form groups from angular forms. </li>
     </ol>
 
   </div>
 
-    <h2>Rename Glossary</h2>
-    <ul>
-      <li>Form controls = stuff like input elements</li>
-      <li>Form group = form itself</li>
-      <li>Form model = html structure of form</li>
-      <li>Directive = component of a dependency import</li>
-      <li>Root FormGroup = main FormGroup holding other FormGroups</li>
-      <li>key = var from the ts file holding the value inputed in the checkbox </li>
-      <li>value = value of the key as inputed in the textbox</li>
-      <li>FormArray = a group of formControls and/or FormGroups. They're accessed by index instead of name.</li>
-    </ul>
+  <h2>Rename Glossary</h2>
+  <ul>
+    <li>Form controls = stuff like input elements</li>
+    <li>Form group = form itself</li>
+    <li>Form model = html structure of form</li>
+    <li>Directive = component of a dependency import</li>
+    <li>Root FormGroup = main FormGroup holding other FormGroups</li>
+    <li>key = var from the ts file holding the value inputed in the checkbox </li>
+    <li>value = value of the key as inputed in the textbox</li>
+    <li>FormArray = a group of formControls and/or FormGroups. They're accessed by index instead of name.</li>
+  </ul>
 
-    <p><b>Binding to HTML</b><br>
-      --formControlName is used to bind each input element to its associated formControl.<br>
-      --formControlName is added to every directive we want to track in the input element of the form. The string names them.<br>
-      --Sometimes we need to have the HTML access the data/properties of the form in order to take actions like display its style. Here's a pic of how that's done. <br>
-      <img src="/assets/Images/Accessing-form-properties.png" alt="">
-    </p>
-    <p>setValue and patchValue are used to update info on the form from the component file.<br>
-    setValue is used to set the value of every formControl in the module and won't work except you have a value for every formControl. <br>
-    setValue is used to set the values of all the formControls while patchValue is used to set kust specified ones.
+  <p><b>Binding to HTML</b><br>
+    --formControlName is used to bind each input element to its associated formControl.<br>
+    --formControlName is added to every directive we want to track in the input element of the form. The string names
+    them.<br>
+    --Sometimes we need to have the HTML access the data/properties of the form in order to take actions like display
+    its style. Here's a pic of how that's done. <br>
+    <img src="/assets/Images/Accessing-form-properties.png" alt="">
+  </p>
+  <p>setValue and patchValue are used to update info on the form from the component file.<br>
+    setValue is used to set the value of every formControl in the module and won't work except you have a value for
+    every formControl. <br>
+    setValue is used to set the values of all the formControls while patchValue is used to set just specified ones.
   </p>
 
   <p><b>Form Builder</b>
-  Is used to generate formGroups and formControls for you.<br>
-  It shortens the boilerplate code for the form.<br>
-  It's provided as a service so uses dependency injection.</p>
+    Is used to generate formGroups and formControls for you.<br>
+    It shortens the boilerplate code for the form.<br>
+    It's provided as a service so uses dependency injection.</p>
 
   <p><b>Binding html to ts</b></p><img src="/assets/Images/Binding-ts-to-html.png" alt="">
 
   <h4>Cross-Field Validation</h4>
-  <p>The trick to cross field validation is to make a nested form group within the larger form which would then be validated together.</p> <br>
+  <p>The trick to cross field validation is to make a nested form group within the larger form which would then be
+    validated together.</p> <br>
   <img src="/assets/Images/Cross-field-validation-nested-FB.png" alt="">
   <br>&nbsp;<br>
 
   <h4>Reference links</h4>
   <p>
-    Overall, I've seen that to actually do these, I'll need to reference the tutorial again to follow it step by step until I get so used to it I never have to reference the tutorial again.<br>
-    It is advisable to watch the intro and the checklist (outro) first before actually going in to revisit videos in a module you're revisiting.
+    Overall, I've seen that to actually do these, I'll need to reference the tutorial again to follow it step by step
+    until I get so used to it I never have to reference the tutorial again.<br>
+    It is advisable to watch the intro and the checklist (outro) first before actually going in to revisit videos in a
+    module you're revisiting.
   </p>
   <ul>
-    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=efc2e9cf-30ea-440c-bef7-14e40af503c7">Reacting by changing validation rules </a></li>
-    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=e1cdcfcb-352d-4a9e-ba3b-5bbbc9f5ebbc">Using debounceTime</a></li>
-    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=653319b8-da9b-467e-8036-d7350c0d18d2">The checklist of module 7 shows the features of the form that were taught.</a> If ever lost, check the intro or the checklist for what happened in that module.</li>
-    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">Getting product ID to display corresponding UI.</a></li>
-    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=ff42b4cc-01de-4b15-aaae-314f2c833d13">Faking a backend server</a></li>
-    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=5fb25354-6e62-42e3-8308-5ecc5c3d23a6">Module 9 particularly shows how to fake backend, get, post, to it etc which is the same process with a real server. Take out the fake to use the real then it's all the same.</a> </li>
+    <li><a class="link"
+        href="https://app.pluralsight.com/course-player?clipId=efc2e9cf-30ea-440c-bef7-14e40af503c7">Reacting by
+        changing validation rules </a></li>
+    <li><a class="link"
+        href="https://app.pluralsight.com/course-player?clipId=e1cdcfcb-352d-4a9e-ba3b-5bbbc9f5ebbc">Using
+        debounceTime</a></li>
+    <li><a class="link" href="https://app.pluralsight.com/course-player?clipId=653319b8-da9b-467e-8036-d7350c0d18d2">The
+        checklist of module 7 shows the features of the form that were taught.</a> If ever lost, check the intro or the
+      checklist for what happened in that module.</li>
+    <li><a class="link"
+        href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">Getting product ID
+        to display corresponding UI.</a></li>
+    <li><a class="link"
+        href="https://app.pluralsight.com/course-player?clipId=ff42b4cc-01de-4b15-aaae-314f2c833d13">Faking a backend
+        server</a></li>
+    <li><a class="link"
+        href="https://app.pluralsight.com/course-player?clipId=5fb25354-6e62-42e3-8308-5ecc5c3d23a6">Module 9
+        particularly shows how to fake backend, get, post, to it etc which is the same process with a real server. Take
+        out the fake to use the real then it's all the same.</a> </li>
   </ul>
 
   <p>debounceTime - ignores all events until a specific amount of time has passed without another event. <br>
-  debounceTime(1000) waits 1 second before another event. <br></p>
+    debounceTime(1000) waits 1 second before another event. <br></p>
 
   <p>It's important to know how to watch something for changes by subcribing to the necessary observable </p>
   <img src="/assets/Images/watching-with-observable.png" alt="">
 
-  <p>After watching, you should be able to react to it. The highlighted function is called when the value change is noticed by the observable. Below is the syntax to react to a change with setNotification(value) being a function you predefined already.</p>
+  <p>After watching, you should be able to react to it. The highlighted function is called when the value change is
+    noticed by the observable. Below is the syntax to react to a change with setNotification(value) being a function you
+    predefined already.</p>
   <img src="/assets/Images/reacting-to-change.png" alt="">
 
-  <p>debounceTime is often used in forms and here's the syntax with the part of the code that actually adds the debounceTime highlighted. <span style="color: rgb(218, 218, 31);">.pipe(debounceTime(1000))</span></p>
+  <p>debounceTime is often used in forms and here's the syntax with the part of the code that actually adds the
+    debounceTime highlighted. <span style="color: rgb(218, 218, 31);">.pipe(debounceTime(1000))</span></p>
 
   <p>Here are the stepds to duplicating a formGroup instance</p>
   <img src="/assets/Images/steps-to-duplicate-elements.png" alt="">
   <br>
 
   <h4>Getting ID from Route</h4>
-  <p>You can get the id of an item to make the page display the UI linked to that ID by using a snapshot or an observable. Use an observable if you expect the parameter to change while you're still on the page. The below image shows snapshot first then observable method below it.</p>
+  <p>You can get the id of an item to make the page display the UI linked to that ID by using a snapshot or an
+    observable. Use an observable if you expect the parameter to change while you're still on the page. The below image
+    shows snapshot first then observable method below it.</p>
   <img src="/assets/Images/get id via route.png" alt="">
   <br>
   <h2>CRUD Operations: Integrating to Backend</h2>
@@ -158,71 +185,81 @@
     <li>Set up the backend server</li>
   </ol>
 
-  <h6 id="service" >Creating a Data Access Service</h6>
+  <h6 id="service">Creating a Data Access Service</h6>
   <img src="/assets/Images/steps to building data access service.png" alt="">
 
-  <h6 id="backend" >Setting up the Backend Server</h6>
+  <h6 id="backend">Setting up the Backend Server</h6>
   <img src="/assets/Images/setting up backend server.png" alt="">
 
   <br>&nbsp;<br>
   <h4>CRUD Service File Syntax</h4>
   <div class="frame">
     <code>
-      <p>import {{ '{' }} HttpClient, HttpHeaders } from '@angular/common/http';       <br>
-        import {{ '{' }} Observable, of, throwError } from 'rxjs';       <br>
-        import {{ '{' }} catchError, tap, map } from 'rxjs/operators';       <br>
+      <p>import {{ '{' }} HttpClient, HttpHeaders } from '@angular/common/http'; <br>
+        import {{ '{' }} Observable, of, throwError } from 'rxjs'; <br>
+        import {{ '{' }} catchError, tap, map } from 'rxjs/operators'; <br>
         <br>&nbsp;<br>
-        @Injectable ({{ '{' }}        <br>
-        &nbsp;&nbsp; providedIn: 'root'        <br>
-        })        <br>
+        @Injectable ({{ '{' }} <br>
+        &nbsp;&nbsp; providedIn: 'root' <br>
+        }) <br>
         <br>&nbsp;<br>
-        export class ProductService {{ '{' }}        <br>
-          &nbsp;&nbsp; private baseUrl = 'www.myWebService.com/api/products';        <br>
-          <br>
-          &nbsp;&nbsp; constructor(private http: HttpClient) {{ '{' }}}        <br>
-          <br>
-          &nbsp;&nbsp; getProduct(id:number): Observable&lt;Product&gt; {{ '{' }}       <br>
-          &nbsp;&nbsp;  &nbsp;&nbsp;const url = `${{ '{' }}this.baseUrl}/${{ '{' }}id}`;       <br>
-          &nbsp;&nbsp;  &nbsp;&nbsp;return this.http.get&lt;Product&gt;(url);       <br>
-            }
+        export class ProductService {{ '{' }} <br>
+        &nbsp;&nbsp; private baseUrl = 'www.myWebService.com/api/products'; <br>
+        <br>
+        &nbsp;&nbsp; constructor(private http: HttpClient) {{ '{' }}} <br>
+        <br>
+        &nbsp;&nbsp; getProduct(id:number): Observable&lt;Product&gt; {{ '{' }} <br>
+        &nbsp;&nbsp; &nbsp;&nbsp;const url = `${{ '{' }}this.baseUrl}/${{ '{' }}id}`; <br>
+        &nbsp;&nbsp; &nbsp;&nbsp;return this.http.get&lt;Product&gt;(url); <br>
         }
-        </p>
+        }
+      </p>
     </code>
   </div>
-  <p>Create using <code class="codeC2">http.post</code>, read using <code class="codeC2">http.get</code>, update using <code class="codeC2">http.put</code>, and delete using <code class="codeC2">http.delete</code>. </p> <br>
+  <p>Create using <code class="codeC2">http.post</code>, read using <code class="codeC2">http.get</code>, update using
+    <code class="codeC2">http.put</code>, and delete using <code class="codeC2">http.delete</code>. </p> <br>
 
   <h1>Faking a Backend</h1>
   <img src="/assets/Images/faking a backend.png" alt="">
-  <p>Hard coding doesn't make use of http services so it won't do. Using the Json method, you can get the data but can't post to it. Hence the in-memory-web-api is a better choice.</p> <br>
+  <p>Hard coding doesn't make use of http services so it won't do. Using the Json method, you can get the data but can't
+    post to it. Hence the in-memory-web-api is a better choice.</p> <br>
   <p><b>Using and In-Memory-Web-API</b></p>
   <ol>
-  <li>Install the in-memory web api: <code class="codeC2">npm install angular-in-memory-web-api --save-dev</code></li>
-  <li>Create your backend data file(class) <ul>
-                                          <li>Import <code class="codeC2">InMemoryDbService</code> from 'angular-in-memory-web-api' so the class can implement InMemoryDbService, also to gain access the <code class="codeC2">createDb</code> method.</li>
-                                          <li>Create an interface file to define the data types for strong typing and import it here too</li>
-                                          <li>Use the createDb method to create the object holding the array of data.<br>
-                                          <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] }{{ '{' }} <br>
-                                               &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
-                                               &nbsp;&nbsp;return {{ '{' }} data }; <br>
-                                              } </code> </div>
-                                            </li>
-                                          </ul>
-  </li>
-  <li>Import <code class="codeC2">HttpClientInMemoryWebApiModule</code> to the imports section of relevant module of the page that needs to call from that back (or app.module).</li>
-  <li>Import your backend data file(class) which you just made to the same module</li>
-  <li>Add to the imports section of the module, <code class="codeC2">InMemoryWebApiModule.forRoot(dataFileClass)</code></li>
-  <li>Create a service for your CRUD. <br>
-    Inject the service in the constructor of the .ts file of the relevant page that needs the service.</li>
-  <li>Write code to read the http path (in the service). <br>
-    It usually starts with 'api' then the name of the object holding the data array. E.g "api/data"</li>
-  <li>Inject http of type HttpClient to the constructor like so: <code class="codeC2">constructor (private http: HttpClient)</code></li>
+    <li>Install the in-memory web api: <code class="codeC2">npm install angular-in-memory-web-api --save-dev</code></li>
+    <li>Create your backend data file(class) <ul>
+        <li>Import <code class="codeC2">InMemoryDbService</code> from 'angular-in-memory-web-api' so the class can
+          implement InMemoryDbService, also to gain access the <code class="codeC2">createDb</code> method.</li>
+        <li>Create an interface file to define the data types for strong typing and import it here too</li>
+        <li>Use the createDb method to create the object holding the array of data.<br>
+          <div class="frame"> <code> createDb(): {{ '{' }} data: Data[] }{{ '{' }} <br>
+              &nbsp;&nbsp;const data: Data[] = [ InsertArrayHere ]; <br>
+              &nbsp;&nbsp;return {{ '{' }} data }; <br>
+              } </code> </div>
+        </li>
+      </ul>
+    </li>
+    <li>Import <code class="codeC2">HttpClientInMemoryWebApiModule</code> to the imports section of relevant module of
+      the page that needs to call from that back (or app.module).</li>
+    <li>Import your backend data file(class) which you just made to the same module</li>
+    <li>Add to the imports section of the module, <code
+        class="codeC2">InMemoryWebApiModule.forRoot(dataFileClass)</code></li>
+    <li>Create a service for your CRUD. <br>
+      Inject the service in the constructor of the .ts file of the relevant page that needs the service.</li>
+    <li>Write code to read the http path (in the service). <br>
+      It usually starts with 'api' then the name of the object holding the data array. E.g "api/data"</li>
+    <li>Inject http of type HttpClient to the constructor like so: <code class="codeC2">constructor (private http:
+        HttpClient)</code></li>
     <li>Write the get method (subscribing to the observable in it) and test that it works.</li>
   </ol>
 
   <h4>The Get Method </h4>
   <p>Use this method to test that your back end works</p>
 
-  <br><p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order of how they'll happen. </p>
+  <br>
+  <p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by
+    the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and
+    working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order
+    of how they'll happen. </p>
 
 
   <h1>CRUD Operations</h1>
@@ -238,115 +275,292 @@
   </ol>
   <p>Create using post, read using get update using put and delete using delete. </p>
 
-  <h3>Notes From Using CRUD Practically.</h3>
-  <p>Here's the syntax to route to a specific code ID: <br></p>
+  <div class="CrudNotes">
+    <h3>Notes From Using CRUD Practically.</h3>
+    <p>Here's the syntax to route to a specific code ID: <br></p>
     <div class="frame">
       <code>[routerLink]="['/products', product.id, 'edit']"</code>
     </div>
-    <br>
+    <p><b>--Void in functions</b>: When a function doesn't state to return <code>'void</code> or <code>'any</code>, you
+      have to state <code>returns yourCodeHere</code> for things to work. It your function returns void, you can go
+      straight into coding.</p>
+    <p><b>--Displaying data for View vs for Edit</b>: To show data to a page you pass the res to an object then bind
+      using object.parameter in the html, but to display it in a form, you pass the res into a display items function
+      (<i>which is inside a getItemForEditingById function</i>). This getItemForEditingById function is called in
+      ngOnInit in the function for reading the route id from the top bar.</p>
+  </div>
+  <br>
 
-    <p><B>Signing Into Swagger</B>:</p>
-    <ol>
-      <li>Go to user auth  -->   click "try it out"   -->   replace 'string' with username then password   -->   put client's ID and Key (from environments.ts).   -->   click execute</li>
-      <li>It returns a token at the end of the response   -->   copy token   -->   scroll to top and click 'authorize'   -->   in vlaue field type 'bearer pasteTokenNumber'   -->   click authorize. </li>
-    </ol>
-
-    <p><b>Getting Data to UI</b>: When trying to get data from Swagger to the UI, these were the steps:</p>
+  <p><B>Signing Into Swagger</B>:</p>
   <ol>
-    <li>Create an interface for the data expected to come in from Swagger (backened) to perfectly match the data types expected for each thing. A parent interface and a child interface (which would be used as a data type in the parent). <br>
-    Between the use of parent and child interfaces all the objects in the response body should be properly accounted for in the interfaces. </li>
-    <li>I wrote a function in the service.ts to get the data from Swagger, of an observable interface type (<i>remember the [] should be ommitted so that child interfaces can be accessed</i>), passing in the userId which it's to get the data by. It returns a get method that uses the link to the Swagger data (or relevant backend) and passing in the userId to get it by.    </li>
-    <li>I then wrote in the ts file, a get method calling the function from the service, passing in the userId and .subscribe to it.</li>
-    <li>In the response after the .subscribe, I passed the response into an object "jobs" (which would have to be defined with it's correct type in the definitions section, prolly an interface). </li>
-    <li>In ngOnInit call <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run automatically when the page is loaded and you can actually have access to the data. </li>
-    <li>In the HTML, bind the object "jobs" (which you passed the response into), then you can use .whatever from the interface child or JavaScript method and it'll show.</li>
+    <li>Go to user auth --> click "try it out" --> replace 'string' with username then password --> put client's ID and
+      Key (from environments.ts). --> click execute</li>
+    <li>It returns a token at the end of the response --> copy token --> scroll to top and click 'authorize' --> in
+      vlaue field type 'bearer pasteTokenNumber' --> click authorize. </li>
+  </ol>
+
+  <p><b>Getting Data to UI</b>: When trying to get data from Swagger to the UI, these were the steps:</p>
+  <ol>
+    <li>Create an interface for the data expected to come in from Swagger (backened) to perfectly match the data types
+      expected for each thing. A parent interface and a child interface (which would be used as a data type in the
+      parent). <br>
+      Between the use of parent and child interfaces all the objects in the response body should be properly accounted
+      for in the interfaces. </li>
+    <li>I wrote a function in the service.ts to get the data from Swagger, of an observable interface type (<i>remember
+        the [] should be ommitted so that child interfaces can be accessed</i>), passing in the userId which it's to get
+      the data by. It returns a get method that uses the link to the Swagger data (or relevant backend) and passing in
+      the userId to get it by. </li>
+    <li>I then wrote in the ts file, a get method calling the function from the service, passing in the userId and
+      .subscribe to it.</li>
+    <li>In the response after the .subscribe, I passed the response into an object "jobs" (which would have to be
+      defined with it's correct type in the definitions section, prolly an interface). </li>
+    <li>In ngOnInit call <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run
+      automatically when the page is loaded and you can actually have access to the data. </li>
+    <li>In the HTML, bind the object "jobs" (which you passed the response into), then you can use .whatever from the
+      interface child or JavaScript method and it'll show.</li>
   </ol><br>
 
   <!-- ----------------  Reading Route Parameter  ------------------------- -->
 
-  <div><h4 id="readRoute">Reading a route parameter</h4>
-    <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(Reference1)</a> &nbsp; <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(reference2)</a>
-    the way your functions by id know the id of the product for it to bring the specific details of that product is by reading the id in the route. To do that,
-  <ul>
-    <li>First bind the id to the route path so that that id shows in the top bar when you're on the destination page. Bind it like so: <p> <b class="codeC2">[routerLink]="['/pages/testing', item.id , 'edit-page']"</b> in the html button, and <code class="codeC2">{{ '{' }} path: 'pages/testing/:id/edit-page', component: EditPageComponent {{ '}' }}</code> in the routing component. </p> </li>
-    <li>in the destination (edit) page's ts: import ActivatedRoute, inject it in the constructor, </li>
-    <li>utilizing ActivatedRoute to get the id, use snapshot or an observable following this code:<br> <img class="img" src="/assets/Images/reading routes to get id.png"> the id in the fn is read straight from the route </li>
-    <li>set up the reading of the route parameter in ngOninit.</li>
-  </ul></div>
-<br>
+  <div>
+    <h4 id="readRoute">Reading a route parameter</h4>
+    <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(Reference1)</a>
+    &nbsp; <a
+      href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(reference2)</a>
+    the way your functions by id know the id of the product for it to bring the specific details of that product is by
+    reading the id in the route. To do that,
+    <ul>
+      <li>First bind the id to the route path so that that id shows in the top bar when you're on the destination page.
+        You can only bind it when you've ran the get method and passed the response into the objecy 'item'. Then you can
+        bind it like so: <p> <b class="codeC2">[routerLink]="['/pages/testing', item.id , 'edit-page']"</b> in the html
+          button, and <code class="codeC2">{{ '{' }} path: 'pages/testing/:id/edit-page', component: EditPageComponent
+            {{ '}' }}</code> in the routing component. </p>
+      </li>
+      <li>in the destination (edit) page's ts: import ActivatedRoute, inject it in the constructor, </li>
+      <li>utilizing ActivatedRoute to get the id, use snapshot or use an observable following this code (<i>this is
+          where you define const id</i>):<br> <img class="img" src="/assets/Images/reading routes to get id.png"> the id
+        in the fn is read straight from the route </li>
+      <li>set up the reading of the route parameter in ngOninit.</li>
+    </ul>
+  </div>
+  <br>
   <h1><u>Doing CRUD</u></h1>
   <p>These are notes on the basic steps taken in each of the crud operations.</p>
+
+  <!-- --------------------------EDIT CRUD------------------------------------ -->
+
   <h3>EDIT(3am)</h3>
-  <p><b>Retrieving Specific Item To Form</b>: When trting to populate a form with existing data, say for editing, these are the steps:</p>
+  <p><b>Retrieving Specific Item To Form</b>: When trying to populate a form with existing data, say for editing, these
+    are the steps:</p>
   <ol>
+    <li>Write code to read the id of the specific data to be retrieved from the route as shown in <button
+        (click)="goToreadRoute()">reading a route parameter</button> above (so it can actually get the correct item).
+    </li>
     <li>Write your getById function in the service file (passing in the id).</li>
-    <li>Write another getById function in the ts file (passing in the id), which'll call the service file's fn somewhere in it <code class="codeC2">this.service.getById</code></li>
-    <li>It must read the id of the specific data to be retrieved, by the route.</li>
-    <li>In the edit-page ts file, Get and pass in 'id' (to the get fn that uses id) in ngOnInit. Then that get fn runs the display function. </li>
+    <li>Write another getById2 function in the ts file (passing in the id), which'll call the service file's fn in it
+      like so: <code class="codeC2">this.service.getById</code></li>
+    <li>Write a displayItems fn, where you'll use <code class="codeC2"> this.formGroup'sName.patchValue({{'{'}}
+        formControlName: this.item.parameter, {{'}'}})</code> to put the current relevant parameters in each of their
+      corresponding form controls.</li>
+    <li>In the edit-page's ts file's ngOnInit, in your fn to read the route's id, put this.getById2 passing in the id.
+      getById2 MUST pass in his res to displayItems function </li>
   </ol>
+  <p>So there are 3 major functions that work together here. <span class="red">fn to read the route's id(in
+      ngOnInit)</span>, who calls
+    <span class="blue">getItemForEditingById</span>, who calls <span class="green">displayItems</span> passing in his
+    res. Here are the functions respectively: </p>
+  <div class="frame">
+    <code>
+      ngOnInit(): void {{'{'}} <br>
+      &nbsp; this.sub = this.route.paramMap.subscribe( <br>
+      &nbsp;&nbsp; params => {{'{'}} <br>
+      &nbsp;&nbsp;&nbsp; const id = +params.get('id')!; <br>
+      &nbsp;&nbsp;&nbsp; this.getItemForEditingById(id); <br>
+      &nbsp;&nbsp; {{'}'}} <br>
+      &nbsp; ) <br>
+      {{'}'}}
+    </code>
+    <br>
+    <code class="blue">
+      getItemForEditingById(id: number): void {{'{'}} <br>
+      &nbsp; this.service.getDataById(id) <br>
+      &nbsp;&nbsp; .subscribe({{'{'}} <br>
+      &nbsp;&nbsp;&nbsp; next: (res: IData) => this.displayItems(res) <br>
+      &nbsp; {{'}'}}); <br>
+      {{'}'}} <br>
+    </code>
+    <br>
+    <code class="green">
+      displayItems(itemsForDisplay: IData) {{'{'}} <br>
+      &nbsp; this.item = itemsForDisplay; <br>
+      &nbsp; this.listDataForm.patchValue({{'{'}} <br>
+      &nbsp; &nbsp; number: this.item.serialNo, <br>
+      &nbsp; &nbsp; parameter: this.item.parameter, <br>
+      &nbsp; &nbsp; type: this.item.type, <br>
+      &nbsp; &nbsp; description: this.item.description, <br>
+      &nbsp; {{'}'}}); <br>
+      {{'}'}} <br>
+    </code>
+  </div>
+  <br>
+  <h5>SAVING</h5>
+  <p>To edit, you need to actually save changes. Done by using JS spread properties which lets us copy data from an
+    existing object to a new object, edit that and push it. like so: <img class="img"
+      src="/assets/Images/saving edits.png" alt=""></p>
+  <p>The update function essentially takes in the item you juse edited, and in the http.put, it says "here's the url, to
+    put this item, as a json. Like so:</p>
+  <img class="img" src="/assets/Images/http put.png" alt="">
+  <ol>
+    <li>Write the updateItem function in the service. Use the format in tht image above.</li>
+    <li>Write a local saveEditsFn method that calls <code class="codeC2">this.service.updateItem(P)</code>, passing in
+      the const P where your edits have been pasted over the old edits. --> Subscribe to the observable returned by the
+      update method --> use <code class="codeC2">next: () => this.onSaveComplete.()</code>. onSaveComplete can just
+      route to wherever (<i>or this.form.reset() first</i>).</li>
+  </ol>
+  <p>Here's the edit method, just reworded a bit:</p>
+  <div class="frame">
+    <code>
+      &nbsp;saveEditsFn(): void{{'{'}} <br>
+      &nbsp;&nbsp; const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span
+        style="color: rgb(190, 190, 190);">//copies listDataForm's value over item and puts the result inside I</span>
+      <br>
+      &nbsp;&nbsp; this.service.updateItem(I) <br>
+      &nbsp;&nbsp;&nbsp; .subscribe({{'{'}} <br>
+      &nbsp;&nbsp;&nbsp; next: () => this.onSaveComplete() <br>
+      &nbsp;&nbsp; {{'}'}}) <br>
+      {{'}'}} <br>
+    </code>
+  </div>
+  <br>
 
   <!-- --------------------------VIEW CRUD------------------------------------ -->
 
   <h3>VIEW</h3>
-  <p>Use the routing to let the code know which item you're viewing by binding the id to the route as shown in the <button (click)="goToreadRoute()">reading a route parameter</button>  section above.<br>
-  Go to the ts file of the view page then:</p>
+  <p>Use the routing to let the code know which item you're viewing by binding the id to the route as shown in the
+    <button (click)="goToreadRoute()">reading a route parameter</button> section above.<br>
+    Go to the ts file of the view page then:</p>
   <ol>
-    <li>  Import Subscription from rxjs, make a private sub: Subscription in the definitions section.   </li>
-    <li>  Import and inject ActivatedRoute(in constructor).</li>
-    <li>  Create an <b>object: IData</b> to hold your res.    </li>
-    <li>  Write your getById method calling the getById of the service.ts, subscribing and passing the res into the <b>object</b>.      </li>
-    <li>  In ngOnInit, write code to read the route parameter and in the same fn run your getById method, passing in the id you just read.    </li>
-    <li>  Data bind it in the html using <code class="codeC2" >{{'{'}}{{'{'}}object.parameter{{'}'}}{{'}'}}</code>     </li>
+    <li> Import Subscription from rxjs, make a private sub: Subscription in the definitions section. </li>
+    <li> Import and inject ActivatedRoute(in constructor).</li>
+    <li> Create an <b>object: IData</b> to hold your res. </li>
+    <li> Write your getById method calling the getById of the service.ts, subscribing and passing the res into the
+      <b>object</b>. </li>
+    <li> In ngOnInit, write code to read the route parameter and in the same fn run your getById method, passing in the
+      id you just read. </li>
+    <li> Data bind it in the html using <code class="codeC2">{{'{'}}{{'{'}}object.parameter{{'}'}}{{'}'}}</code> </li>
   </ol>
-  <p>Here's the code example for numbers 4 and 5 (5 first). &nbsp;&nbsp; <i>Both show different ways (syntaxes) to write the response after a subscribe.</i></p>
+  <p>Here's the code example for numbers 4 and 5 (5 first). &nbsp;&nbsp; <i>Both show different ways (syntaxes) to write
+      the response after a subscribe.</i></p>
   <div class="frame">
     <code>
-      ngOnInit(): void {{'{'}}      <br>
-        <!-- //reading the id of an item from the id in the path at the top bar of the page      <br> -->
-       &nbsp; this.sub = this.route.paramMap.subscribe(      <br>
-       &nbsp;&nbsp;  params => {{'{'}}       <br>
-          <!-- //this pulls the id from the parameters array and puts into the const which is then put into the getItemForViewingById method. <br> -->
-       &nbsp;&nbsp;&nbsp;&nbsp;    const id = +params.get('id')!;        <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;    this.getItemForViewingById(id);      <br>
-       &nbsp;&nbsp;  {{'}'}}      <br>
-       &nbsp; )      <br>
-      {{'}'}}      <br>
-<br>
-      getItemForViewingById(id: number): void {{'{'}}       <br>
-       &nbsp; this.service.getDataById(id)      <br>
-       &nbsp;&nbsp; .subscribe({{'{'}}       <br>
-        &nbsp;&nbsp;  <!-- // next: (res: IData) => console.log(res),      <br> -->
-        &nbsp;&nbsp;  next: res => this.item = res,      <br>
-        &nbsp; {{'}'}});      <br>
-      {{'}'}}      <br>
-  </code>
+      ngOnInit(): void {{'{'}} <br>
+      <!-- //reading the id of an item from the id in the path at the top bar of the page      <br> -->
+      &nbsp; this.sub = this.route.paramMap.subscribe( <br>
+      &nbsp;&nbsp; params => {{'{'}} <br>
+      <!-- //this pulls the id from the parameters array and puts into the const which is then put into the getItemForViewingById method. <br> -->
+      &nbsp;&nbsp;&nbsp;&nbsp; const id = +params.get('id')!; <br>
+      &nbsp;&nbsp;&nbsp;&nbsp; this.getItemForViewingById(id); <br>
+      &nbsp;&nbsp; {{'}'}} <br>
+      &nbsp; ) <br>
+      {{'}'}} <br>
+      <br>
+      getItemForViewingById(id: number): void {{'{'}} <br>
+      &nbsp; this.service.getDataById(id) <br>
+      &nbsp;&nbsp; .subscribe({{'{'}} <br>
+      &nbsp;&nbsp;
+      <!-- // next: (res: IData) => console.log(res),      <br> -->
+      &nbsp;&nbsp; next: res => this.item = res, <br>
+      &nbsp; {{'}'}}); <br>
+      {{'}'}} <br>
+    </code>
   </div>
   <br>
 
-  <H3>CREATE(5am)</H3>
+  <!-- --------------------------CREATE CRUD------------------------------------ -->
+
+  <H3>CREATE</H3>
+  <ol>
+    <li>Write http.post function in service.</li>
+    <li>Call it up in a local create fn. In this fn, you put the form group into a const 'I' -> next line, pass 'I' into
+      <code class="codeC2">this.service.createItem</code> fn</li>
+  </ol>
+  <p>Here are the functions in the service and then the local create (save) fn in the ts respectively</p>
+  <div class="frame">
+    <code>
+       createItem(savedItem: IData) {{'{'}} <br>
+      &nbsp;&nbsp; const headers = new HttpHeaders ({{'{'}}'Content-Type' : 'application/json'{{'}'}}); <span class="comment">//specifies that the content will be in json format</span> <br>
+      &nbsp;&nbsp; return this.http.post&lt;IData&gt;(this.baseUrl, savedItem, {{'{'}} headers {{'}'}}) <br>
+       {{'}'}} <br>
+    </code>
+    <br>
+    <code>
+      saveFn(){{'{'}}               <br>
+     &nbsp;   const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span class="comment">//copies listDataForm's value over item and puts the result inside I</span>               <br>
+     &nbsp;   this.service.createItem(I)               <br>
+     &nbsp;&nbsp;     .subscribe({{'{'}}               <br>
+     &nbsp;&nbsp; &nbsp;      next: () => this.onSaveComplete()               <br>
+     &nbsp;&nbsp;      {{'}'}}) <br>
+           {{'}'}}               <br>
+      onSaveComplete(): void {{'{'}}               <br>
+     &nbsp;  this.router.navigate(["/pages/testing"]);               <br>
+      {{'}'}}               <br>
+    </code>
+  </div>
   <br>
+
+  <!-- --------------------------DELETE CRUD------------------------------------ -->
+
+  <h3>DELETE</h3>
+  <p>In most delete cases the item isn't truly deleted. A http.put is just used to set its status as deleted so that
+    what's showing on the UI are only those with status of "not-deleted", or those that don't include the delete status
+    depending on how you want to write it. </p>
+  <p>But if you must delete, here is the code to do actual delete:</p>
+  <ol>
+    <li>Write the delete method in the service file. <i>(note: similar to put and post but returns an observable of
+        nothing &lt;{{'{'}}{{'}'}}&gt;, takes in just baseUrl/id, and passes no item into it )</i> <br> <img class="img"
+        src="/assets/Images/http delete.png" alt=""> </li>
+    <li>Call it up with a local delete function. <br> <img class="img" src="/assets/Images/call delete method.png"
+        alt=""> </li>
+  </ol>
 
   <p><b>Field duplication(6am)</b>:</p>
   <p><b>Refresh</b>:</p>
 
   <h1>Notes to Remember</h1>
-  <p><b>Property Binding</b>: Things like routerlink, class, style, src etc can be used with square braces [] to use data binding on their values. E.g, <code class="codeC2">[src]= product.imgUrl.</code> <br>
-    That must be the same concept with things like *ngIf and [(ngModel)], where something that says more about a html tag is altered using square braces [] or a star * or square braces and a bracket [()]. </p>
-    <p><b>Routing With Property Binding</b>: Normally, routing is done going forward from one path to the other with the previous path appended at the beginning of the new path. With property binding, you can make it route from one path directly to an entirely different path, which is not a child of the current view.<br>
-    To ropute to a different location, use property binding like so: <code class="codeC2"> [routerLink]="<code>['route/route']</code>"</code> where the red text is the bound content of the quotation of the routerLink.</p>
-    <p><b>Event Binding</b> : () being used is for event binding. E.g (click), (change), etc. That makes the code listen for the event in the parenthesis. </p>
-    <p>Both property and event binding can be used on the same input element that's why sometimes we see something like <span class="codeC2"> [(ngModel)] = 'listFilter ' </span>. To remember the syntax, remember banana in a box [()]. The property binding is used send imput from the html to the ts. </p>
-    <p>When working with an interface, the [] means be restricted to that particular interface but it doesn't drill down to the child interfaces. That bracket makes it specific, limited to the parent interface.</p>
+  <p><b>Property Binding</b>: Things like routerlink, class, style, src etc can be used with square braces [] to use
+    data binding on their values. E.g, <code class="codeC2">[src]= product.imgUrl.</code> <br>
+    That must be the same concept with things like *ngIf and [(ngModel)], where something that says more about a html
+    tag is altered using square braces [] or a star * or square braces and a bracket [()]. </p>
+  <p><b>Routing With Property Binding</b>: Normally, routing is done going forward from one path to the other with the
+    previous path appended at the beginning of the new path. With property binding, you can make it route from one path
+    directly to an entirely different path, which is not a child of the current view.<br>
+    To ropute to a different location, use property binding like so: <code class="codeC2">
+      [routerLink]="<code>['route/route']</code>"</code> where the red text is the bound content of the quotation of the
+    routerLink.</p>
+  <p><b>Event Binding</b> : () being used is for event binding. E.g (click), (change), etc. That makes the code listen
+    for the event in the parenthesis. </p>
+  <p>Both property and event binding can be used on the same input element that's why sometimes we see something like
+    <span class="codeC2"> [(ngModel)] = 'listFilter ' </span>. To remember the syntax, remember banana in a box [()].
+    The property binding is used send imput from the html to the ts. </p>
+  <p>When working with an interface, the [] means be restricted to that particular interface but it doesn't drill down
+    to the child interfaces. That bracket makes it specific, limited to the parent interface.</p>
+
+
+    <!-- ---------------------------- TEXT BOX --------------------------------- -->
+    <button class="downBtn" (click)="showOrHide()">{{showDiv ? "Hide" : "Note"}}</button>
+
+    <div *ngIf="showDiv" class="notes" [formGroup]="noteArea" >
+      <textarea class="form-control" formControlName="note" name="" id="" cols="30" rows="10" placeholder="write temporary text here"></textarea>
+    </div>
 
 
 
 
 
 
-
-<br>
-<div class="frame"> THIS IS THE END</div>
-<div (click)="backToTop()" class="backToTopBtn" >^</div>
+  <br>
+  <div class="frame"> THIS IS THE END</div>
+  <div (click)="backToTop()" class="backToTopBtn">^</div>
 </section>
 
 <!-- Footer -->
@@ -383,11 +597,11 @@
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase" >Links</h5>
+          <h5 class="text-uppercase">Links</h5>
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!"class="text-white">Link 1</a>
+              <a href="#!" class="text-white">Link 1</a>
             </li>
           </ul>
         </div>

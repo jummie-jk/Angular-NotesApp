@@ -8,9 +8,9 @@
   </div>
   <div class="card-body">
 <!-- 1 -->
-    <div class="row mb-2">
+    <div class="row mb-2 form-group">
       <label class="col-md-2 col-form-label">Number</label>
-      <div class="col-md-8"> <input formControlName="number"  style="width: 100%;" type="text"/> </div>
+      <div class="col-md-8"> <input formControlName="number" class="form-control" style="width: 100%;" type="number"/> </div>
     </div>
 <!-- 2 -->
     <div class="row mb-2">
@@ -32,7 +32,7 @@
     <!-- Save Cancel Delete -->
     <div class="form-group row mb-2">
       <div class="offset-md-2 col-md-4">
-        <button class="btn btn-primary mr-3" style="width:80px;" type="submit" title="save changes" (click)="saveFn()">
+        <button class="btn btn-primary mr-3" style="width:80px;" type="submit" title="save changes" (click)="saveEditsFn()">
           Save
         </button>
         <button class="btn btn-outline-secondary mr-3"

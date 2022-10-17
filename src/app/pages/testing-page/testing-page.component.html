@@ -41,7 +41,7 @@
             <!-- (click)="function()" -->
             <!-- REMEMBER ROUTERLINK ALWAYS STARTS WITH A /  ALSO SEE HOW ITEM.ID IS BOUND IN THE ROUTERLINK AND THE OMMISSION OF SLASHES AFTER THE FIRST PART-->
             <td> <div class="actionBtn btn" [routerLink]="['/pages/testing', item.id , 'edit-page']" >Edit</div>
-                 <div class="actionBtn btn" (click)="function()">Delete</div> </td>
+                 <div class="actionBtn btn" (click)="deleteFn(item.id)">Delete</div> </td>
           </tr>
 
         </tbody>

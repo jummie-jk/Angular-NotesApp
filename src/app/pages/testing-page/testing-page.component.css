@@ -32,6 +32,9 @@
 .actionBtn:hover{
   color: rgb(255, 255, 255);
 }
+.parameter{
+  cursor: pointer;
+}
 .parameter:hover{
   color: #009ebd
 }

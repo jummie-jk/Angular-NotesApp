@@ -5,27 +5,27 @@
   <div style="font-size:x-large; color: black;" class="card-header">
     Create Data
   </div>
-  <div class="card-body">
+  <div [formGroup]="listDataForm" class="card-body">
 <!-- 1 -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label">Serial Number</label>
-      <div class="col-md-8"> <input style="width: 100%;" type="text"/> </div>
+      <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="number"/> </div>
     </div>
 <!-- 2 -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label"> Parameter </label>
-      <div class="col-md-8"> <input style="width: 100%;" type="text"/> </div>
+      <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text"/> </div>
     </div>
 <!-- 3 -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label"> Type </label>
-      <div class="col-md-8"> <input style="width: 100%;" type="text"/> </div>
+      <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text"/> </div>
     </div>
 <!-- Description -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label">Description</label>
       <div class="col-md-8">
-        <textarea placeholder="Description" style="width: 100%;" rows=3></textarea>
+        <textarea placeholder="Description" formControlName="description" style="width: 100%;" rows=3></textarea>
       </div>
     </div>
     <!-- Save Cancel Delete -->
@@ -41,13 +41,13 @@
                 [routerLink]="['/pages/testing']">
           Cancel
         </button>
-        <button class="btn btn-outline-warning"
+        <!-- <button class="btn btn-outline-warning"
                 style="width:80px"
                 type="button"
                 title="Delete these details"
                 (click)="deleteFn()">
           Delete
-        </button>
+        </button> -->
       </div>
     </div>
 
