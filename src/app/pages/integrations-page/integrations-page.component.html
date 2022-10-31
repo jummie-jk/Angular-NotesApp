@@ -327,10 +327,10 @@
     <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(Reference1)</a>
     &nbsp; <a
       href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(reference2)</a>
-    the way your functions by id know the id of the product for it to bring the specific details of that product is by
+    the way your functions know the id of the product for it to bring the specific details of that product is by
     reading the id in the route. To do that,
     <ul>
-      <li>First bind the id to the route path so that that id shows in the top bar when you're on the destination page.
+      <li>First <b>bind the id to the route path</b> so that that id shows in the top bar when you're on the destination page (edit page).
         You can only bind it when you've ran the get method and passed the response into the objecy 'item'. Then you can
         bind it like so: <p> <b class="codeC2">[routerLink]="['/pages/testing', item.id , 'edit-page']"</b> in the html
           button, and <code class="codeC2">{{ '{' }} path: 'pages/testing/:id/edit-page', component: EditPageComponent
@@ -349,7 +349,13 @@
 
   <!-- --------------------------EDIT CRUD------------------------------------ -->
 
-  <h3>EDIT(3am)</h3>
+  <h3>EDIT</h3>
+ Basic steps: ** capture the id,  (so it shows in address)
+** route using it,
+** getById (service),
+** getById(ts),
+** displayFn,
+** call getById ts version, passing in his res
   <p><b>Retrieving Specific Item To Form</b>: When trying to populate a form with existing data, say for editing, these
     are the steps:</p>
   <ol>
@@ -543,7 +549,8 @@
     <span class="codeC2"> [(ngModel)] = 'listFilter ' </span>. To remember the syntax, remember banana in a box [()].
     The property binding is used send imput from the html to the ts. </p>
   <p>When working with an interface, the [] means be restricted to that particular interface but it doesn't drill down
-    to the child interfaces. That bracket makes it specific, limited to the parent interface.</p>
+    to the child interfaces. That bracket makes it specific, limited to the parent interface. <br>
+  The [] also means that what's expected from the back end is an array, so if you're expecting an array from the back end and they type is not expectedObject[], it may throw an error. </p>
 
 
     <!-- ---------------------------- TEXT BOX --------------------------------- -->

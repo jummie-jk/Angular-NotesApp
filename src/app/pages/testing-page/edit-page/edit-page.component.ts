@@ -55,7 +55,7 @@ export class EditPageComponent implements OnInit {
   displayItems(itemsForDisplay: IData) {
     this.item = itemsForDisplay; //this sends all the items meant to be displayed (that came from the observable in the getDataById method) into the object called 'item'
 
-    // uses the item's properties to set the values for each of the form controls. The data then appears on the form.
+    // make data appear on form: uses the item's properties to set the values for each of the form controls. The data then appears on the form.
     this.listDataForm.patchValue({
       number: this.item.serialNo,
       parameter: this.item.parameter,
