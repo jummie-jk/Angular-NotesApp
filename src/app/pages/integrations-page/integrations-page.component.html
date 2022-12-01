@@ -126,7 +126,7 @@
   <img src="/assets/Images/Cross-field-validation-nested-FB.png" alt="">
   <br>&nbsp;<br>
 
-  <h4>Reference links</h4>
+  <h2>Reference links</h2>
   <p>
     Overall, I've seen that to actually do these, I'll need to reference the tutorial again to follow it step by step
     until I get so used to it I never have to reference the tutorial again.<br>
@@ -153,7 +153,13 @@
         href="https://app.pluralsight.com/course-player?clipId=5fb25354-6e62-42e3-8308-5ecc5c3d23a6">Module 9
         particularly shows how to fake backend, get, post, to it etc which is the same process with a real server. Take
         out the fake to use the real then it's all the same.</a> </li>
+    <li><a class="link"
+        href="https://dev.to/ferfox1981/tree-ways-to-scroll-to-an-element-using-angular-1dlj">Scrolling to a div on same page</a></li>
+    <li> <a class="link"
+        href="https://stackoverflow.com/questions/61213888/how-to-programmatically-click-on-a-button-maybe-angular">Clicking a button via code</a> &nbsp; <a href="https://stackblitz.com/edit/angular-viewchild-example-23mt1g?file=app%2Fapp.component.ts%3AL11">Stackblitz</a> </li>
   </ul>
+<br>
+<br>
 
   <p>debounceTime - ignores all events until a specific amount of time has passed without another event. <br>
     debounceTime(1000) waits 1 second before another event. <br></p>
@@ -288,6 +294,7 @@
       using object.parameter in the html, but to display it in a form, you pass the res into a display items function
       (<i>which is inside a getItemForEditingById function</i>). This getItemForEditingById function is called in
       ngOnInit in the function for reading the route id from the top bar.</p>
+    <p>When trying to interact with a html element by code (using @viewChild), if nativeElement is not working, try putting it in ngAfterViewInit and that should make it work.</p>
   </div>
   <br>
 
@@ -565,6 +572,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+<!-- ------------------------------THIS IS THE END---------------------------------- -->
   <br>
   <div class="frame"> THIS IS THE END</div>
   <div (click)="backToTop()" class="backToTopBtn">^</div>

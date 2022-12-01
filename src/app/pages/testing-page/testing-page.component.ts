@@ -1,6 +1,6 @@
 import { CrudServices } from '../../crud.service';
 import { IData } from './data-interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 
@@ -19,7 +19,9 @@ export class TestingPageComponent implements OnInit {
   warrantForm: FormGroup;
   listData: IData[] = [];
   item: IData;
+  filteredData: IData[] = [];
 
+  @ViewChild('testbtn') Test: ElementRef;
   // OldHardcoded: I took this out and put a fake backend
   // list: Data[] =[
   //   {
@@ -80,13 +82,20 @@ export class TestingPageComponent implements OnInit {
       BranchLocation: '',
       WarrantType: 'MarketWarrant',
     })
-
 // Getting the List Data
     this.service.getData().subscribe(
-      { next: data => { this.listData = data; },}
+      { next: data => { this.listData = data;
+        this.filteredData = this.listData},}
       );
+      ;
+    }
+//Testing Clicking a Button By Code
+  ngAfterViewInit(){
+    this.Test.nativeElement.click();
   }
-
+  testFn(){
+    alert('test clicked')
+  }
   // call data and log customer form value using this
   onSubmit(): void {
     // console.log(this.warrantForm.value);
@@ -104,5 +113,16 @@ export class TestingPageComponent implements OnInit {
     alert('Deleted!')
     this.ngOnInit();
   }
+
+    object: IData[];
+
+    filterfn(type: string){
+      if (type == 'All') {
+        this.filteredData = this.listData
+      }
+      else {
+        this.filteredData  = this.listData.filter(passIf => passIf.type == type);
+      }
+    }
 
 }

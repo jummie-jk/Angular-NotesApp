@@ -236,7 +236,7 @@ margin-bottom: 15px !important;
   background: #5454b6;
 }
 
-.mainDiv{
+.masterDiv{
   border-radius: 20px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.75); /*that last bit, 0.75 is the transparency. Use that instead of opacity so the child divs don't inherit the opacity*/
@@ -267,4 +267,7 @@ margin-bottom: 15px !important;
   display: inline-block;
   background-color: darkgrey;
   float: right;
+}
+.entryDiv{
+  /* background-color: bisque; */
 }

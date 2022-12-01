@@ -8,22 +8,26 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class Testing2Component implements OnInit {
 //DEFINITIONS
-  MainDiv: FormGroup;
-
+  MasterDiv: FormGroup;
+  entryDiv: FormGroup;
 //!DEFINITIONS
 
 
-  constructor(private formBuilder: FormBuilder,) { }
+  constructor(private fb: FormBuilder,) { }
 
-  ngOnInit(): void {
-    this.MainDiv = this.duplicateFn()
+  ngOnInit() {
+      this.MasterDiv = this.fb.group({
+        step: '',
+        status: '',
+        description: '',
+      })
   }
 
   logClick(){
-    console.log(this.MainDiv.value);
+    console.log(this.MasterDiv.value);
   }
   duplicateFn(): FormGroup {
-    return this.formBuilder.group({
+    return this.fb.group({
       step: '',
       status: '',
       description: '',
