@@ -40,3 +40,14 @@ body{
   color: greenyellow;
   background-color: blue;
 }
+
+.cetner-btn{
+  color: rgb(0, 37, 69);
+  background-color: rgb(148, 169, 221);
+  text-align:center;
+  border-radius: 50px;
+}
+.cetner-btn:hover{
+  color: rgb(232, 244, 255);
+  background-color: bisque;
+}
