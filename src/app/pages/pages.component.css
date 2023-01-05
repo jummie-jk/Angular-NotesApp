@@ -5,4 +5,15 @@ p{
 .dark{
   background: rgba(0, 0, 0, 0.7)  ;
   color: aliceblue;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.goToBtn{
+  cursor: pointer;
+  color: rgb(0, 157, 157);
+}
+.goToBtn:hover{
+  cursor: pointer;
+  color: rgb(245, 255, 105);
 }

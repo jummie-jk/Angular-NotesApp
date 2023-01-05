@@ -1,1 +1,112 @@
-<p>routing-page works!</p>
+<section class="text">
+  <p>routing-page works!</p>
+<div>
+  <h1 style="display: inline-block;">1.</h1>  &nbsp;
+  <h4 id="readRoute" style="display: inline-block;">Reading a route parameter</h4>  <br>
+  <a href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(Reference1)</a>
+  &nbsp; <a
+    href="https://app.pluralsight.com/course-player?clipId=018f7fa9-5412-4e98-96bf-22d6ce970335">(reference2)</a>
+  the way your functions know the id of the product for it to bring the specific details of that product is by
+  reading the id in the route. To do that,
+  <ul>
+    <li>First <b>bind the id to the route path</b> so that that id shows in the top bar when you're on the destination page (edit page).
+      You can only bind it when you've ran the get method and passed the response into the objecy 'item'. Then you can
+      bind it like so: <p> <b class="codeC2">[routerLink]="['/pages/testing', item.id , 'edit-page']"</b> in the html
+        button, and <code class="codeC2">{{ '{' }} path: 'pages/testing/:id/edit-page', component: EditPageComponent
+          {{ '}' }}</code> in the routing component. </p>
+    </li>
+    <li>in the destination (edit) page's ts: import ActivatedRoute, inject it in the constructor, </li>
+    <li>utilizing ActivatedRoute to get the id, use snapshot or use an observable following this code (<i>this is
+        where you define const id</i>):<br> <img class="img" src="/assets/Images/reading routes to get id.png"> the id
+      in the fn is read straight from the route </li>
+    <li>set up the reading of the route parameter in ngOninit.</li>
+  </ul>
+</div>
+
+<br>
+<h1 style="display: inline-block;">2.</h1> &ensp; &nbsp;
+<h4 style="display: inline-block;" >Modal by Id</h4>
+<p>This is setting the id on click of a modal button so it knows which specific item's details to display on the modal.</p>
+<div class="frame">
+  <p class="comment">//setting the id</p>
+  <code>
+    &nbsp;&nbsp; setId(id: number) {{'{'}}  <br>
+    &nbsp;&nbsp;   &nbsp;&nbsp;<span style="color: cornflowerblue;">this.itemId = id;</span>  <br>
+    &nbsp;&nbsp; {{'}'}}
+  </code>
+  <br> <br>
+  <p class="comment">//using the set id in a function</p>
+  <code>
+  deleteItem() {{'{'}}   <br>
+   &nbsp;&nbsp;   this.service.deleteItemById(<span style="color: cornflowerblue;">this.itemId</span>).subscribe(   <br>
+   &nbsp;&nbsp;  &nbsp;&nbsp;   (response) => {{'{'}}   <br>
+   &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp;    this.closeModalDelete.nativeElement.click(); <span class="comment">//closes modal</span>  <br>
+   &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp;    this.getItems();   <br>
+   &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;     {{'}'}}   <br>
+   &nbsp;&nbsp;  &nbsp;&nbsp;     {{'}'}},   <br>
+   &nbsp;&nbsp;     );   <br>
+  {{'}'}}
+</code>
+</div> <br>
+<p>-- To achieve this when you click the button that pops up the modal, the function <code class="codeC2">setId()</code> is called on click of that button. <br>
+   -- This function sets the id of the item whose data is to be popped up by passing in the item.id. This is done in the ngFor loop because outside that loop, the code doesn't know item.id (because it's looping item of items). <br>
+   -- In that function, this.itemId has been set to the id of the item clicked. Now, use the same (<i>this.itemId</i>) in your delete function or whichever other function you need ran by id.  <br>
+   -- The deleteItem function would be tied to the delete button on the modal. <br>
+  -- If deleting isn't done by id, the list won't know which item to delete. </p>
+
+
+   <div class="card-body">
+    <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 90px">SN</th>
+          <th scope="col">Parameter</th>
+          <th scope="col">Type</th>
+          <th scope="col">Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let item of fullData">
+          <th scope="row">{{item.serialNo}}</th>
+          <td class="parameter">{{item.parameter}}</td>
+          <td>{{item.type}}</td>
+          <td> {{item.description}} </td>
+          <td> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setId(item.id)">Delete</button></td>
+        </tr>
+
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td></td>
+          <td colspan="2" style="text-align: center;"></td>
+
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- Modal -->
+<div style="color: black;" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete this item?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this item?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModalDelete" #closeModalDelete>Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteItem()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</section>

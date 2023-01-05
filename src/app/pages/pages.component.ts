@@ -15,6 +15,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   `]
 })
 export class PagesComponent implements OnInit {
+
   disabled = false;
 
   constructor() { }
@@ -22,4 +23,8 @@ export class PagesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToFn() {
+    //this'll route to the relevant page THEN scroll to the relevant part.
+    alert('clicked');
+    }
 }

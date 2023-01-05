@@ -1,0 +1,40 @@
+.card{
+  height: 550px;
+  border-radius: 15px !important;
+  background-color: rgba(0,0,0,0.4) !important;
+}
+.masterDiv{
+  border-radius: 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.75); /*that last bit, 0.75 is the transparency. Use that instead of opacity so the child divs don't inherit the opacity*/
+  /* opacity: 70%; */
+  margin-bottom: 10px;
+  padding: 10px 0;
+}
+.div1{
+  border-radius: 20px;
+  text-align: center;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 0 5px 0;
+  background-color: #3793d1;
+  color: white;
+  /* opacity: 100% !important; */
+}
+.div2{
+  width: 600px !important;
+}
+.duplicateBtn{
+  display: inline-block;
+  background-color: darkgrey;
+  float: left;
+}
+.logBtn{
+  display: inline-block;
+  background-color: darkgrey;
+  float: right;
+}
+.entryDiv{
+  /* background-color: bisque; */
+}

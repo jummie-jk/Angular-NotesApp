@@ -6,22 +6,22 @@
     Create Data
   </div>
   <div [formGroup]="listDataForm" class="card-body">
-<!-- 1 -->
+    <!-- 1 -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label">Serial Number</label>
-      <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="number"/> </div>
+      <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="number" /> </div>
     </div>
-<!-- 2 -->
+    <!-- 2 -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label"> Parameter </label>
-      <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text"/> </div>
+      <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text" /> </div>
     </div>
-<!-- 3 -->
+    <!-- 3 -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label"> Type </label>
-      <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text"/> </div>
+      <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text" /> </div>
     </div>
-<!-- Description -->
+    <!-- Description -->
     <div class="row mb-2">
       <label class="col-md-2 col-form-label">Description</label>
       <div class="col-md-8">
@@ -34,11 +34,8 @@
         <button class="btn btn-primary mr-3" style="width:80px;" type="submit" title="save changes" (click)="saveFn()">
           Save
         </button>
-        <button class="btn btn-outline-secondary mr-3"
-                style="width:80px;"
-                type="button"
-                title="Cancel your new data"
-                [routerLink]="['/pages/testing']">
+        <button class="btn btn-outline-secondary mr-3" style="width:80px;" type="button" title="Cancel your new data"
+          [routerLink]="['/pages/testing']">
           Cancel
         </button>
         <!-- <button class="btn btn-outline-warning"

@@ -16,18 +16,7 @@ img{
 .link:hover{
   color: yellow;
 }
-.frame{
-  width: 60%;
-  min-height: fit-content;
-  margin-right: 40%;
-  border: 2px solid;
-  border-left: 6px solid #005282;
-  padding: 1rem;
-  background-color: azure;
-  /* OVERFLOW BELOW MAKES IT SCROLL */
-  overflow-x: scroll;
-  overflow-y: auto;
-}
+
 
 .codeC2 {
   color: yellow;

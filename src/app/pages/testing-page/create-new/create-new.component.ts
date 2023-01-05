@@ -33,7 +33,7 @@ export class CreateNewComponent implements OnInit {
   }
 
   saveFn(){
-    const I = {...this.item, ...this.listDataForm.value} //copies listDataForm's value over item and puts the result inside I
+    const I = {...this.item, ...this.listDataForm.value} //copies listDataForm's value over item and puts the result inside I. NB: ('item' is an empty data object of the same type as the data expected)
     this.service.createItem(I)
       .subscribe({
         next: () => this.onSaveComplete()

@@ -434,8 +434,7 @@
   <div class="frame">
     <code>
       &nbsp;saveEditsFn(): void{{'{'}} <br>
-      &nbsp;&nbsp; const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span
-        style="color: rgb(190, 190, 190);">//copies listDataForm's value over item and puts the result inside I</span>
+      &nbsp;&nbsp; const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span class="comment">//copies listDataForm's value over item and puts the result inside I</span>
       <br>
       &nbsp;&nbsp; this.service.updateItem(I) <br>
       &nbsp;&nbsp;&nbsp; .subscribe({{'{'}} <br>
@@ -536,7 +535,37 @@
         alt=""> </li>
   </ol>
 
-  <p><b>Field duplication(6am)</b>:</p>
+  <h1><b>Syntaxes For Handling Subscription</b>:</h1>
+  <p>Use ctrl + F to do a search for the word "subscribe" and in the code frames where it appears, you'll see different syntaxes used to handle subscription.</p>
+  <div class="frame">
+    <code>
+      <span class="comment">//1</span> <br>
+      &nbsp;saveEditsFn(): void{{'{'}} <br>
+      &nbsp;&nbsp; const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}}
+      <br>
+      &nbsp;&nbsp; this.service.updateItem(I) <br>
+      &nbsp;&nbsp;&nbsp; <span style="color: cornflowerblue;">.subscribe({{'{'}} <br>
+      &nbsp;&nbsp;&nbsp; next: () => this.onSaveComplete() <br>
+      &nbsp;&nbsp; {{'}'}})</span> <br>
+      {{'}'}} <br> <br>
+
+      <span class="comment">//2</span> <br>
+      &nbsp;getItems(){{'{'}}   <br>
+      &nbsp;&nbsp;  this.service.getData()<span style="color: cornflowerblue;">.subscribe(   <br>
+      &nbsp;&nbsp;    {{'{'}} next: res => {{'{'}} this.fullData = res; console.log(this.fullData{{'}'}}{{'}'}}   <br>
+      &nbsp;&nbsp;    )</span>;   <br>
+      &nbsp;{{'}'}} <br> <br>
+
+      <span class="comment">//3</span> <br>
+      &nbsp;deleteItem() {{'{'}}    <br>
+      &nbsp;&nbsp;  this.service.deleteItemById(this.itemId)<span style="color: cornflowerblue;">.subscribe(    <br>
+      &nbsp;&nbsp;&nbsp;     (response) => {{'{'}} this.getItems(); {{'}'}},    <br>
+      &nbsp;&nbsp;  )</span>;    <br>
+      &nbsp;{{'}'}}    <br>
+    </code>
+  </div>
+
+  <br>
   <p><b>Refresh</b>:</p>
 
   <h1>Notes to Remember</h1>
@@ -589,84 +618,4 @@
   <div (click)="backToTop()" class="backToTopBtn">^</div>
 </section>
 
-<!-- Footer -->
-<footer class="bg-dark text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4">
 
-
-    <!-- Section: Text -->
-    <section class="mb-4">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-        eum harum corrupti dicta, aliquam sequi voluptate quas.
-      </p>
-    </section>
-    <!-- Section: Text -->
-
-    <!-- Section: Links -->
-    <section class="">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-    </section>
-    <!-- Section: Links -->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    The Notes of Femi
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->

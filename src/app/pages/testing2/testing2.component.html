@@ -206,28 +206,3 @@
 <br>
 <br>
 <br>
-
-<section class="text">
-  <div class="card card-header">
-    <div class="card-body">
-      <p style="text-align: center;">Steps for Implementing</p>
-      <!-- Form -->
-      <div   class="masterDiv">
-        <div [formGroup]="MasterDiv" class="entryDiv"> <!-- formGroup to be changed to entryDiv, div above to MasterDiv-->
-          <input formControlName="step" placeholder="step" class="div1 col-md-4">
-          <input formControlName="description" placeholder="description" class="div1 div2 col-md-4">
-          <select formControlName="status" class="div1 col-md-4" style="color: white;">
-            <!-- <option value="status">Status</option> -->
-            <option value="Done">Done</option>
-            <option value="Pending">Pending</option>
-            <option value="Unknown">Unknown</option>
-          </select>
-        </div>
-
-      </div>
-      <!-- Form End -->
-      <div class="btn duplicateBtn" (click)="duplicateFn()">Duplicate</div>
-      <div class="btn logBtn" (click)="logClick()">Log</div>
-    </div>
-  </div>
-</section>

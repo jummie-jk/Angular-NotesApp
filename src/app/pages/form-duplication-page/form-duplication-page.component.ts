@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-form-duplication-page',
@@ -6,10 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-duplication-page.component.css']
 })
 export class FormDuplicationPageComponent implements OnInit {
+  //DEFINITIONS
+  MasterDiv: FormGroup;
+  entryDiv: FormGroup;
+//!DEFINITIONS
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder,) { }
+
+  ngOnInit() {
+      this.MasterDiv = this.fb.group({
+        step: '',
+        status: '',
+        description: '',
+      })
   }
 
+  logClick(){
+    console.log(this.MasterDiv.value);
+  }
+  duplicateFn(): FormGroup {
+    return this.fb.group({
+      step: '',
+      status: '',
+      description: '',
+    })
+  }
 }
