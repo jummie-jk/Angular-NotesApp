@@ -9,6 +9,7 @@ import { IData } from '../testing-page/data-interface';
 export class FiltersPageComponent implements OnInit {
 
   filteredData: IData[] = [];
+  filteredItems: IData[] = [];
 
   fullData: IData[] =[
     {
@@ -69,10 +70,29 @@ export class FiltersPageComponent implements OnInit {
     },
   ]
 
+  //original listFilter value
+  // listFilter: string;
+
+  //recreating listFilter as a getter and setter
+  private _searchValue: string = '';
+  get searchValue(): string {
+    return this._searchValue
+  }
+  set searchValue(inputText: string) {
+    console.log(inputText);
+    // this.searchValue = value;
+    this.filteredItems = this.filterFn2(inputText);
+  }
+
   constructor() { }
 
   ngOnInit(): void {
-        this.filteredData = this.fullData
+    this.filteredItems = this.fullData;
+    this.filteredData = this.fullData;
+    // this.searchValue = 'tesla';
+
+    // console.log(this.searchValue);
+
   }
 
   filterfn(type: string){
@@ -83,4 +103,11 @@ export class FiltersPageComponent implements OnInit {
       this.filteredData  = this.fullData.filter(passIf => passIf.type == type);
     }
   }
+
+  filterFn2(searchWord: string): IData[] {
+    searchWord = searchWord.toLowerCase();     //convert to lowercase for accuracy
+    return this.filteredItems = this.fullData.filter(
+    (item:IData) => item.parameter.toLowerCase().includes(searchWord)      //so both things being compared match as lowercase
+      );
+    }
 }

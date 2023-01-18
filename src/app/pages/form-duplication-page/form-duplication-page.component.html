@@ -5,22 +5,64 @@
     <div class="card-body">
       <p style="text-align: center;">Steps for Implementing</p>
       <!-- Form -->
-      <div   class="masterDiv">
-        <div [formGroup]="MasterDiv" class="entryDiv"> <!-- formGroup to be changed to entryDiv, div above to MasterDiv-->
-          <input formControlName="step" placeholder="step" class="div1 col-md-4">
-          <input formControlName="description" placeholder="description" class="div1 div2 col-md-4">
-          <select formControlName="status" class="div1 col-md-4" style="color: white;">
-            <!-- <option value="status">Status</option> -->
-            <option value="Done">Done</option>
-            <option value="Pending">Pending</option>
-            <option value="Unknown">Unknown</option>
-          </select>
+      <div  [formGroup]="MasterDiv" class="masterDiv">
+        <div formArrayName="eachStep" *ngFor="let step of eachStep.controls; let i = index" class="entryDiv"> <!-- this guy is the array that holds the duplicates-->
+          <div [formGroupName]="i"> <!-- each duplicate -->
+              <input formControlName="step" [placeholder]="i + 1" class="div1 col-md-4">
+              <input formControlName="description" placeholder="description" class="div1 div2 col-md-4">
+              <select formControlName="status" class="div1 col-md-4" style="color: white;">
+                <!-- <option value="status">Status</option> -->
+                <option value="Done">Done</option>
+                <option value="Pending">Pending</option>
+                <option value="Unknown">Unknown</option>
+              </select>
+          </div>
         </div>
-
       </div>
       <!-- Form End -->
       <div class="btn duplicateBtn" (click)="duplicateFn()">Duplicate</div>
       <div class="btn logBtn" (click)="logClick()">Log</div>
+    </div>
+    <app-stars></app-stars>
+  </div>
+
+
+
+
+  <!-- ---------------------- NOTES -----------------------  -->
+  <hr> <br> <br>
+  <div>
+    <h3>Notes</h3> <br>
+    <p>--the syntax <span class="codeC2">FormGroupName="stuff"</span> is used to address a form group that's nested inside another form group. The master form group is made with the data binding syntax <span class="codeC2">[FormGroup]="nameInTs"</span>. </p>
+<p>Steps:</p>
+    <ol>
+      <li>Make a function to generate the form group. "<span class="codeC2">generateEntryInstance()</span>"</li>
+      <li>Make the relevant formControl to be duplicated a formArray. The array contains the fn to generate the formGroup to be duplicated "<span class="codeC2">this.generateEntryInstance()</span>"</li>
+      <li>A duplicate fn "<span class="codeC2">duplicateFn()</span>" onClick of the duplicate button. The fn pushes an instance of the generation function into the formArray.</li>
+    </ol> <br>
+    <p>Here's the code snippet for 1, 2 and 3 respectively.</p> <br>
+    <div class="frame">
+      <code>
+        <p class="comment">1</p>
+        generateEntryInstance(): FormGroup {{"{"}}       <br>
+        &nbsp;  return this.fb.group({{"{"}}       <br>
+        &nbsp;&nbsp;    step: '',       <br>
+        &nbsp;&nbsp;    status: '',       <br>
+        &nbsp;&nbsp;    description: '',       <br>
+        &nbsp;  {{"}"}})       <br>
+        {{"}"}}       <br> <br>
+
+        <p class="comment">2</p>
+        this.MasterDiv = this.fb.group({{"{"}}   <br>
+        &nbsp;  eachStep: this.fb.array([ this.generateEntryInstance() ])   <br>
+        {{"}"}});   <br> <br>
+
+        <p class="comment">3</p>
+        duplicateFn() {{"{"}}    <br>
+        &nbsp;  this.eachStep.push(this.generateEntryInstance());    <br>
+          {{"}"}}    <br>
+
+      </code>
     </div>
   </div>
 </section>

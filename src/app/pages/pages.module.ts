@@ -7,7 +7,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { IntegrationsPageComponent } from './integrations-page/integrations-page.component';
 import { TestingPageComponent } from './testing-page/testing-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Testing2Component } from './testing2/testing2.component';
 import { EditPageComponent } from './testing-page/edit-page/edit-page.component';
 import { ViewDetailPageComponent } from './testing-page/view-detail-page/view-detail-page.component';
@@ -17,6 +17,7 @@ import { RoutingPageComponent } from './routing-page/routing-page.component';
 import { FormDuplicationPageComponent } from './form-duplication-page/form-duplication-page.component';
 import { CdnPageComponent } from './cdn-page/cdn-page.component';
 import { ComplexityPageComponent } from './complexity-page/complexity-page.component';
+import { StarsComponent } from '../Shared/stars.component';
 
 
 @NgModule({
@@ -32,13 +33,15 @@ import { ComplexityPageComponent } from './complexity-page/complexity-page.compo
     RoutingPageComponent,
     FormDuplicationPageComponent,
     CdnPageComponent,
-    ComplexityPageComponent
+    ComplexityPageComponent,
+    StarsComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     ReactiveFormsModule,
     NgbModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

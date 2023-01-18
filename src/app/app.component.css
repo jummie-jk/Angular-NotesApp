@@ -78,3 +78,27 @@ body{
 .comment{
   color: rgb(190, 190, 190);
 }
+
+
+.link {
+  color: bisque;
+}
+.link:hover{
+  color: yellow;
+}
+
+.codeC2 {
+  color: yellow;
+}
+.blue{
+  color: #005282;
+}
+.green {
+  color: rgb(95, 177, 12);
+}
+.red{
+  color: #d63384;
+}
+.comment{
+  color: rgb(190, 190, 190);;
+}

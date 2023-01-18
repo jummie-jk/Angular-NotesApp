@@ -1,12 +1,15 @@
 <p>complexity-page works!</p>
 <section class="text">
   This page would show the same list from testing page, but with more detail including: <br>
-  -- pagination       <br>
-  -- form duplication   👈    <br>
-  -- string filter       <br>
-  -- list indexes       <br>
-  -- modals for viewing data.       <br>
-  -- validation.       <br><br><br>
+  -- number to star rating.  👈     <br>
+  -- pagination (with its indexing)      <br>
+  -- validation     <br>
+  -- string filter  ✅     <br>
+  -- form duplication   ✅    <br>
+  -- modals for viewing data.  ✅     <br>
+  -- list indexes ✅ .       <br><br><br>
+
+  <p>Complex list is to have an input for star ratings and a display for it. Meaning I may have to change itf interface to IComplexData</p>
 
   <!-- PREAMBLES END -->
 
@@ -39,6 +42,7 @@
       <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
         <thead>
           <tr>
+            <th scope="col">No</th>
             <th scope="col" style="width: 90px">SN</th>
             <th scope="col">Parameter</th>
             <th scope="col">Type</th>
@@ -48,16 +52,17 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let item of filteredData">
-            <th scope="row">{{item.serialNo}}</th>
-            <td class="parameter" [routerLink]="['/pages/testing', item.id,'view-detail-page']">{{item.parameter}}</td>
-            <td>{{item.type}}</td>
+          <tr *ngFor="let data of filteredData; let i = index">
+            <th>{{i + 1}}</th>
+            <th scope="row">{{data.serialNo}}</th>
+            <td class="parameter" [routerLink]="['/pages/testing', data.id,'view-detail-page']">{{data.parameter}}</td>
+            <td>{{data.type}}</td>
             <!-- (click)="function()" -->
             <!-- REMEMBER ROUTERLINK ALWAYS STARTS WITH A /  ALSO SEE HOW ITEM.ID IS BOUND IN THE ROUTERLINK AND THE OMMISSION OF SLASHES AFTER THE FIRST PART-->
             <td>
-              <div class="actionBtn btn" (click)="getItemForViewingById(item.id)" data-bs-toggle="modal" data-bs-target="#viewModal">View</div>
-              <div class="actionBtn btn" (click)="getItemForEditingById(item.id)" data-bs-toggle="modal" data-bs-target="#editModal">Edit</div>
-              <div class="actionBtn btn" (click)="getItemForViewingById(item.id)" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</div>
+              <div class="actionBtn btn" (click)="getItemForViewingById(data.id)" data-bs-toggle="modal" data-bs-target="#viewModal">View</div>
+              <div class="actionBtn btn" (click)="getItemForEditingById(data.id)" data-bs-toggle="modal" data-bs-target="#editModal">Edit</div>
+              <div class="actionBtn btn" (click)="getItemForViewingById(data.id)" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</div>
             </td>
           </tr>
 
@@ -77,51 +82,149 @@
 
 
   <!-- CREATE ITEM Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create a New Item</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card">
-          <div [formGroup]="listDataForm" class="card-body">
-            <!-- 1 -->
-            <div class="row mb-2">
-              <label class="col-md-2 col-form-label">Serial Number</label>
-              <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="number" /> </div>
-            </div>
-            <!-- 2 -->
-            <div class="row mb-2">
-              <label class="col-md-2 col-form-label"> Parameter </label>
-              <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text" /> </div>
-            </div>
-            <!-- 3 -->
-            <div class="row mb-2">
-              <label class="col-md-2 col-form-label"> Type </label>
-              <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text" /> </div>
-            </div>
-            <!-- Description -->
-            <div class="row mb-2">
-              <label class="col-md-2 col-form-label">Description</label>
-              <div class="col-md-8">
-                <textarea placeholder="Description" formControlName="description" style="width: 100%;" rows=3></textarea>
-              </div>
-            </div>
-
-          </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create a New Item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <div class="card">
+            <div [formGroup]="listDataForm" class="card-body">
+              <!-- 1 -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label">Serial Number</label>
+                <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="number" /> </div>
               </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModalDelete" #closeModalDelete>Close</button>
-        <button type="button" class="btn btn-primary" (click)="saveFn()">Save changes</button>
+              <!-- 2 -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label"> Parameter </label>
+                <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text" /> </div>
+              </div>
+              <!-- 3 -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label"> Type </label>
+                <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text" /> </div>
+              </div>
+              <!-- Description -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label">Description</label>
+                <div class="col-md-8">
+                  <textarea placeholder="Description" formControlName="description" style="width: 100%;" rows=3></textarea>
+                </div>
+              </div>
+
+            </div>
+          </div>
+                </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModalDelete" #closeModalDelete>Close</button>
+          <button type="button" class="btn btn-primary" (click)="saveFn()">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
+  <!-- VIEW Modal -->
+  <div style="color: black;" class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="vieweModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Item's name</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <h2 style="background-color: rgb(192, 217, 255); justify-content: center; text-align: center; padding-top: 15px; padding-bottom: 15px;" class="row">  {{viewItem.parameter}} </h2>
+
+            <div class="row" style="height: 200px;">
+              <div style="background-color: rgb(241, 247, 255); text-align: center; padding-top: 90px;" class="col">
+                {{viewItem.serialNo}}
+              </div>
+              <div style="background-color: rgb(192, 217, 255); text-align: center; padding-top: 90px;" class="col-6">
+                {{viewItem.description}}
+              </div>
+              <div style="background-color: rgb(241, 247, 255); text-align: center; padding-top: 90px;" class="col">
+                {{viewItem.type}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="closeModalView" #closeModalView>Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- EDIT Modal -->
+  <div style="color: black;" class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{editItem.parameter}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div [formGroup]="listDataForm" class="card form-group">
+            <div style="font-size:x-large; color: black;" class="card-header">
+              {{editItem.parameter}}
+            </div>
+            <div class="card-body">
+              <!-- 1 -->
+              <div class="row mb-2 form-group">
+                <label class="col-md-2 col-form-label">Number</label>
+                <div class="col-md-8"> <input formControlName="number" class="form-control" style="width: 100%;" type="number" />
+                </div>
+              </div>
+              <!-- 2 -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label"> Parameter </label>
+                <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text" /> </div>
+              </div>
+              <!-- 3 -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label"> Type </label>
+                <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text" /> </div>
+              </div>
+              <!-- Description -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label">Description</label>
+                <div class="col-md-8">
+                  <textarea formControlName="description" placeholder="Description" style="width: 100%;" rows=3></textarea>
+                </div>
+              </div>
+              <!-- Save Cancel Delete -->
+              <div class="form-group row mb-2">
+                <div class="offset-md-2 col-md-6">
+                  <button class="btn btn-primary mr-3" style="width:80px;" type="submit" title="save changes"
+                    (click)="editModalSaveFn()">
+                    Save
+                  </button>
+                  <button class="btn btn-outline-secondary mr-3" style="width:80px;" type="button" title="Cancel your edits" #closeEditModalDelete
+                    data-bs-dismiss="modal">
+                    Cancel
+                  </button>
+                  <!-- <button class="btn btn-outline-warning" style="width:80px" type="button" title="Delete these details"
+                    (click)="editModalDeleteFn()">
+                    Delete
+                  </button> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="closeModalView" #closeModalView>Done</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
 
   <!-- DELETE Modal -->
   <div style="color: black;" class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -143,107 +246,13 @@
   </div>
 
 
-    <!-- VIEW Modal -->
-    <div style="color: black;" class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="vieweModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Item's name</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <h2 style="background-color: rgb(192, 217, 255); justify-content: center; text-align: center; padding-top: 15px; padding-bottom: 15px;" class="row">  {{viewItem.parameter}} </h2>
-
-              <div class="row" style="height: 200px;">
-                <div style="background-color: rgb(241, 247, 255); text-align: center; padding-top: 90px;" class="col">
-                  {{viewItem.serialNo}}
-                </div>
-                <div style="background-color: rgb(192, 217, 255); text-align: center; padding-top: 90px;" class="col-6">
-                  {{viewItem.description}}
-                </div>
-                <div style="background-color: rgb(241, 247, 255); text-align: center; padding-top: 90px;" class="col">
-                  {{viewItem.type}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="closeModalView" #closeModalView>Done</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-        <!-- EDIT Modal -->
-        <div style="color: black;" class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{editItem.parameter}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div [formGroup]="listDataForm" class="card form-group">
-                  <div style="font-size:x-large; color: black;" class="card-header">
-                    {{editItem.parameter}}
-                  </div>
-                  <div class="card-body">
-                    <!-- 1 -->
-                    <div class="row mb-2 form-group">
-                      <label class="col-md-2 col-form-label">Number</label>
-                      <div class="col-md-8"> <input formControlName="number" class="form-control" style="width: 100%;" type="number" />
-                      </div>
-                    </div>
-                    <!-- 2 -->
-                    <div class="row mb-2">
-                      <label class="col-md-2 col-form-label"> Parameter </label>
-                      <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text" /> </div>
-                    </div>
-                    <!-- 3 -->
-                    <div class="row mb-2">
-                      <label class="col-md-2 col-form-label"> Type </label>
-                      <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text" /> </div>
-                    </div>
-                    <!-- Description -->
-                    <div class="row mb-2">
-                      <label class="col-md-2 col-form-label">Description</label>
-                      <div class="col-md-8">
-                        <textarea formControlName="description" placeholder="Description" style="width: 100%;" rows=3></textarea>
-                      </div>
-                    </div>
-                    <!-- Save Cancel Delete -->
-                    <div class="form-group row mb-2">
-                      <div class="offset-md-2 col-md-6">
-                        <button class="btn btn-primary mr-3" style="width:80px;" type="submit" title="save changes"
-                          (click)="editModalSaveFn()">
-                          Save
-                        </button>
-                        <button class="btn btn-outline-secondary mr-3" style="width:80px;" type="button" title="Cancel your edits" #closeEditModalDelete
-                          data-bs-dismiss="modal">
-                          Cancel
-                        </button>
-                        <!-- <button class="btn btn-outline-warning" style="width:80px" type="button" title="Delete these details"
-                          (click)="editModalDeleteFn()">
-                          Delete
-                        </button> -->
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-              <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="closeModalView" #closeModalView>Done</button>
-              </div> -->
-            </div>
-          </div>
-        </div>
 
 
 <hr><p>to be removed: for some reason, the data on the list stopped showing when I bound the viewItem.stuff to the view modal. I removed the binding and it showed again. This issue is getting worse as I work so I have to fix it.<br> However, there are more pressing things to learn/document so I put that on hold.</p>
+<hr> <br> <br>
+<h2>Notes</h2>
+<p> <b>INDEXING</b>: To achieve the indexing of the list, use this syntax in your ngFor: <code class="codeC2">*ngFor="let item of filteredData; let i = index"</code> <br>
+   then where you want the index numbers to be, bind it putting <span class="codeC2">i + 1</span> in double curly braces. </p>
 
 
 

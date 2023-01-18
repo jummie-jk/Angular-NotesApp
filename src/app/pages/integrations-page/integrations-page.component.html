@@ -157,7 +157,11 @@
         href="https://dev.to/ferfox1981/tree-ways-to-scroll-to-an-element-using-angular-1dlj">Scrolling to a div on same page</a></li>
     <li> <a class="link"
         href="https://stackoverflow.com/questions/61213888/how-to-programmatically-click-on-a-button-maybe-angular">Clicking a button via code</a> &nbsp; <a href="https://stackblitz.com/edit/angular-viewchild-example-23mt1g?file=app%2Fapp.component.ts%3AL11">Stackblitz</a> </li>
-  </ul>
+        <li> <a class="link"
+          href="https://app.pluralsight.com/course-player?clipId=21345ca1-0268-4db0-b92f-5b7720bdafd9">Pipe creation</a> </li>
+          <li> <a class="link"
+            href="https://app.pluralsight.com/course-player?clipId=12e97abe-1601-4488-ac72-2744a8042183">String filter</a>  </li>
+        </ul>
 <br>
 <br>
 
@@ -535,7 +539,8 @@
         alt=""> </li>
   </ol>
 
-  <h1><b>Syntaxes For Handling Subscription</b>:</h1>
+  <h1><b>Syntaxes</b>:</h1>
+  <h3>Subscription:</h3>
   <p>Use ctrl + F to do a search for the word "subscribe" and in the code frames where it appears, you'll see different syntaxes used to handle subscription.</p>
   <div class="frame">
     <code>
@@ -564,6 +569,24 @@
       &nbsp;{{'}'}}    <br>
     </code>
   </div>
+  <br>
+  <h3>Arrow Function</h3>
+  <img src="/assets/Images/arrow fn.png" class="img" alt="arrow function image"> <br>
+  <img src="/assets/Images/arrow fn different syntaxes.png" class="img" alt="arrow function multiple lines"> <br>
+  <h3>Getter and Setter</h3>
+  <img src="/assets/Images/getter and setter.png" class="img" alt="getter and setter">
+  <p>The functions run whenever the "_listFilter" is gotten or set. More in the filters page.</p>
+
+  <br><br>
+  <h3>Star Component Notes</h3>
+  <div>
+    <h5>Steps</h5>
+    <ul>
+      <li>Make your star UI.</li>
+      <li>Bind its title to a "rating" object and its width to a "cropwith" object in the ts file.</li>
+      <li>import it to the declarations of the module that'll be using it.</li>
+    </ul>
+  </div>
 
   <br>
   <p><b>Refresh</b>:</p>
@@ -586,7 +609,8 @@
     The property binding is used send imput from the html to the ts. </p>
   <p>When working with an interface, the [] means be restricted to that particular interface but it doesn't drill down
     to the child interfaces. That bracket makes it specific, limited to the parent interface. <br>
-  The [] also means that what's expected from the back end is an array, so if you're expecting an array from the back end and they type is not expectedObject[], it may throw an error. </p>
+  The [] also means that what's expected from the back end is an array, so if you're expecting an array from the back end and they type is not expectedObject[], it may throw an error. </p> <br>
+  <p>Use pipes whenever you need to make app-specific data transformations which would be re-used often.</p>
 
 
     <!-- ---------------------------- TEXT BOX --------------------------------- -->

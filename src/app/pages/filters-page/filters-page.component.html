@@ -1,131 +1,192 @@
 <p>filters-page works!</p>
 
-  <div class="card">
-    <div style="font-size:x-large; color: black;" class="card-header">
-      Filtering By Type
-    </div>
+<div class="card">
+  <div style="font-size:x-large; color: black;" class="card-header">
+    Filtering By Type
+  </div>
 
-    <div style="margin-top: 2rem;" class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="firstNameId"></label>
-      <div class="col-md-8">
-        <p style="color:black">Please select the type you wish to display</p>
-        <select (change)="filterfn(types.value)" #types aria-placeholder="Select data to display" class="form-control">
-          <option value="All" selected>All</option>
-          <option value="company">company</option>
-          <option value="animal">animal</option>
-          <option value="man">man</option>
-          <option value="movie">movie</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="card-body">
-      <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
-        <thead>
-          <tr>
-            <th scope="col" style="width: 90px">SN</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Type</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          <tr *ngFor="let item of filteredData">
-            <th scope="row">{{item.serialNo}}</th>
-            <td class="parameter">{{item.parameter}}</td>
-            <td>{{item.type}}</td>
-            <td> {{item.description}} </td>
-          </tr>
-
-        </tbody>
-
-        <tfoot>
-          <tr>
-            <td></td>
-            <td colspan="2" style="text-align: center;"></td>
-
-          </tr>
-        </tfoot>
-      </table>
+  <div style="margin-top: 2rem;" class="form-group row mb-2">
+    <label class="col-md-2 col-form-label" for="firstNameId"></label>
+    <div class="col-md-8">
+      <p style="color:black">Please select the type you wish to display</p>
+      <select (change)="filterfn(types.value)" #types aria-placeholder="Select data to display" class="form-control">
+        <option value="All" selected>All</option>
+        <option value="company">company</option>
+        <option value="animal">animal</option>
+        <option value="man">man</option>
+        <option value="movie">movie</option>
+      </select>
     </div>
   </div>
 
-  <br>
-  <div class="frame">
-    <code>
-      filterfn(type: string){{"{"}}     <br>
-      &nbsp;&nbsp;if (type == 'All') {{"{"}}     <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;  this.filteredData = this.fullData     <br>
-      &nbsp;&nbsp;{{"}"}}     <br>
-      &nbsp;&nbsp;else {{"{"}}     <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;  this.filteredData  = this.fullData.filter<span style="color: rgb(35, 134, 255);">(passIf => passIf.type == type)</span>;     <br>
-      &nbsp;&nbsp;{{"}"}}     <br>
-      {{"}"}}
-    </code>
+  <div class="card-body">
+    <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 90px">SN</th>
+          <th scope="col">Parameter</th>
+          <th scope="col">Type</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let item of filteredData">
+          <th scope="row">{{item.serialNo}}</th>
+          <td class="parameter">{{item.parameter}}</td>
+          <td>{{item.type}}</td>
+          <td> {{item.description}} </td>
+        </tr>
+
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td></td>
+          <td colspan="2" style="text-align: center;"></td>
+
+        </tr>
+      </tfoot>
+    </table>
   </div>
+</div>
+
+<br>
+<div class="frame">
+  <code>
+    filterfn(type: string){{"{"}} <br>
+    &nbsp;&nbsp;if (type == 'All') {{"{"}} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; this.filteredData = this.fullData <br>
+    &nbsp;&nbsp;{{"}"}} <br>
+    &nbsp;&nbsp;else {{"{"}} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; this.filteredData = this.fullData.filter<span style="color: rgb(35, 134, 255);">(passIf =>
+      passIf.type == type)</span>; <br>
+    &nbsp;&nbsp;{{"}"}} <br>
+    {{"}"}}
+  </code>
+</div>
 
 
 <section class="text">
   <p>Here's the explanation: <br> </p>
-  <p>-- I was filtering by type. So I said if "type" is equal 'All', the filteredData will be equal to (==) the fullData. <br>
-     -- If not, the fileteredData will be equal to the fullData filtered by a criterion (in the blue bracket) that states it enters the array if (<i>passIf</i>) its 'type' is equal to the 'type' passed into the function. <br>
-     -- This works because the list showing here is a list of the filteredData. The list only shows what's in the filteredData array, to get it to show the full thing, the fullData is put into the filteredData array.</p>
+  <p>-- I was filtering by type. So I said if "type" is equal 'All', the filteredData will be equal to (==) the
+    fullData. <br>
+    -- If not, the fileteredData will be equal to the fullData filtered by a criterion (in the blue bracket) that states
+    it enters the array if (<i>passIf</i>) its 'type' is equal to the 'type' passed into the function. <br>
+    -- This works because the list showing here is a list of the filteredData. The list only shows what's in the
+    filteredData array, to get it to show the full thing, the fullData is put into the filteredData array.</p>
 
 </section>
 
 
-  <!-- FILTERING BY STRING --> <br><br>
+<!-- FILTERING BY STRING --> <br><br>
 
 
-  <div class="card">
-    <div style="font-size:x-large; color: black;" class="card-header">
-      Filtering By String
-    </div>
+<div class="card">
+  <div style="font-size:x-large; color: black;" class="card-header">
+    Filtering By String
+  </div>
 
-    <div style="margin-top: 2rem;" class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="firstNameId"></label>
-      <div class="col-md-8">
-        <p style="color:black">Please type word you wish to search by</p>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <!-- <select (change)="filterfn(types.value)" #types aria-placeholder="Select data to display" class="form-control">
+  <div style="margin-top: 2rem;" class="form-group row mb-2">
+    <label class="col-md-2 col-form-label" for="firstNameId"></label>
+    <div class="col-md-8">
+      <p style="color:black">Please type word you wish to search by</p>
+        <input class="form-control me-2" type="text" placeholder="Search" [(ngModel)]="searchValue" aria-label="Search" > <!--[(ngModel)]="_searchValue"-->
+      <!-- <select (change)="filterfn(types.value)" #types aria-placeholder="Select data to display" class="form-control">
           <option value="All" selected>All</option>
           <option value="company">company</option>
           <option value="animal">animal</option>
           <option value="man">man</option>
           <option value="movie">movie</option>
         </select> -->
-      </div>
-    </div>
-
-    <div class="card-body">
-      <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
-        <thead>
-          <tr>
-            <th scope="col" style="width: 90px">SN</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Type</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of fullData">
-            <th scope="row">{{item.serialNo}}</th>
-            <td class="parameter">{{item.parameter}}</td>
-            <td>{{item.type}}</td>
-            <td> {{item.description}} </td>
-          </tr>
-        </tbody>
-
-        <tfoot>
-          <tr>
-            <td></td>
-            <td colspan="2" style="text-align: center;"></td>
-          </tr>
-        </tfoot>
-      </table>
     </div>
   </div>
+
+  <div class="card-body">
+    <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 90px">SN</th>
+          <th scope="col">Parameter</th>
+          <th scope="col">Type</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filteredItems">
+          <th scope="row">{{item.serialNo}}</th>
+          <td class="parameter">{{item.parameter}}</td>
+          <td>{{item.type}}</td>
+          <td> {{item.description}} </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td></td>
+          <td colspan="2" style="text-align: center;"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<br><br>
+<section class="text">
+  <p>Use a<span> getter and setter</span> for the object holding the filter value as opposed to just normally setting it
+    to an object. <br>
+    Use a syntax like this for getter and setter:</p> <br>
+  <div class="frame">
+    <code>
+      private _searchValue: string = ''; <br>
+      get searchValue(): string{{"{"}} <br>
+      <span class="comment">//add code to do what you want on get</span> <br>
+      &nbsp;&nbsp;return this._searchValue; <br>
+      {{"}"}} <br>
+      set searchValue(inputText: string) {{"{"}} <br>
+      <span class="comment">//add code to do what you want on set</span> <br>
+      &nbsp;&nbsp; this._searchValue = inputText; <br>
+      {{"}"}} <br>
+    </code>
+  </div> <br>
+  <p>Then use a filter funtion in the setter. The below function is called up in the setter.</p>
+  <div class="frame">
+    <code>
+      filterFn(searchWord: string): IData[] {{"{"}} <br>
+      <span class="comment">//convert the word to lowercase for accuracy</span> <br>
+      &nbsp;&nbsp;searchWord = this.searchWord.toLowerCase(); <br>
+      &nbsp;&nbsp;return this.filteredItems = this.fullData.filter( <br>
+      <span class="comment">//so both words being compared match as lowercase</span> <br>
+      &nbsp;&nbsp;(item:IData) => item.title.toLowerCase().includes(searchWord)<br>
+      &nbsp;&nbsp;); <br>
+      {{"}"}} <br> <br> <br>
+      <span class="comment">//calling up the filter fn in the setter (runs everytime user sets the input)</span> <br>
+      set searchValue(value: string) {{"{"}} <br>
+      &nbsp;&nbsp; this._searchValue = value; <br>
+      &nbsp;&nbsp; this.filteredItems = this.filterFn( valueTakenInBySetter: any ); <br>
+      {{"}"}} <br>
+    </code>
+  </div> <br>
+
+  <h4>Steps</h4>
+  <ol>
+    <li>Make an object to hold your fullData (http.get response), and an array to hold your filteredItems</li>
+    <li>Set your ngFor to loop through the filteredItems array.</li>
+    <li>In ngOnInit set your filteredItems = fullData so the data appears on the list. (<i>in your filterFn, you would reset filteredItems based on your filter criteria</i>) </li>
+    <li>Define <span class="codeC2">private _searchValue</span>.</li>
+    <li>Make methods to <span class="codeC2">get and set it</span> (<i>as seen in the getter and setter syntax in the first frame above</i>).</li>
+    <li>Use <span class="codeC2">ngModel 2 way binding</span> to bind to the "getter and setter" method name to the search input element. <br> (<i>note that for ngModel to work, you need to import forms module to the module of the page you're working on</i>)</li>
+    <li>Result: Now as you type, _searchValue is being set and the set fn is passing in what you typed into the filter fn and running that function each time you type.</li>
+  </ol>
+
+  <h6>Writing get and set methods.</h6>
+  <ol>
+    <li>Make a filteredItems array to hold the filtered items</li>
+    <li>Write a filter fn to filter if the item includes what was typed.</li>
+    <li>In the setter (<i>which runs everytime the listFilter object is changed by the user</i>), <code class="codeC2">this.filteredItems = this.filterFn( value: any );</code> <br>"value" is the value taken in by the setter</li>
+  </ol>
+
+
+
+
+</section>

@@ -10,10 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackData } from './BackData';
 
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { BackData } from './BackData';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(BackData)
+    HttpClientInMemoryWebApiModule.forRoot(BackData),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
