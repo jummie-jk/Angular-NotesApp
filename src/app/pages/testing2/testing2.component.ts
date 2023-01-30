@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Testing2Component implements OnInit {
 
+  //testing using a class as an interface. define public companies as below and call in html.
+  public companies: any[] = [
+    { "id": 0, "name": "Available" },
+    { "id": 1, "name": "Ready" },
+    { "id": 2, "name": "Started" }
+];
 
   constructor() { }
 

@@ -102,3 +102,72 @@
 
 
 <h1>2nd Assignment</h1>
+
+
+
+
+<!-- EDIT MODAL  -->
+<div style="color: black;" class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{editItem.parameter}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div [formGroup]="listDataForm" class="card form-group">
+          <div style="font-size:x-large; color: black;" class="card-header">
+            {{editItem.parameter}}
+          </div>
+          <div class="card-body">
+            <!-- 1 -->
+            <div class="row mb-2 form-group">
+              <label class="col-md-2 col-form-label">Number</label>
+              <div class="col-md-8"> <input formControlName="number" class="form-control" style="width: 100%;" type="number" />
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="row mb-2">
+              <label class="col-md-2 col-form-label"> Parameter </label>
+              <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text" /> </div>
+            </div>
+            <!-- 3 -->
+            <div class="row mb-2">
+              <label class="col-md-2 col-form-label"> Type </label>
+              <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text" /> </div>
+            </div>
+            <!-- Description -->
+            <div class="row mb-2">
+              <label class="col-md-2 col-form-label">Description</label>
+              <div class="col-md-8">
+                <textarea formControlName="description" placeholder="Description" style="width: 100%;" rows=3></textarea>
+              </div>
+            </div>
+            <!-- Save Cancel Delete -->
+            <div class="form-group row mb-2">
+              <div class="offset-md-2 col-md-6">
+                <button class="btn btn-primary mr-3" style="width:80px;" type="submit" title="save changes"
+                  (click)="editModalSaveFn()">
+                  Save
+                </button>
+                <button class="btn btn-outline-secondary mr-3" style="width:80px;" type="button" title="Cancel your edits" #closeEditModalDelete
+                  data-bs-dismiss="modal">
+                  Cancel
+                </button>
+                <!-- <button class="btn btn-outline-warning" style="width:80px" type="button" title="Delete these details"
+                  (click)="editModalDeleteFn()">
+                  Delete
+                </button> -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="closeModalView" #closeModalView>Done</button>
+      </div> -->
+    </div>
+  </div>
+</div>

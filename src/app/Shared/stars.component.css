@@ -1,8 +1,19 @@
 .crop{
   overflow: hidden;
   color: yellow;
-  background-color: aqua;
+  /* z-index: 1; */
 }
 div {
   cursor: pointer;
 }
+
+.outline{
+ opacity: 20%;
+ position: relative; bottom: 24px;
+ color: rgb(0, 0, 0);
+ /* z-index: -1; */
+}
+
+/* .bordered{
+  border: 1px solid;
+} */

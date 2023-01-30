@@ -1,5 +1,5 @@
 <div class="crop" [style.width.px]="cropWidth" [title]="rating" (click)="onClick()">
-  <div style="width: 75px">
+  <div style="width: 100px;"> <!--This guy himself is showing 5 stars, but his parent is the one being cropped-->
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
@@ -8,3 +8,10 @@
   </div>
 </div>
 
+<div class="outline" style="width: 100px;"> <!--I want this guy to inherit his position from the other stars and be under them-->
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+</div>

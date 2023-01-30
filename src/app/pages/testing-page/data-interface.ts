@@ -5,3 +5,13 @@ export interface IData {
   type: string;
   description: string;
 }
+
+export interface IComplexData {
+  id: number;
+  serialNo: number;
+  title: string;
+  type: string;
+  description: string;
+  rating: number;
+  tags: [];
+}

@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudServices } from 'src/app/crud.service';
-import { IData } from '../testing-page/data-interface';
+import { IComplexData, IData } from '../testing-page/data-interface';
 
 @Component({
   selector: 'app-complexity-page',
@@ -12,15 +12,15 @@ import { IData } from '../testing-page/data-interface';
 export class ComplexityPageComponent implements OnInit {
 
   warrantForm: FormGroup;
-  listData: IData[] = [];
-  item: IData;
-  filteredData: IData[] = [];
+  listData: IComplexData[] = [];
+  item: IComplexData;
+  filteredData: IComplexData[] = [];
   listDataForm: FormGroup;
   @ViewChild('closeModalDelete') closeModalDelete: any;
   @ViewChild('closeDeleteModalDelete') closeDeleteModalDelete: any;
   @ViewChild('closeModalView') closeModalView: any;
   @ViewChild('closeEditModalDelete') closeEditModalDelete: any;
-  viewItem: IData;
+  viewItem: IComplexData;
   editItem: IData;
 
 
@@ -79,7 +79,7 @@ export class ComplexityPageComponent implements OnInit {
     //form model
     this.resetForm();
 // Getting the List Data
-    this.getData();
+    this.getComplexData();
 
     //for editing modal
     this.listDataForm = this.fb.group({
@@ -126,9 +126,9 @@ export class ComplexityPageComponent implements OnInit {
       }
     }
 
-    getData(){
-      this.service.getData().subscribe(
-        { next: data => { this.listData = data;
+    getComplexData(){
+      this.service.getComplexData().subscribe(
+        { next: res => { this.listData = res;
           this.filteredData = this.listData},}
         );
         ;
@@ -149,7 +149,7 @@ export class ComplexityPageComponent implements OnInit {
         })  }
     onSaveComplete(): void {
       this.closeModalDelete.nativeElement.click(); //closes modal
-      this.getData();
+      this.getComplexData();
       this.resetForm();
     }
 
@@ -161,18 +161,18 @@ export class ComplexityPageComponent implements OnInit {
       this.service.deleteItemById(this.itemId).subscribe(
          (response) => {
                this.closeDeleteModalDelete.nativeElement.click(); //closes modal
-               this.getData();
+               this.getComplexData();
          },
       );
     }
     //! DELETE modal ENDS
 
     //VIEW modal
-    getItemForViewingById(id: number): void {
+    getComplexItemForViewingById(id: number): void {
       //set the id against delete fn
       this.itemId = id;
       //gets data
-      this.service.getDataById(id)
+      this.service.getComplexDataById(id)
        .subscribe({
           next: res => this.viewItem = res,
       });
@@ -195,7 +195,7 @@ export class ComplexityPageComponent implements OnInit {
     }
     onSaveEditComplete(): void {
       this.closeEditModal(); //closes modal
-      this.getData();
+      this.getComplexData();
       this.resetForm();
     }
     closeEditModal(){

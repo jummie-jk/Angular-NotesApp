@@ -584,7 +584,10 @@
     <ul>
       <li>Make your star UI.</li>
       <li>Bind its title to a "rating" object and its width to a "cropwith" object in the ts file.</li>
-      <li>import it to the declarations of the module that'll be using it.</li>
+      <li>Import it to the declarations of the module that'll be using it.</li>
+      <li>Use it as a custom html directive. E.g <code class="codeC2">&lt;app-stars&gt;&lt;/app-stars&gt;</code></li>
+      <li>Whatever parts of the star component.ts you want to be properties of the custom html, add the <code class="codeC2">@Input()</code>  decorator behing the definition of that property, like a prefix.</li>
+      <li>In the html file where the stars are being called as a directive, use property binding to bind the properties of the custom html to their corresponding fields coming from the back end. E.g, <code class="codeC2">&lt;app-stars [rating]="item.rating"&gt;&lt;/app-stars&gt;</code></li>
     </ul>
   </div>
 
