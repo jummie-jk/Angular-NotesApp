@@ -97,17 +97,17 @@
             <div [formGroup]="complextDataForm" class="card-body">
               <!-- 1 -->
               <div class="row mb-2">
-                <label class="col-md-2 col-form-label">Serial</label> <!--validation Here-->
-                <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="text" /> </div>
+                <label class="col-md-2 col-form-label">Serial <span style="color: red;">*</span></label> <!--validation Here-->
+                <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="text" placeholder="enter a 4 digit number" /> </div>
               </div>
               <!-- 2 -->
               <div class="row mb-2">
-                <label class="col-md-2 col-form-label"> Title </label>
-                <div class="col-md-8"> <input formControlName="title" style="width: 100%;" type="text" /> </div>
+                <label class="col-md-2 col-form-label"> Title <span style="color: red;">*</span> </label>
+                <div class="col-md-8"> <input formControlName="title" style="width: 100%;" type="text" placeholder="enter title less than 21 characters" /> </div>
               </div>
               <!-- 3 -->
               <div class="row mb-2">
-                <label class="col-md-2 col-form-label"> Type </label>
+                <label class="col-md-2 col-form-label"> Type <span style="color: red;">*</span> </label>
                 <div class="col-md-8">
                   <select #types aria-placeholder="Select type" formControlName="type" class="col-sm-2 form-control">
                     <option disabled selected>null</option>
@@ -120,27 +120,31 @@
               </div>
               <!-- Description -->
               <div class="row mb-2">
-                <label class="col-md-2 col-form-label">Description</label>
+                <label class="col-md-2 col-form-label">Description <span style="color: red;">*</span></label>
                 <div class="col-md-8">
-                  <textarea placeholder="Description" formControlName="description" style="width: 100%;" rows=3></textarea>
+                  <textarea placeholder="enter item description" formControlName="description" style="width: 100%;" rows=3></textarea>
                 </div>
               </div>
               <!-- Rating -->
               <div class="row mb-2">
-                <label class="col-md-2 col-form-label"> Rating </label>
-                <div class="col-md-8"> <input formControlName="rating" style="width: 100%;" type="text" /> </div> <!--validation Here-->
+                <label class="col-md-2 col-form-label"> Rating <span style="color: red;">*</span> </label>
+                <div class="col-md-8"> <input formControlName="rating" style="width: 100%;" type="text" placeholder="rate from 1 to 5" /> </div> <!--validation Here-->
               </div>
               <!-- Tags -->
               <div class="row mb-2">
                 <label class="col-md-2 col-form-label"> Tags </label>
-                <div class="col-md-8"> <input formArrayName="tags" *ngFor="let tag of tags.controls" style="width: 100%;" type="text" /></div>
+                <div class="col-md-8" formArrayName="tags" *ngFor="let tag of tags.controls; let i = index" >
+                  <div [formGroupName]="i">
+                    <input formControlName="eachTag" style="width: 100%;" type="text" placeholder="enter tag" />
+                  </div>
+                </div>
                 <div class="col-sm-2" style="display: inline; position: relative; bottom: 3px;"><button class="btn btn-outline-dark" (click)="duplicateFn()">+</button></div>
               </div>
         <!-- to be removed  -->
-        <div style="color: black;">
+        <!-- <div style="color: black;">
           <br>Dirty: {{ complextDataForm.dirty }} &nbsp;&nbsp;&nbsp;&nbsp; Touched: {{ complextDataForm.touched }} &nbsp;&nbsp;&nbsp;&nbsp; Valid: {{ complextDataForm.valid }} <br>
           <br>Value: {{ complextDataForm.value | json }}
-        </div>
+        </div> -->
         <!-- to be removed end -->
 
 

@@ -153,7 +153,7 @@ export class ComplexityPageComponent implements OnInit {
     }
     generateEntryInstance(): FormGroup {
       return this.fb.group({
-        tags: [],
+        eachTag: '',
       })
     }
     duplicateFn() {
