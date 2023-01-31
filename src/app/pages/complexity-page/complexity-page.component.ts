@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudServices } from 'src/app/crud.service';
 import { IComplexData, IData } from '../testing-page/data-interface';
@@ -15,7 +15,7 @@ export class ComplexityPageComponent implements OnInit {
   listData: IComplexData[] = [];
   item: IComplexData;
   filteredData: IComplexData[] = [];
-  listDataForm: FormGroup;
+  complextDataForm: FormGroup;
   @ViewChild('closeModalDelete') closeModalDelete: any;
   @ViewChild('closeDeleteModalDelete') closeDeleteModalDelete: any;
   @ViewChild('closeModalView') closeModalView: any;
@@ -75,6 +75,11 @@ export class ComplexityPageComponent implements OnInit {
               private service: CrudServices,
               private router: Router,) { }
 
+//define fomArray 'tags' as a get so that the duplicate fn can identify what to push to.
+  get tags(): FormArray{
+    return <FormArray>this.complextDataForm.get('tags')
+  }
+
   ngOnInit() {
     //form model
     this.resetForm();
@@ -82,11 +87,14 @@ export class ComplexityPageComponent implements OnInit {
     this.getComplexData();
 
     //for editing modal
-    this.listDataForm = this.fb.group({
-      number: '',
-      parameter: '',
-      type: '',
-      description: '',
+    this.complextDataForm = this.fb.group({
+      // here are the form controls and their validation rules
+      serialNo: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(4), Validators.maxLength(4)]], //why's it ignoring the validations except required? Because the input was NOT set to text. Validators.pattern("^[0-9]*$") validator ensures it's a number from 0-9.
+      title:['', [Validators.required, Validators.minLength(1), Validators.maxLength(21)]],
+      type:['', Validators.required],
+      description: ['', Validators.required],
+      rating: ['', [Validators.required, Validators.pattern("^[1-5]*$"), Validators.maxLength(1)]], //Validators.pattern("^[1-5]*$") ensures its a number from 1-5
+      tags: this.fb.array([ this.generateEntryInstance() ]),
     })
     }
 
@@ -134,16 +142,26 @@ export class ComplexityPageComponent implements OnInit {
         ;
     }
     resetForm(){
-      this.listDataForm = this.fb.group({
-        serialNo: '',
-        parameter: '',
-        type: '',
-        description: '',
+      this.complextDataForm = this.fb.group({
+        serialNo: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(4), Validators.maxLength(4)]], //why's it ignoring the validations except required? Because the input was NOT set to text. Validators.pattern("^[0-9]*$") validator ensures it's a number.
+        title:['', [Validators.required, Validators.minLength(1), Validators.maxLength(21)]],
+        type:['', Validators.required],
+        description: ['', Validators.required],
+        rating: ['', [Validators.required, Validators.pattern("^[1-5]*$"), Validators.maxLength(1)]],
+        tags: this.fb.array([ this.generateEntryInstance() ]),
+        })
+    }
+    generateEntryInstance(): FormGroup {
+      return this.fb.group({
+        tags: [],
       })
     }
+    duplicateFn() {
+      this.tags.push(this.generateEntryInstance());
+    }
     saveFn(){
-      const I = {...this.item, ...this.listDataForm.value} //copies listDataForm's value over item and puts the result inside I. NB: ('item' is an empty data object of the same type as the data expected)
-      this.service.createItem(I)
+      const I = {...this.item, ...this.complextDataForm.value} //copies complextDataForm's value over item and puts the result inside I. NB: ('item' is an empty data object of the same type as the data expected)
+      this.service.createComplexItem(I)
         .subscribe({
           next: () => this.onSaveComplete()
         })  }
@@ -181,7 +199,7 @@ export class ComplexityPageComponent implements OnInit {
 
     //EDIT modal
     editModalSaveFn(): void{
-      const I = {...this.editItem, ...this.listDataForm.value} //copies listDataForm's value over item and puts the result inside I
+      const I = {...this.editItem, ...this.complextDataForm.value} //copies listDataForm's value over item and puts the result inside I
       this.service.updateItem(I)
         .subscribe({
           next: () => this.onSaveEditComplete()
@@ -211,7 +229,7 @@ export class ComplexityPageComponent implements OnInit {
     displayItems(itemsForDisplay: IData) {
       this.editItem = itemsForDisplay; //this sends all the items meant to be displayed (that came from the observable in the getDataById method) into the object called 'editItem'
       // make data appear on form: uses the item's properties to set the values for each of the form controls. The data then appears on the form.
-      this.listDataForm.patchValue({
+      this.complextDataForm.patchValue({
         number: this.editItem.serialNo,
         parameter: this.editItem.parameter,
         type: this.editItem.type,
@@ -219,5 +237,6 @@ export class ComplexityPageComponent implements OnInit {
       });
     }
     //! EDIT modal ENDS
+
 
 }

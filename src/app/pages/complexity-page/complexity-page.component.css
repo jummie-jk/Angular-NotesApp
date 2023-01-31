@@ -38,3 +38,9 @@
 .parameter:hover{
   color: #009ebd
 }
+
+.paginatorImg{
+  border-radius: 1rem;
+  margin-bottom: 4rem;
+  width: 70%;
+}

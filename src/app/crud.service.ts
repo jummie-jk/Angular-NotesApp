@@ -14,7 +14,7 @@ export class CrudServices {
 
   constructor (private http: HttpClient){ //without "private" http would be localized in the constructor and unavailable to the class
     // this console logs the BackData instantly.
-    http.get(this.baseUrl).subscribe(response => {console.log(response);});
+    http.get(this.baseUrl).subscribe(response => {console.log('baseUrl content:', response);});
 }
 
 private newItem(): IData {
@@ -65,11 +65,18 @@ deleteItemById(id: number): Observable<{}> {
 getComplexData(): Observable<IComplexData[]> {
   return this.http.get<IComplexData[]>(this.complexUrl)
   .pipe(
-    tap(response => console.log(response) )
+    tap(response => console.log('complexUrl content:', response) )
     )
   }
   //get the specific data of the list by its id.  this.http.get<any>(`${}/${}`)  <- that's a 'template literal' which specifies the link to pass into the fn
 getComplexDataById(id: number): Observable<IComplexData>{
   return this.http.get<IComplexData>(`${this.baseUrl}/${id}`)
+}
+createComplexItem(savedItem: IComplexData) {
+  const headers = new HttpHeaders ({'Content-Type' : 'application/json'});   //specifies that the content will be in json format
+  return this.http.post<IComplexData>(this.complexUrl, savedItem, { headers })
+  .pipe(
+    tap(() => console.log('updateItem: ' + savedItem.id)),
+  );
 }
 }

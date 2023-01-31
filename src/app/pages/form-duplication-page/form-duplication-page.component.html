@@ -38,9 +38,11 @@
     <ol>
       <li>Make a function to generate the form group. "<span class="codeC2">generateEntryInstance()</span>"</li>
       <li>Make the relevant formControl to be duplicated a formArray. The array contains the fn to generate the formGroup to be duplicated "<span class="codeC2">this.generateEntryInstance()</span>"</li>
+      <li>Define fomArray 'eachStep' as a <span class="codeC2">"get"</span> so that the duplicate fn can identify what to push to.</li>
       <li>A duplicate fn "<span class="codeC2">duplicateFn()</span>" onClick of the duplicate button. The fn pushes an instance of the generation function into the formArray.</li>
+      <li>Use ngFor to loop the FormArray to be duplicated. <span class="codeC2">*ngFor="let step of eachStep.controls;"</span> </li>
     </ol> <br>
-    <p>Here's the code snippet for 1, 2 and 3 respectively.</p> <br>
+    <p>Here's the code snippet for 1, 2, 3 and 4 respectively.</p> <br>
     <div class="frame">
       <code>
         <p class="comment">1</p>
@@ -54,10 +56,15 @@
 
         <p class="comment">2</p>
         this.MasterDiv = this.fb.group({{"{"}}   <br>
-        &nbsp;  eachStep: this.fb.array([ this.generateEntryInstance() ])   <br>
+        &nbsp; <span class="blue">eachStep: this.fb.array([ this.generateEntryInstance() ])</span>    <br>
         {{"}"}});   <br> <br>
 
         <p class="comment">3</p>
+        get eachStep(): FormArray{{'{'}} <br>
+          &nbsp;  return &lt;FormArray>this.MasterDiv.get('eachStep') <br>
+        {{'}'}}   <br> <br>
+
+        <p class="comment">4</p>
         duplicateFn() {{"{"}}    <br>
         &nbsp;  this.eachStep.push(this.generateEntryInstance());    <br>
           {{"}"}}    <br>

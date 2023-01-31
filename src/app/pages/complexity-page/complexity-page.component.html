@@ -1,13 +1,14 @@
 <p>complexity-page works!</p>
 <section class="text">
   This page would show the same list from testing page, but with more detail including: <br>
-  -- pagination (with its indexing)   👈   <br>
-  -- validation     <br>
+  -- validation (new on complex form) 👈   <br>
+  -- pagination (with its indexing)  ✅    <br>
   -- number to star rating.  ✅     <br>
   -- string filter  ✅     <br>
   -- form duplication   ✅    <br>
   -- modals for viewing data.  ✅     <br>
-  -- list indexes ✅ .       <br><br><br>
+  -- list indexes ✅ .  <br>
+  -- clean up/presentation (comples form is last part of cleanup)   <br><br><br>
 
   <p>Complex list is to have an input for star ratings and a display for it. Meaning I may have to change itf interface to IComplexData</p>
 
@@ -38,13 +39,13 @@
       </div>
     </div>
     <div class="card-body">
-      <button class="btn btn-info newButton" data-bs-toggle="modal" data-bs-target="#exampleModal">New&ensp;<b>+</b></button>
+      <button class="btn btn-info newButton" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="resetForm()" >New&ensp;<b>+</b></button>
       <table style="background-color: rgb(226, 226, 226);" class="table table-sm">
         <thead>
           <tr>
             <th scope="col">No</th>
-            <th scope="col" style="width: 90px">SN</th>
-            <th scope="col">Parameter</th>
+            <th scope="col" style="width: 90px">Serial</th>
+            <th scope="col">Title</th>
             <th scope="col">Type</th>
             <th scope="col">Actions</th>
             <th scope="col">Stars</th>
@@ -56,7 +57,7 @@
           <tr *ngFor="let data of filteredData; let i = index">
             <th>{{i + 1}}</th>
             <th scope="row">{{data.serialNo}}</th>
-            <td class="parameter" [routerLink]="['/pages/testing', data.id,'view-detail-page']">{{data.title}}</td>
+            <td class="parameter" >{{data.title}}</td>
             <td>{{data.type}}</td>
             <!-- (click)="function()" -->
             <!-- REMEMBER ROUTERLINK ALWAYS STARTS WITH A /  ALSO SEE HOW ITEM.ID IS BOUND IN THE ROUTERLINK AND THE OMMISSION OF SLASHES AFTER THE FIRST PART-->
@@ -93,21 +94,29 @@
         </div>
         <div class="modal-body">
           <div class="card">
-            <div [formGroup]="listDataForm" class="card-body">
+            <div [formGroup]="complextDataForm" class="card-body">
               <!-- 1 -->
               <div class="row mb-2">
-                <label class="col-md-2 col-form-label">Serial Number</label>
-                <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="number" /> </div>
+                <label class="col-md-2 col-form-label">Serial</label> <!--validation Here-->
+                <div class="col-md-8"> <input formControlName="serialNo" style="width: 100%;" type="text" /> </div>
               </div>
               <!-- 2 -->
               <div class="row mb-2">
-                <label class="col-md-2 col-form-label"> Parameter </label>
-                <div class="col-md-8"> <input formControlName="parameter" style="width: 100%;" type="text" /> </div>
+                <label class="col-md-2 col-form-label"> Title </label>
+                <div class="col-md-8"> <input formControlName="title" style="width: 100%;" type="text" /> </div>
               </div>
               <!-- 3 -->
               <div class="row mb-2">
                 <label class="col-md-2 col-form-label"> Type </label>
-                <div class="col-md-8"> <input formControlName="type" style="width: 100%;" type="text" /> </div>
+                <div class="col-md-8">
+                  <select #types aria-placeholder="Select type" formControlName="type" class="col-sm-2 form-control">
+                    <option disabled selected>null</option>
+                    <option value="Money">Money</option>
+                    <option value="Song">Song</option>
+                    <option value="Alien">Alien</option>
+                    <option value="dataFromBack">dataFromBack</option>
+                  </select>
+                </div>
               </div>
               <!-- Description -->
               <div class="row mb-2">
@@ -116,13 +125,33 @@
                   <textarea placeholder="Description" formControlName="description" style="width: 100%;" rows=3></textarea>
                 </div>
               </div>
+              <!-- Rating -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label"> Rating </label>
+                <div class="col-md-8"> <input formControlName="rating" style="width: 100%;" type="text" /> </div> <!--validation Here-->
+              </div>
+              <!-- Tags -->
+              <div class="row mb-2">
+                <label class="col-md-2 col-form-label"> Tags </label>
+                <div class="col-md-8"> <input formArrayName="tags" *ngFor="let tag of tags.controls" style="width: 100%;" type="text" /></div>
+                <div class="col-sm-2" style="display: inline; position: relative; bottom: 3px;"><button class="btn btn-outline-dark" (click)="duplicateFn()">+</button></div>
+              </div>
+        <!-- to be removed  -->
+        <div style="color: black;">
+          <br>Dirty: {{ complextDataForm.dirty }} &nbsp;&nbsp;&nbsp;&nbsp; Touched: {{ complextDataForm.touched }} &nbsp;&nbsp;&nbsp;&nbsp; Valid: {{ complextDataForm.valid }} <br>
+          <br>Value: {{ complextDataForm.value | json }}
+        </div>
+        <!-- to be removed end -->
+
 
             </div>
           </div>
                 </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModalDelete" #closeModalDelete>Close</button>
-          <button type="button" class="btn btn-primary" (click)="saveFn()">Save changes</button>
+          <button type="button" class="btn btn-primary" (click)="saveFn()"
+          [disabled]="!complextDataForm.valid"
+          [title]="complextDataForm.valid ? 'Save your complex item' : 'Disabled till complex form input is valid'" >Save changes</button> <!-- This syntax  👈 simply means "is complextDataForm valid? Then" show 'Save your complex item', else show 'Disabled till complex form input is valid' -->
         </div>
       </div>
     </div>
@@ -192,7 +221,20 @@
 <h2>Notes</h2>
 <p> <b>INDEXING</b>: To achieve the indexing of the list, use this syntax in your ngFor: <code class="codeC2">*ngFor="let item of filteredData; let i = index"</code> <br>
    then where you want the index numbers to be, bind it putting <span class="codeC2">i + 1</span> in double curly braces. </p>
+<p> <b>PAGINATION</b>: While the mat-paginator is not in this app due to dependency issues, it's simple to use. Import it in the module's imports section, define the parameters in the ts then use the <code>&lt;mat-paginator&gt;&lt;/mat-paginator&gt;</code> html tag, binding the parameters from the ts in the properties. like so: <br>
+  <span class="codeC2">&lt;mat-paginator #paginator [length]="resultLength" [pageIndex]="pageNumber" [pageSize]="10" &gt;
+  &lt;/mat-paginator&gt;</span> <br>
+  For correct serial indexing, use this *ngIf: <img src="/assets/Images/paginator indexing.png" class="paginatorImg" alt=""> <br>
+  Another way of indexing is this binding: <img class="paginatorImg" src="/assets/Images/pagination serial 2.png" alt=""> <br> This works given the index and pageNumber start counting from 0. Adpat id they start from 1.
+</p>
 
+<!-- CODE FOR USING PAGINATION WITH CORRECT INDEXING -->
+<!-- <ul>
+  <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <span *ngIf="page==1">{{(i+1)}}{{item}}</span>
+      <span *ngIf="page>1">{{((page-1)*10)+(i+1)}}{{ item }}</span>
+  </li>
+</ul> -->
 
 
 
