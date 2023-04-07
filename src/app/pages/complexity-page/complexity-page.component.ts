@@ -26,6 +26,10 @@ export class ComplexityPageComponent implements OnInit {
 
   @ViewChild('testbtn') Test: ElementRef;
   itemId: number;
+  // title: string;
+  // serialNo: number;
+  // description: string;
+  // type: string;
 
   // list: Data[] =[
   //   {
@@ -191,9 +195,16 @@ export class ComplexityPageComponent implements OnInit {
       this.itemId = id;
       //gets data
       this.service.getComplexDataById(id)
-       .subscribe({
-          next: res => this.viewItem = res,
-      });
+       .subscribe(
+         (res) => {
+          this.viewItem = res;
+          //setting each item to remove undefined property error
+          // this.title = res.title;
+          // this.serialNo = res.serialNo;
+          // this.description = res.description;
+          // this.type = res.type
+        }
+      );
     }
     //! VIEW modal ENDS
 

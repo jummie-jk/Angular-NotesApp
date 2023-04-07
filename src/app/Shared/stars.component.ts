@@ -6,7 +6,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./stars.component.css']
 })
 export class StarsComponent implements OnChanges { //use on changes so that each star canchange its display when the rating changes.
-@Input() rating: number = 0;     //the "@Input()" decorator is used to make that property usable as a property in the <app-stars></app-stars> directive like so: <app-stars [rating]="item.starRating"></app-stars>, Now it's being taken over by the value of item.starRating
+@Input() rating: number = 3;     //the "@Input()" decorator is used to make that property usable as a property in the <app-stars></app-stars> directive like so: <app-stars [rating]="item.starRating"></app-stars>, Now it's being taken over by the value of item.starRating
 cropWidth: number = 75;
 
   constructor() { }

@@ -1,14 +1,14 @@
 <p>complexity-page works!</p>
 <section class="text">
   This page would show the same list from testing page, but with more detail including: <br>
-  -- validation (new on complex form) 👈   <br>
+  -- clean up/presentation (comples form is last part of cleanup) 👈  <br>
+  -- validation (new on complex form) ✅   <br>
   -- pagination (with its indexing)  ✅    <br>
-  -- number to star rating.  ✅     <br>
-  -- string filter  ✅     <br>
-  -- form duplication   ✅    <br>
   -- modals for viewing data.  ✅     <br>
-  -- list indexes ✅ .  <br>
-  -- clean up/presentation (comples form is last part of cleanup)   <br><br><br>
+  -- number to star rating.  ✅     <br>
+  -- form duplication   ✅    <br>
+  -- string filter  ✅     <br>
+  -- list indexes ✅   <br><br><br>
 
   <p>Complex list is to have an input for star ratings and a display for it. Meaning I may have to change itf interface to IComplexData</p>
 
@@ -157,13 +157,18 @@
           [disabled]="!complextDataForm.valid"
           [title]="complextDataForm.valid ? 'Save your complex item' : 'Disabled till complex form input is valid'" >Save changes</button> <!-- This syntax  👈 simply means "is complextDataForm valid? Then" show 'Save your complex item', else show 'Disabled till complex form input is valid' -->
         </div>
+        <div *ngIf="complextDataForm?.invalid && (complextDataForm?.dirty || complextDataForm?.touched)" class="alert alert-danger">
+          <div >
+              Ensure you followed all the form's rules.
+          </div>
+      </div>
       </div>
     </div>
   </div>
 
 
   <!-- VIEW Modal -->
-  <!-- <div style="color: black;" class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="vieweModalLabel" aria-hidden="true">
+  <div style="color: black;" class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="vieweModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -172,17 +177,17 @@
         </div>
         <div class="modal-body">
           <div class="container">
-            <h2 style="background-color: rgb(192, 217, 255); justify-content: center; text-align: center; padding-top: 15px; padding-bottom: 15px;" class="row">  {{viewItem.title}} </h2>
+            <h2 style="background-color: rgb(192, 217, 255); justify-content: center; text-align: center; padding-top: 15px; padding-bottom: 15px;" class="row">  {{viewItem?.title}} </h2>
 
             <div class="row" style="height: 200px;">
               <div style="background-color: rgb(241, 247, 255); text-align: center; padding-top: 90px;" class="col">
-                {{viewItem.serialNo}}
+                {{viewItem?.serialNo}}
               </div>
               <div style="background-color: rgb(192, 217, 255); text-align: center; padding-top: 90px;" class="col-6">
-                {{viewItem.description}}
+                {{viewItem?.description}}
               </div>
               <div style="background-color: rgb(241, 247, 255); text-align: center; padding-top: 90px;" class="col">
-                {{viewItem.type}}
+                {{viewItem?.type}}
               </div>
             </div>
           </div>
@@ -192,7 +197,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 
   <!-- EDIT Modal -->
@@ -229,7 +234,7 @@
   <span class="codeC2">&lt;mat-paginator #paginator [length]="resultLength" [pageIndex]="pageNumber" [pageSize]="10" &gt;
   &lt;/mat-paginator&gt;</span> <br>
   For correct serial indexing, use this *ngIf: <img src="/assets/Images/paginator indexing.png" class="paginatorImg" alt=""> <br>
-  Another way of indexing is this binding: <img class="paginatorImg" src="/assets/Images/pagination serial 2.png" alt=""> <br> This works given the index and pageNumber start counting from 0. Adpat id they start from 1.
+  Another way of indexing is this binding (only works if the correct page size is passed into the getIndex function in the html: <img class="paginatorImg" src="/assets/Images/pagination serial 2.png" alt=""> <br> This works given the index and pageNumber start counting from 0. Adpat id they start from 1.
 </p>
 
 <!-- CODE FOR USING PAGINATION WITH CORRECT INDEXING -->
@@ -246,3 +251,8 @@
 
 
 </section>
+<!-- <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+  <div *ngIf="password?.errors?.['required']">
+      Password is required.
+  </div>
+</div> -->

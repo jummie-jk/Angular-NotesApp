@@ -5,6 +5,7 @@
     </div>
       <div class="card-body" style="padding: 30px 50px 30px;">
        <h5> <ol>
+          <li>This app isn't for your notetaking but <span class="blue">referencing</span>. </li> <br>
           <li>Anything you're looking for, start with a keyword search using <span class="blue"> "ctrl F"</span>. </li> <br>
           <li>Anything you don't understand, <span class="blue">go into the code</span>  where that thing is implemented. The comments there would help. <br> <i class="comment">(I often used the same names in the code as in the examples)</i></li> <br>
           <li>You'll often find frames containing syntaxes which you can easily <span class="blue">copy, paste & edit</span>. <br> <i class="comment">(Use this app for reference purposes)</i></li> <br>
@@ -16,21 +17,21 @@
     <br>
     <div class="dark">
       <h3 style="text-align: center;">Frequent Actions</h3> <hr>
-      I want to:
+      I want to: <a [routerLink]="['/pages/filters-page']" fragment="filterSteps"> Filter </a>
       <ol>
-        <li>get a button to click automatically: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>display data items, all with the same formatting: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>filter a list by a specific criterion: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>filter a list by keyword: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>route by id: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>perform a post (create) operation: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>show data on the view, from the backend/ts file: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>perform an edit (put) operation: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>perform a delete operation: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>duplicate a html element: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>add bootstrap or fontawesome to my app: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>display clicked items on a modal: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
-        <li>do data validation on a form/create rules for the user's filling of the form: <span (click)="goToFn()" class="goToBtn">linkHere</span>.</li>
+        <li>get a button to click automatically: <a routerLink="/pages/testing"class="goToBtn">clickHere</a> <span class="green2"> then go into the code and see how it's done.</span> </li>
+        <li>display data items, all with the same formatting: <a routerLink="/pages/testing"class="goToBtn">clickHere</a> <span class="green2"> go to the code, ctrl+F '*ngFor', then see how it's done.</span> </li>
+        <li>filter a list by a specific criterion: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>filter a list by keyword: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>route by id: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>perform a post (create) operation: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>show data on the view, from the backend/ts file: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>perform an edit (put) operation: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>perform a delete operation: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>duplicate a html element: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>add bootstrap or fontawesome to my app: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>display clicked items on a modal: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
+        <li>do data validation on a form/create rules for the user's filling of the form: <span (click)="goToFn()" class="goToBtn">clickHere</span>.</li>
       </ol>
-    </div>
+    </div>                                         <span class="green2"></span>
 </section>
