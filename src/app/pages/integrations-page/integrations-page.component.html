@@ -304,7 +304,7 @@
 
   <p><B>Signing Into Swagger</B>:</p>
   <ol>
-    <li>Go to user auth --> click "try it out" --> replace 'string' with username then password --> put client's ID and
+    <li>Go to user auth --> click the login endpoint --> click "try it out" --> replace 'string' with username then password --> put client's ID and
       Key (from environments.ts). --> click execute</li>
     <li>It returns a token at the end of the response --> copy token --> scroll to top and click 'authorize' --> in
       vlaue field type 'bearer pasteTokenNumber' --> click authorize. </li>
@@ -621,8 +621,9 @@
   <p><b>Routing With Property Binding</b>: Normally, routing is done going forward from one path to the other with the
     previous path appended at the beginning of the new path. With property binding, you can make it route from one path
     directly to an entirely different path, which is not a child of the current view.<br>
-    To ropute to a different location, use property binding like so: <code class="codeC2">
-      [routerLink]="<code>['route/route']</code>"</code> where the red text is the bound content of the quotation of the
+    To ropute to a different location, use property binding like so:
+    <code class="codeC2"> [routerLink]="<code>['route/route']</code>"</code>
+    where the red text is the bound content of the quotation of the
     routerLink.</p>
   <p><b>Event Binding</b> : () being used is for event binding. E.g (click), (change), etc. That makes the code listen
     for the event in the parenthesis. </p>
@@ -631,7 +632,8 @@
     The property binding is used send imput from the html to the ts. </p>
   <p>When working with an interface, the [] means be restricted to that particular interface but it doesn't drill down
     to the child interfaces. That bracket makes it specific, limited to the parent interface. <br>
-  The [] also means that what's expected from the back end is an array, so if you're expecting an array from the back end and they type is not expectedObject[], it may throw an error. </p> <br>
+  The [] also means that what's expected from the back end is an array, so if you're expecting an array from the back end and they type is not expectedObject[], it may throw an error. <br>
+  If you get an error saying <span class="codeC2">Type 'X' is missing the following properties from type 'X[]': length, pop, push, concat, and 26 more.</span> then ensure in your interface.ts, you put the [ ] at the data type of what's expected to be an array. Also ensure it's put as the data type of the object in the component.ts.</p> <br>
   <p>Use pipes whenever you need to make app-specific data transformations which would be re-used often.</p>
 
 
