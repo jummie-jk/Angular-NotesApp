@@ -6,8 +6,8 @@
       <div class="card-body" style="padding: 30px 50px 30px;">
        <h5> <ol>
           <li>This app isn't for your notetaking but <span class="blue">referencing</span>. </li> <br>
-          <li>Anything you're looking for, start with a keyword search using <span class="blue"> "ctrl F"</span>. </li> <br>
-          <li>Anything you don't understand, <span class="blue">go into the code</span>  where that thing is implemented. The comments there would help. <br> <i class="comment">(I often used the same names in the code as in the examples)</i></li> <br>
+          <li>Anything you're looking for, start with a keyword search using <span class="blue"> "ctrl F"</span>, or look for it in <span class="blue">"Frequent Actions"</span> below. </li> <br>
+          <li>Anything unclear, <span class="blue">go into the code</span>  where that thing is implemented (you'll be doing this a lot). The comments there would help. <br> <i class="comment">(I often used the same names in the code as in the examples)</i></li> <br>
           <li>You'll often find frames containing syntaxes which you can easily <span class="blue">copy, paste & edit</span>. <br> <i class="comment">(Use this app for reference purposes)</i></li> <br>
           <li><div>The "Testing2" page is basically a free page, mainly for testing any random angular code you see online and want
             to try out.</div></li>
@@ -17,21 +17,24 @@
     <br>
     <div class="dark">
       <h3 style="text-align: center;">Frequent Actions</h3> <hr>
-      I want to: <a [routerLink]="['/pages/filters-page']" fragment="filterSteps"> Filter </a>
+      I want to:
+      <!-- <a [routerLink]="['/pages/filters-page']" fragment="filterSteps"> Filter </a> -->
       <ol>
         <li>get a button to click automatically: <a routerLink="/pages/testing"class="goToBtn">clickHere</a> <span class="green2"> then go into the code of that page and see how it's done.</span> </li>
         <li>display data items, all with the same formatting: <a routerLink="/pages/testing"class="goToBtn">clickHere</a> <span class="green2"> to view the list, then go to the code of that page, ctrl+F '*ngFor', then see how it's done.</span> </li>
         <li>filter a list by a specific criterion: <a [routerLink]="['/pages/filters-page']" class="goToBtn" fragment="FilteringByType">clickHere </a>        <span class="green2">then read it. If you need to check the code of the page.</span>.</li>
-        <li>filter a list by keyword: <a [routerLink]="['/pages/filters-page']"class="goToBtn" fragment="FilteringByString">clickHere </a>        <span  class="green2">then read it. If you need to check the code of the page.</span>.</li>
+        <li>filter a list by keyword: <a [routerLink]="['/pages/filters-page']"class="goToBtn" fragment="FilteringByString">clickHere </a>        <span  class="green2">then read it. If you need to, check the code of the page.</span>.</li>
         <li>route by id: <a [routerLink]="['/pages/routing-page']"class="goToBtn" fragment="readRoute">clickHere </a>        <span class="green2">then read it. You may also check the reference links if it's not clear.</span>.</li>
-        <li>perform a post (create) operation: <a routerLink=""class="goToBtn">clickHere </a>        <span class="green2">textHere</span>.</li>
-        <li>show data on the view, from the backend/ts file: <a routerLink=""class="goToBtn">clickHere </a>        <span class="green2">textHere</span>.</li>
-        <li>perform an edit (put) operation: <a routerLink=""class="goToBtn">clickHere </a>        <span class="green2">textHere</span>.</li>
-        <li>perform a delete operation: <a routerLink=""class="goToBtn">clickHere </a>        <span class="green2">textHere</span>.</li>
-        <li>duplicate a html element: <a routerLink=""class="goToBtn">clickHere </a>        <span class="green2">textHere</span>.</li>
-        <li>add bootstrap or fontawesome to my app: <a routerLink=""class="goToBtn">clickHere </a>        <span class="green2">textHere</span>.</li>
-        <li>display clicked items on a modal: <a routerLink=""class="goToBtn">clickHere </a>        <span class="green2">textHere</span>.</li>
-        <li>do data validation on a form/create rules for the user's filling of the form: <a routerLink=""class="goToBtn">clickHere </a>        <span  class="green2">textHere</span>.</li>
+        <li>show data on the view, from the backend/ts file: <a [routerLink]="['/pages/integrations']" fragment="view" class="goToBtn">clickHere</a>        <span class="green2"> and read the notes, you can also check the code where it's implemented in the "view-detail-page" of the testing page folder for more clarity</span>.</li>
+        <li>perform a post (create) operation: <a [routerLink]="['/pages/integrations']" fragment="post" class="goToBtn">clickHere</a>        <span class="green2"> then read the notes, check the code where it's implemented in the "create-new" folder of the testing page folder for more clarity</span>.</li>
+        <li>perform an edit (put) operation: <a [routerLink]="['/pages/integrations']" fragment="edit" class="goToBtn">clickHere</a>        <span class="green2"> then read the notes, also check the code where it's implemented in the "edit-page" of the testing page folder for more clarity</span>.</li>
+        <li>perform a delete operation: <a [routerLink]="['/pages/integrations']" fragment="delete" class="goToBtn">clickHere</a>        <span class="green2"> then read the notes. You can also check how it's implemented in the code of the "testing-page"</span>.</li>
+        <li>delete using a confirmation modal (by id): <a [routerLink]="['/pages/routing-page']"class="goToBtn" fragment="deleteById">clickHere</a>        <span class="green2"> then read it. You may also check the reference links if it's not clear.</span>.</li>
+        <li>duplicate a html element: <a [routerLink]="['/pages/form-duplication-page']" fragment="formDuplication" class="goToBtn">clickHere</a>        <span class="green2"> then read the notes below it. You can also go into the code of that page to see how it's done in more detail.</span>.</li>
+        <li>add bootstrap or fontawesome to my app: <a [routerLink]="['/pages/cdn-page']" fragment="cdn" class="goToBtn">clickHere</a>        <span class="green2"> and read the notes. Then try it out yourself.</span>.</li>
+        <li>display clicked items on a modal: <a [routerLink]="['/pages/complexity-page']" fragment="complexForm" class="goToBtn">clickHere</a>        <span class="green2"> then click the view button. It'll display the details of that item on a modal. You can then go into the code of that page to see how it's done.</span>.</li>
+        <li>do data validation on a form/create rules for the user's filling of the form: <a [routerLink]="['/pages/complexity-page']" fragment="complexForm" class="goToBtn">clickHere</a>        <span  class="green2"> then click the "New +" button. It'll show you a form on which validation has been added. Go into the code of that page and see how it is done.</span>.</li>
+        <li>do pagination: <a [routerLink]="['/pages/complexity-page']" fragment="slicePagination" class="goToBtn">clickHere</a>        <span  class="green2"> and read the notes. You're most likely to use the "Pagination with pageSlice"</span>.</li>
       </ol>
     </div>                                         <span class="green2"></span>
 </section>

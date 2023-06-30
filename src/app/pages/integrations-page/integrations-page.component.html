@@ -262,14 +262,6 @@
     <li>Write the get method (subscribing to the observable in it) and test that it works.</li>
   </ol>
 
-  <h4>The Get Method </h4>
-  <p>Use this method to test that your back end works</p>
-
-  <br>
-  <p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by
-    the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and
-    working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order
-    of how they'll happen. </p>
 
 
   <h1>CRUD Operations</h1>
@@ -310,26 +302,7 @@
       vlaue field type 'bearer pasteTokenNumber' --> click authorize. </li>
   </ol>
 
-  <p><b>Getting Data to UI</b>: When trying to get data from Swagger to the UI, these were the steps:</p>
-  <ol>
-    <li>Create an interface for the data expected to come in from Swagger (backened) to perfectly match the data types
-      expected for each thing. A parent interface and a child interface (which would be used as a data type in the
-      parent). <br>
-      Between the use of parent and child interfaces all the objects in the response body should be properly accounted
-      for in the interfaces. </li>
-    <li>I wrote a function in the service.ts to get the data from Swagger, of an observable interface type (<i>remember
-        the [] should be ommitted so that child interfaces can be accessed</i>), passing in the userId which it's to get
-      the data by. It returns a get method that uses the link to the Swagger data (or relevant backend) and passing in
-      the userId to get it by. </li>
-    <li>I then wrote in the ts file, a get method calling the function from the service, passing in the userId and
-      .subscribe to it.</li>
-    <li>In the response after the .subscribe, I passed the response into an object "jobs" (which would have to be
-      defined with it's correct type in the definitions section, prolly an interface). </li>
-    <li>In ngOnInit call <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run
-      automatically when the page is loaded and you can actually have access to the data. </li>
-    <li>In the HTML, bind the object "jobs" (which you passed the response into), then you can use .whatever from the
-      interface child or JavaScript method and it'll show.</li>
-  </ol><br>
+<br>
 
   <!-- ----------------  Reading Route Parameter  ------------------------- -->
 
@@ -358,9 +331,120 @@
   <h1><u>Doing CRUD</u></h1>
   <p>These are notes on the basic steps taken in each of the crud operations.</p>
 
+    <!-- --------------------------GET CRUD------------------------------------ -->
+
+  <h3 id="uhn">GET</h3>
+  <p><b>The Get Method</b>: Use this method to get data of any sort from the backend</p>
+
+  <br>
+  <p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by
+    the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and
+    working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order
+    of how they'll happen. </p>
+  <p><b>Getting Data to UI</b>: When trying to get data from Swagger to the UI (especially if it's a list), these are the steps:</p>
+  <ol>
+    <li>Create an interface for the data expected to come in from Swagger (backened) to perfectly match the data types
+      expected for each thing. A parent interface and a child interface (which would be used as a data type in the
+      parent). <br>
+      Between the use of parent and child interfaces all the objects in the response body should be properly accounted
+      for in the interfaces. </li>
+    <li>I wrote a function in the service.ts to get the data from Swagger, of an observable interface type (<i>remember
+        the [] should be ommitted so that child interfaces can be accessed</i>), passing in the userId which it's to get
+      the data by. It returns a get method that uses the link to the Swagger data (or relevant backend) and passing in
+      the userId to get it by. </li>
+    <li>I then wrote in the ts file, a get method calling the function from the service, passing in the userId and
+      .subscribe to it.</li>
+    <li>In the response after the .subscribe, I passed the response into an object "jobs" (which would have to be
+      defined with it's correct type in the definitions section, prolly an interface). </li>
+    <li>In ngOnInit call <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run
+      automatically when the page is loaded and you can actually have access to the data. </li>
+    <li>In the HTML, bind the object "jobs" (which you passed the response into), then you can use .whatever from the
+      interface child or JavaScript method and it'll show.</li>
+  </ol><br>
+
+      <!-- --------------------------VIEW CRUD------------------------------------ -->
+
+      <h3 id="view">VIEW</h3>
+      <p>Use the routing to let the code know which item you're viewing by binding the id to the route as shown in the
+        <button (click)="goToreadRoute()">reading a route parameter</button> section above.<br>
+        Go to the ts file of the view page then:</p>
+      <ol>
+        <li> Import Subscription from rxjs, make a private sub: Subscription in the definitions section. </li>
+        <li> Import and inject ActivatedRoute(in constructor).</li>
+        <li> Create an <b>object: IData</b> to hold your res. </li>
+        <li> Write your getById method calling the getById of the service.ts, subscribing and passing the res into the
+          <b>object</b>. </li>
+        <li> In ngOnInit, write code to read the route parameter and in the same fn run your getById method, passing in the
+          id you just read. </li>
+        <li> Data bind it in the html using <code class="codeC2">{{'{'}}{{'{'}}object.parameter{{'}'}}{{'}'}}</code> </li>
+      </ol>
+      <p>Here's the code example for numbers 4 and 5 (5 first). &nbsp;&nbsp; <i>Both show different ways (syntaxes) to write
+          the response after a subscribe.</i></p>
+      <div class="frame">
+        <code>
+          ngOnInit(): void {{'{'}} <br>
+          <!-- //reading the id of an item from the id in the path at the top bar of the page      <br> -->
+          &nbsp; this.sub = this.route.paramMap.subscribe( <br>
+          &nbsp;&nbsp; params => {{'{'}} <br>
+          <!-- //this pulls the id from the parameters array and puts into the const which is then put into the getItemForViewingById method. <br> -->
+          &nbsp;&nbsp;&nbsp;&nbsp; const id = +params.get('id')!; <br>
+          &nbsp;&nbsp;&nbsp;&nbsp; this.getItemForViewingById(id); <br>
+          &nbsp;&nbsp; {{'}'}} <br>
+          &nbsp; ) <br>
+          {{'}'}} <br>
+          <br>
+          getItemForViewingById(id: number): void {{'{'}} <br>
+          &nbsp; this.service.getDataById(id) <br>
+          &nbsp;&nbsp; .subscribe({{'{'}} <br>
+          &nbsp;&nbsp;
+          <!-- // next: (res: IData) => console.log(res),      <br> -->
+          &nbsp;&nbsp; next: res => this.item = res, <br>
+          &nbsp; {{'}'}}); <br>
+          {{'}'}} <br>
+        </code>
+      </div>
+      <br>
+
+
+
+
+
+  <!-- --------------------------CREATE CRUD------------------------------------ -->
+
+  <H3 id="post">CREATE (POST)</H3>
+  <ol>
+    <li>Write http.post function in service.</li>
+    <li>Call it up in a local create fn. In this fn, you put the form group into a const 'I' -> next line, pass 'I' into
+      <code class="codeC2">this.service.createItem</code> fn</li>
+  </ol>
+  <p>Here are the functions in the service and then the local create (save) fn in the ts respectively</p>
+  <div class="frame">
+    <code>
+       createItem(savedItem: IData) {{'{'}} <br>
+      &nbsp;&nbsp; const headers = new HttpHeaders ({{'{'}}'Content-Type' : 'application/json'{{'}'}}); <span class="comment">//specifies that the content will be in json format</span> <br>
+      &nbsp;&nbsp; return this.http.post&lt;IData&gt;(this.baseUrl, savedItem, {{'{'}} headers {{'}'}}) <br>
+       {{'}'}} <br>
+    </code>
+    <br>
+    <code>
+      saveFn(){{'{'}}               <br>
+     &nbsp;   const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span class="comment">//copies listDataForm's value over item and puts the result inside I</span>               <br>
+     &nbsp;   this.service.createItem(I)               <br>
+     &nbsp;&nbsp;     .subscribe({{'{'}}               <br>
+     &nbsp;&nbsp; &nbsp;      next: () => this.onSaveComplete()               <br>
+     &nbsp;&nbsp;      {{'}'}}) <br>
+           {{'}'}}               <br>
+      onSaveComplete(): void {{'{'}}               <br>
+     &nbsp;  this.router.navigate(["/pages/testing"]);               <br>
+      {{'}'}}               <br>
+    </code>
+  </div>
+  <br>
+
+
   <!-- --------------------------EDIT CRUD------------------------------------ -->
 
-  <h3>EDIT</h3>
+  <h3 id="edit">EDIT (PUT)</h3>
  Basic steps: ** capture the id,  (so it shows in address)
 ** route using it,
 ** getById (service),
@@ -420,113 +504,41 @@
     </code>
   </div>
   <br>
-  <h5>SAVING</h5>
-  <p>To edit, you need to actually save changes. Done by using JS spread properties which lets us copy data from an
-    existing object to a new object, edit that and push it. like so: <img class="img"
-      src="/assets/Images/saving edits.png" alt=""></p>
-  <p>The update function essentially takes in the item you juse edited, and in the http.put, it says "here's the url, to
-    put this item, as a json. Like so:</p>
-  <img class="img" src="/assets/Images/http put.png" alt="">
-  <ol>
-    <li>Write the updateItem function in the service. Use the format in tht image above.</li>
-    <li>Write a local saveEditsFn method that calls <code class="codeC2">this.service.updateItem(P)</code>, passing in
-      the const P where your edits have been pasted over the old edits. --> Subscribe to the observable returned by the
-      update method --> use <code class="codeC2">next: () => this.onSaveComplete.()</code>. onSaveComplete can just
-      route to wherever (<i>or this.form.reset() first</i>).</li>
-  </ol>
-  <p>Here's the edit method, just reworded a bit:</p>
-  <div class="frame">
-    <code>
-      &nbsp;saveEditsFn(): void{{'{'}} <br>
-      &nbsp;&nbsp; const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span class="comment">//copies listDataForm's value over item and puts the result inside I</span>
-      <br>
-      &nbsp;&nbsp; this.service.updateItem(I) <br>
-      &nbsp;&nbsp;&nbsp; .subscribe({{'{'}} <br>
-      &nbsp;&nbsp;&nbsp; next: () => this.onSaveComplete() <br>
-      &nbsp;&nbsp; {{'}'}}) <br>
-      {{'}'}} <br>
-    </code>
-  </div>
-  <br>
 
-  <!-- --------------------------VIEW CRUD------------------------------------ -->
+    <!-- --------------------------POST CRUD------------------------------------ -->
 
-  <h3>VIEW</h3>
-  <p>Use the routing to let the code know which item you're viewing by binding the id to the route as shown in the
-    <button (click)="goToreadRoute()">reading a route parameter</button> section above.<br>
-    Go to the ts file of the view page then:</p>
-  <ol>
-    <li> Import Subscription from rxjs, make a private sub: Subscription in the definitions section. </li>
-    <li> Import and inject ActivatedRoute(in constructor).</li>
-    <li> Create an <b>object: IData</b> to hold your res. </li>
-    <li> Write your getById method calling the getById of the service.ts, subscribing and passing the res into the
-      <b>object</b>. </li>
-    <li> In ngOnInit, write code to read the route parameter and in the same fn run your getById method, passing in the
-      id you just read. </li>
-    <li> Data bind it in the html using <code class="codeC2">{{'{'}}{{'{'}}object.parameter{{'}'}}{{'}'}}</code> </li>
-  </ol>
-  <p>Here's the code example for numbers 4 and 5 (5 first). &nbsp;&nbsp; <i>Both show different ways (syntaxes) to write
-      the response after a subscribe.</i></p>
-  <div class="frame">
-    <code>
-      ngOnInit(): void {{'{'}} <br>
-      <!-- //reading the id of an item from the id in the path at the top bar of the page      <br> -->
-      &nbsp; this.sub = this.route.paramMap.subscribe( <br>
-      &nbsp;&nbsp; params => {{'{'}} <br>
-      <!-- //this pulls the id from the parameters array and puts into the const which is then put into the getItemForViewingById method. <br> -->
-      &nbsp;&nbsp;&nbsp;&nbsp; const id = +params.get('id')!; <br>
-      &nbsp;&nbsp;&nbsp;&nbsp; this.getItemForViewingById(id); <br>
-      &nbsp;&nbsp; {{'}'}} <br>
-      &nbsp; ) <br>
-      {{'}'}} <br>
-      <br>
-      getItemForViewingById(id: number): void {{'{'}} <br>
-      &nbsp; this.service.getDataById(id) <br>
-      &nbsp;&nbsp; .subscribe({{'{'}} <br>
-      &nbsp;&nbsp;
-      <!-- // next: (res: IData) => console.log(res),      <br> -->
-      &nbsp;&nbsp; next: res => this.item = res, <br>
-      &nbsp; {{'}'}}); <br>
-      {{'}'}} <br>
-    </code>
-  </div>
-  <br>
-
-  <!-- --------------------------CREATE CRUD------------------------------------ -->
-
-  <H3>CREATE</H3>
-  <ol>
-    <li>Write http.post function in service.</li>
-    <li>Call it up in a local create fn. In this fn, you put the form group into a const 'I' -> next line, pass 'I' into
-      <code class="codeC2">this.service.createItem</code> fn</li>
-  </ol>
-  <p>Here are the functions in the service and then the local create (save) fn in the ts respectively</p>
-  <div class="frame">
-    <code>
-       createItem(savedItem: IData) {{'{'}} <br>
-      &nbsp;&nbsp; const headers = new HttpHeaders ({{'{'}}'Content-Type' : 'application/json'{{'}'}}); <span class="comment">//specifies that the content will be in json format</span> <br>
-      &nbsp;&nbsp; return this.http.post&lt;IData&gt;(this.baseUrl, savedItem, {{'{'}} headers {{'}'}}) <br>
-       {{'}'}} <br>
-    </code>
+    <h3 id="uhn">SAVING (PUT)</h3>
+    <p>To edit, you need to actually save changes. Done by using JS spread properties which lets us copy data from an
+      existing object to a new object, edit that and push it. like so: <img class="img"
+        src="/assets/Images/saving edits.png" alt=""></p>
+    <p>The update function essentially takes in the item you juse edited, and in the http.put, it says "here's the url, to
+      put this item, as a json. Like so:</p>
+    <img class="img" src="/assets/Images/http put.png" alt="">
+    <ol>
+      <li>Write the updateItem function in the service. Use the format in tht image above.</li>
+      <li>Write a local saveEditsFn method that calls <code class="codeC2">this.service.updateItem(P)</code>, passing in
+        the const P where your edits have been pasted over the old edits. --> Subscribe to the observable returned by the
+        update method --> use <code class="codeC2">next: () => this.onSaveComplete.()</code>. onSaveComplete can just
+        route to wherever (<i>or this.form.reset() first</i>).</li>
+    </ol>
+    <p>Here's the edit method, just reworded a bit:</p>
+    <div class="frame">
+      <code>
+        &nbsp;saveEditsFn(): void{{'{'}} <br>
+        &nbsp;&nbsp; const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span class="comment">//copies listDataForm's value over item and puts the result inside I</span>
+        <br>
+        &nbsp;&nbsp; this.service.updateItem(I) <br>
+        &nbsp;&nbsp;&nbsp; .subscribe({{'{'}} <br>
+        &nbsp;&nbsp;&nbsp; next: () => this.onSaveComplete() <br>
+        &nbsp;&nbsp; {{'}'}}) <br>
+        {{'}'}} <br>
+      </code>
+    </div>
     <br>
-    <code>
-      saveFn(){{'{'}}               <br>
-     &nbsp;   const I = {{'{'}}...this.item, ...this.listDataForm.value{{'}'}} <span class="comment">//copies listDataForm's value over item and puts the result inside I</span>               <br>
-     &nbsp;   this.service.createItem(I)               <br>
-     &nbsp;&nbsp;     .subscribe({{'{'}}               <br>
-     &nbsp;&nbsp; &nbsp;      next: () => this.onSaveComplete()               <br>
-     &nbsp;&nbsp;      {{'}'}}) <br>
-           {{'}'}}               <br>
-      onSaveComplete(): void {{'{'}}               <br>
-     &nbsp;  this.router.navigate(["/pages/testing"]);               <br>
-      {{'}'}}               <br>
-    </code>
-  </div>
-  <br>
 
   <!-- --------------------------DELETE CRUD------------------------------------ -->
 
-  <h3>DELETE</h3>
+  <h3 id="delete">DELETE</h3>
   <p>In most delete cases the item isn't truly deleted. A http.put is just used to set its status as deleted so that
     what's showing on the UI are only those with status of "not-deleted", or those that don't include the delete status
     depending on how you want to write it. </p>
@@ -537,7 +549,10 @@
         src="/assets/Images/http delete.png" alt=""> </li>
     <li>Call it up with a local delete function. <br> <img class="img" src="/assets/Images/call delete method.png"
         alt=""> </li>
+        <h3><b>Deleting using a confirmation modal.</b></h3>
+        <p>Sometimes you may need to use a modal to confirm whether to delete an item or not before deleting. If that's the kind of delete you want to do, <a [routerLink]="['/pages/routing-page']" fragment="deleteById" class="codeC2">clickHere</a>, test the delete button you see there to be sure it's the kind of delete you want to do, then read the notes and check the code of this app to see how it's done.</p>
   </ol>
+  <br>
 
   <h1><b>Syntaxes</b>:</h1>
   <h3>Subscription:</h3>

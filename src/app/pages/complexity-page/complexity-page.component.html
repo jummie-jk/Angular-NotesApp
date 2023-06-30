@@ -17,7 +17,7 @@
 
   <!-- COMPLEX FORM BEGINS -->
   <div class="card">
-    <div style="font-size:x-large; color: black;" class="card-header">
+    <div style="font-size:x-large; color: black;" class="card-header" id="complexForm">
       List of Data
     </div>
     <div style="text-align: center;">
@@ -225,16 +225,28 @@
 
 
 
-<hr><p>to be removed: for some reason, the data on the list stopped showing when I bound the viewItem.stuff to the view modal. I removed the binding and it showed again. This issue is getting worse as I work so I have to fix it.<br> However, there are more pressing things to learn/document so I put that on hold.</p>
+<hr><p>to be removed: for some reason, the data on the list stopped showing when I bound the viewItem.stuff to the view modal. I removed the binding and it showed again. This issue is getting worse as I work so I have to fix it.<br> However, there are more pressing things to learn/document so I put that on hold.</p> <p><b>Update:</b> that happened because of typeScript Error cannot find properties of undefined reading viewItem.stuff. This is because I didn't define the viewItem.stuff specifically in the ts, it can also be avoided by wrigint viewItem?.stuff.</p>
 <hr> <br> <br>
 <h2>Notes</h2>
 <p> <b>INDEXING</b>: To achieve the indexing of the list, use this syntax in your ngFor: <code class="codeC2">*ngFor="let item of filteredData; let i = index"</code> <br>
-   then where you want the index numbers to be, bind it putting <span class="codeC2">i + 1</span> in double curly braces. </p>
-<p> <b>PAGINATION</b>: While the mat-paginator is not in this app due to dependency issues, it's simple to use. Import it in the module's imports section, define the parameters in the ts then use the <code>&lt;mat-paginator&gt;&lt;/mat-paginator&gt;</code> html tag, binding the parameters from the ts in the properties. like so: <br>
+   then where you want the index numbers to be, bind it putting <span class="codeC2">i + 1</span> in double curly braces. </p> <br>
+<h2>Pagination</h2>
+   <p>While the mat-paginator is not in this app due to dependency issues, it's simple to use. Import it in the module's imports section, define the parameters in the ts (resultLength, pageNumber etc) then use the <code>&lt;mat-paginator&gt;&lt;/mat-paginator&gt;</code> html tag, binding the parameters from the ts in the attributes. like so: <br>
   <span class="codeC2">&lt;mat-paginator #paginator [length]="resultLength" [pageIndex]="pageNumber" [pageSize]="10" &gt;
   &lt;/mat-paginator&gt;</span> <br>
   For correct serial indexing, use this *ngIf: <img src="/assets/Images/paginator indexing.png" class="paginatorImg" alt=""> <br>
-  Another way of indexing is this binding (only works if the correct page size is passed into the getIndex function in the html: <img class="paginatorImg" src="/assets/Images/pagination serial 2.png" alt=""> <br> This works given the index and pageNumber start counting from 0. Adpat id they start from 1.
+<h3 id="slicePagination">Pagination with pageSlice</h3>
+<p>
+  This is the best method of pagination and the one you're most likely to use. <br>
+  This method involves working with the "<code class="codeC2">pageSlice</code>" object, which is basically defining the section (slice) of the array you want to be displayed per page of the ngFor loop. That defined section (slice) alone would show and on the next page, the next section (slice) would show and so on. Your ngFor would then show "<code class="codeC2">let item of pageSlice</code>" <br>
+  Below is how you define and populate the pageSlice. <br>
+</p>
+<img class="paginatorImg" src="/assets/Images/pageSlice explanation.png" alt="">
+
+
+<p>Be sure to define all the necessary parameters in the ts like pageSize, pageNumber etc to be passed into the getIndex function in the html: <br>
+   <img class="paginatorImg" src="/assets/Images/pagination serial 2.png" alt=""> <br> This works given the index and pageNumber start counting from 0. Adpat accordingly if they start from 1. <br>
+   the <code class="codeC2">onPageChange</code> fn is event bound to the 'page' attribute of the mat-paginator tag so that as the page changes, the indexes (item numbering) would change accordingly.
 </p>
 
 <!-- CODE FOR USING PAGINATION WITH CORRECT INDEXING -->
