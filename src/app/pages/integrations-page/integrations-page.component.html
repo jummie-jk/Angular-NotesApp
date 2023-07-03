@@ -283,6 +283,10 @@
     <div class="frame">
       <code>[routerLink]="['/products', product.id, 'edit']"</code>
     </div>
+    <p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by
+      the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and
+      working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order
+      of how they'll happen. </p>
     <p><b>--Void in functions</b>: When a function doesn't state to return <code>'void</code> or <code>'any</code>, you
       have to state <code>returns yourCodeHere</code> for things to work. It your function returns void, you can go
       straight into coding.</p>
@@ -333,33 +337,29 @@
 
     <!-- --------------------------GET CRUD------------------------------------ -->
 
-  <h3 id="uhn">GET</h3>
+  <h3 id="get">GET</h3>
   <p><b>The Get Method</b>: Use this method to get data of any sort from the backend</p>
 
   <br>
-  <p>Essentially, function A happens, then B is called, who then returns an observable and as function C is alerted by
-    the observable, he runs and his result calls function D etc. That's pretty much the flow of getting, posting and
-    working with HTTP requests as I've noticed it. That's how the logic flows, so perhaps write the functions in order
-    of how they'll happen. </p>
-  <p><b>Getting Data to UI</b>: When trying to get data from Swagger to the UI (especially if it's a list), these are the steps:</p>
+  <p><b>Getting Data to UI</b>: When trying to get data from Swagger to the UI (especially if it's a list), these are the steps (pay attention to what's in bold):</p>
   <ol>
-    <li>Create an interface for the data expected to come in from Swagger (backened) to perfectly match the data types
+    <li><b>Create an interface</b> for the data expected to come in from Swagger (backened) to perfectly match the data types
       expected for each thing. A parent interface and a child interface (which would be used as a data type in the
       parent). <br>
       Between the use of parent and child interfaces all the objects in the response body should be properly accounted
       for in the interfaces. </li>
-    <li>I wrote a function in the service.ts to get the data from Swagger, of an observable interface type (<i>remember
+    <li><b>I wrote a function in the service.ts</b> to get the data from Swagger, of an observable interface type (<i>remember
         the [] should be ommitted so that child interfaces can be accessed</i>), passing in the userId which it's to get
       the data by. It returns a get method that uses the link to the Swagger data (or relevant backend) and passing in
       the userId to get it by. </li>
-    <li>I then wrote in the ts file, a get method calling the function from the service, passing in the userId and
+    <li><b>I then wrote in the ts file</b>, a get method calling the function from the service, passing in the userId and
       .subscribe to it.</li>
-    <li>In the response after the .subscribe, I passed the response into an object "jobs" (which would have to be
+    <li>In the response after the .subscribe, <b>I passed the response into an object "jobs"</b> (which would have to be
       defined with it's correct type in the definitions section, prolly an interface). </li>
-    <li>In ngOnInit call <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run
+    <li><b>In ngOnInit call </b> <code class="codeC2">this.yourGetMethod(userId)</code>. So that the get method would run
       automatically when the page is loaded and you can actually have access to the data. </li>
-    <li>In the HTML, bind the object "jobs" (which you passed the response into), then you can use .whatever from the
-      interface child or JavaScript method and it'll show.</li>
+    <li><b>In the HTML, bind the object</b> "jobs" (which you passed the response into), then you can use .whatever from the
+      interface child or JavaScript method and it'll show. You can also use <code class="codeC2">"ngFor item of jobs"</code></li>
   </ol><br>
 
       <!-- --------------------------VIEW CRUD------------------------------------ -->
