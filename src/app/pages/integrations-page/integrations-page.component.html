@@ -360,7 +360,34 @@
       automatically when the page is loaded and you can actually have access to the data. </li>
     <li><b>In the HTML, bind the object</b> "jobs" (which you passed the response into), then you can use .whatever from the
       interface child or JavaScript method and it'll show. You can also use <code class="codeC2">"ngFor item of jobs"</code></li>
-  </ol><br>
+  </ol>
+  <p>Below is a code snippet you can copy, paste and change the text to the relevant names of your own code.</p>  <br>
+
+  <div class="frame">
+    <code>
+      <span class="comment">//this is the get function in the service.ts file</span> <br>
+      getData(){{'{'}}   <br>
+        return this.http.get&lt;IInterface&gt;(`${{'{'}}this.baseUrl{{'}'}}/link/link`);   <br>
+      {{'}'}} <br>
+
+      <span class="comment">//in the ts file</span> <br>
+      ngOnInit(): void {{'{'}} <br>
+      &nbsp;&nbsp;&nbsp;&nbsp; this.getItems(); <br>
+      &nbsp;&nbsp; {{'}'}} <br>
+      <br>
+
+      <span class="comment">//this function would be called in ngOninit</span> <br>
+      &nbsp;getItems(){{'{'}}   <br>
+      &nbsp;&nbsp;  this.service.getData()<span style="color: cornflowerblue;">.subscribe(   <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;    {{'{'}} next: (res) => {{'{'}} this.fullData = res;   <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(this.fullData); {{'}'}},   <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error: (error) => {{'{'}} console.log(error); {{'}'}} <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'}'}}   <br>
+      &nbsp;&nbsp;    )</span>;   <br>
+      &nbsp;{{'}'}} <br> <br>
+
+    </code>
+  </div>
 
       <!-- --------------------------VIEW CRUD------------------------------------ -->
 
