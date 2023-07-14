@@ -226,6 +226,7 @@
 
 
 <hr><p>to be removed: for some reason, the data on the list stopped showing when I bound the viewItem.stuff to the view modal. I removed the binding and it showed again. This issue is getting worse as I work so I have to fix it.<br> However, there are more pressing things to learn/document so I put that on hold.</p> <p><b>Update:</b> that happened because of typeScript Error cannot find properties of undefined reading viewItem.stuff. This is because I didn't define the viewItem.stuff specifically in the ts, it can also be avoided by wrigint viewItem?.stuff.</p>
+<p>to move to errors page: when you get error 405 "put not supported", it looks like a backend error but it's like;y that you didn't specify the link properly. Copy the actual link from the response body when you tested the endpoint, not from the way the link is written in the documentation.</p>
 <hr> <br> <br>
 <h2>Notes</h2>
 <p> <b>INDEXING</b>: To achieve the indexing of the list, use this syntax in your ngFor: <code class="codeC2">*ngFor="let item of filteredData; let i = index"</code> <br>
@@ -245,9 +246,32 @@
 
 
 <p>Be sure to define all the necessary parameters in the ts like pageSize, pageNumber etc to be passed into the getIndex function in the html: <br>
-   <img class="paginatorImg" src="/assets/Images/pagination serial 2.png" alt=""> <br> This works given the index and pageNumber start counting from 0. Adpat accordingly if they start from 1. <br>
+   <img class="paginatorImg" src="/assets/Images/pagination serial 2.png" alt="">    <br>
+   This works given the index and pageNumber start counting from 0. Adpat accordingly if they start from 1. <br>
    the <code class="codeC2">onPageChange</code> fn is event bound to the 'page' attribute of the mat-paginator tag so that as the page changes, the indexes (item numbering) would change accordingly.
 </p>
+<p><b>Important:</b><br>
+   -- The pageSize and pageNumber (of component.ts) in this case should NOT go into the service.ts get function (they're only for the getIndex fn of component.ts and the mat-paginator tag of the html) because we're doing client side pagination here. <br>
+   -- Lastly, ensure that from the service.ts get fn, the pageSize (this is the one Swagger would use) is set to a number so high the user isn't likely to have that number of entries in the database like 1000000.</p>
+<br><br>
+
+<h1>Server Side Pagination</h1><hr>
+<p>Carefully read and use the below steps for server side pagination (knowing client side pagination is a prerequisite).</p>
+<ol>
+  <li> Properly define these three:  &nbsp;&nbsp;  pageSize: number = X;  &nbsp;&nbsp;  pageNumber: number = X;  &nbsp;&nbsp;  resultLength: number; <br>
+    These are the values that'll go to Swagger (by passing them into your <code class="codeC2">service.getDataById</code> fn), <b>those same objects</b> would be bound to the html appropriately (in the mat-paginator tag), so <b><code class="">they have to be defined in the component.ts file</code></b> (NOT the service.ts file this time). <br>
+    pageSize and pageNumber are going to Swagger, then in the html are the mat-paginator tag's pageSize and pageIndex respectively. resultLength is the res.totalElements from Swagger.
+</li> <br>
+<li> Define paginator in viewchild. <br>
+<img src="/assets/Images/paginator in viewChild.png" alt="" class="paginatorImg">
+then add <code class="codeC2">#paginator</code> to the mat-paginator tag.</li> <br>
+<li> In ngAfterViewInit, subscribe to the paginator and re-populate your ngFor object. <br>
+<img src="/assets/Images/afterViewInit to make pagination worl.png" alt="" class="paginatorImg"></li>
+<li>The indexing is the same as client side pagination.</li>
+</ol>
+
+
+
 
 <!-- CODE FOR USING PAGINATION WITH CORRECT INDEXING -->
 <!-- <ul>
