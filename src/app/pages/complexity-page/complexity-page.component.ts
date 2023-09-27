@@ -85,12 +85,15 @@ export class ComplexityPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    //form model
+    //this ngOnInit defined the form model
+
+
+    //reseting the form
     this.resetForm();
-// Getting the List Data
+    // Getting the List Data
     this.getComplexData();
 
-    //for editing modal
+    //for create modal
     this.complextDataForm = this.fb.group({
       // here are the form controls and their validation rules
       serialNo: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(4), Validators.maxLength(4)]], //why's it ignoring the validations except required? Because the input was NOT set to text. Validators.pattern("^[0-9]*$") validator ensures it's a number from 0-9.
@@ -140,8 +143,11 @@ export class ComplexityPageComponent implements OnInit {
 
     getComplexData(){
       this.service.getComplexData().subscribe(
-        { next: res => { this.listData = res;
-          this.filteredData = this.listData},}
+        { next: res => {
+          this.listData = res;
+          this.filteredData = this.listData;
+          console.log("array to display: " , this.filteredData);
+        },}
         );
         ;
     }

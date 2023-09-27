@@ -18,6 +18,7 @@ import { FormDuplicationPageComponent } from './form-duplication-page/form-dupli
 import { CdnPageComponent } from './cdn-page/cdn-page.component';
 import { ComplexityPageComponent } from './complexity-page/complexity-page.component';
 import { StarsComponent } from '../Shared/stars.component';
+import { CommonIssuesPageComponent } from './common-issues-page/common-issues-page.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { StarsComponent } from '../Shared/stars.component';
     CdnPageComponent,
     ComplexityPageComponent,
     StarsComponent,
+    CommonIssuesPageComponent,
   ],
   imports: [
     CommonModule,

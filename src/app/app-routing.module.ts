@@ -12,6 +12,7 @@ import { RoutingPageComponent } from 'src/app/pages/routing-page/routing-page.co
 import { FormDuplicationPageComponent } from 'src/app/pages/form-duplication-page/form-duplication-page.component';
 import { CdnPageComponent } from 'src/app/pages/cdn-page/cdn-page.component';
 import { ComplexityPageComponent } from 'src/app/pages/complexity-page/complexity-page.component';
+import { CommonIssuesPageComponent } from './pages/common-issues-page/common-issues-page.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'pages/form-duplication-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: FormDuplicationPageComponent },
   { path: 'pages/cdn-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: CdnPageComponent },
   { path: 'pages/complexity-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: ComplexityPageComponent },
+  { path: 'pages/common-issues-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: CommonIssuesPageComponent },
 ];
 
 @NgModule({

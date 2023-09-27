@@ -1,7 +1,7 @@
 <p>complexity-page works!</p>
 <section class="text">
   This page would show the same list from testing page, but with more detail including: <br>
-  -- clean up/presentation (comples form is last part of cleanup) 👈  <br>
+  -- clean up complex form's view and edit 👈  <br>
   -- validation (new on complex form) ✅   <br>
   -- pagination (with its indexing)  ✅    <br>
   -- modals for viewing data.  ✅     <br>
@@ -225,9 +225,7 @@
 
 
 
-<hr><p>to be removed: for some reason, the data on the list stopped showing when I bound the viewItem.stuff to the view modal. I removed the binding and it showed again. This issue is getting worse as I work so I have to fix it.<br> However, there are more pressing things to learn/document so I put that on hold.</p> <p><b>Update:</b> that happened because of typeScript Error cannot find properties of undefined reading viewItem.stuff. This is because I didn't define the viewItem.stuff specifically in the ts, it can also be avoided by wrigint viewItem?.stuff.</p>
-<p>to move to errors page: when you get error 405 "put not supported", it looks like a backend error but it's like;y that you didn't specify the link properly. Copy the actual link from the response body when you tested the endpoint, not from the way the link is written in the documentation.</p>
-<hr> <br> <br>
+  <br><hr> <br>
 <h2>Notes</h2>
 <p> <b>INDEXING</b>: To achieve the indexing of the list, use this syntax in your ngFor: <code class="codeC2">*ngFor="let item of filteredData; let i = index"</code> <br>
    then where you want the index numbers to be, bind it putting <span class="codeC2">i + 1</span> in double curly braces. </p> <br>

@@ -1,0 +1,103 @@
+<p>common-issues-page works!</p>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center;">About This Page</h1>
+  </div>
+  <div class="card-body">
+    <div style="text-align: center; font-weight: bold; color: rgb(17, 17, 50);">
+      This page is meant to <span class="blue">record common errors</span> that one may encounter, and <span class="blue">how-tos</span> of some certain things that may be tricky. <br>
+      Do a "<span class="blue">ctrl + F</span>" search for a keyword in the error message you got. <br>
+      <P style="font-weight: 300; color: rgb(17, 17, 50);">For example, if you're experiencing "<span class="blue">error 405: put not supported</span>", press "<span class="blue">ctrl + F</span>" and then search for the word "<span class="blue">put</span>". That would cause a search through the keywords on the error list and take you to the errors that feature that word. That way, you can find the specific error you want to read about if it's here, without doing much scrolling.</P>
+    </div>
+  </div>
+</div>
+<br>
+
+  <section>
+    <!-- ACCORDION FORMAT, just make a new toggle function and active object for each -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion1()">
+        <h5>Title <span style="font-weight: 200;">[format of each dropdown]</span></h5>
+      </button>
+      <div class="dark" *ngIf="active1 == true">
+        <div class="text">
+          <h5 class="subheading">Issue</h5>: Content.
+          <br>
+          <hr><br>
+          <h5 class="subheading">Solution</h5>: Content "<span class="issue">problem</span>" and "<span
+            class="solution">solution</span>"".
+        </div>
+        <br>
+      </div>
+    </div>
+    <hr>
+    <!-- Typescript error cannot find type of undefined reading -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion2()">
+        <h5>TypeScript Error Cannot Find Properties of Undefined Reading X</h5>
+      </button>
+      <div class="dark" *ngIf="active2 == true">
+        <div class=" text">
+          <h5 class="subheading">Issue</h5>: for some reason, the data on my list stopped showing when I bound the
+          viewItem.stuff to the view
+          modal. I removed the binding and it showed again.
+          <br>
+          <hr><br>
+          <h5 class="subheading">Solution</h5>: that happened because of "<span class="issue">typeScript Error cannot find
+            properties of undefined reading viewItem.stuff</span>". This
+          is because I <span class="issue">didn't define the viewItem.stuff specifically in the ts</span>. To avoid this,
+          <span class="solution">define the relevant variable in the ts file (and set its value where necessary)</span> it
+          can also be avoided by simply writing <span class="solution">viewItem?.stuff</span>.
+        </div>
+        <br>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Error 405: PUT Not Supported -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion3()">
+        <h5>Error 405: PUT Not Supported</h5>
+      </button>
+      <div class="dark" *ngIf="active3 == true">
+        <div class="text">
+          <h5 class="subheading">Issue</h5>: I was trying an edit operation, but I was getting "<span class="issue">error
+            405 put not supported</span>". My code to edit was correct, but I kept getting that error.
+          <br>
+          <hr><br>
+          <h5 class="subheading">Solution</h5>: when you get <span class="issue">error 405 "put not supported"</span>, it
+          looks like a backend error but it's possible that <span class="issue">you didn't write/build the link
+            properly</span>. <span class="solution">Copy the actual link from the response body where you tested the
+            endpoint, not from the way the link is written in the documentation and ensure you've built the link
+            well</span>.
+        </div>
+        <br>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Post Image Issue  -->
+    <div>
+      <button class="accordion" (click)="toggleAccordion4()">
+        <h5>FormData must be multi-part error</h5>
+      </button>
+      <div class="dark" *ngIf="active4 == true">
+        <div class="text">
+            <h5 class="subheading">Issue</h5>: I was trying to post an image to a backend server in an edit operation, but it kept failing and telling me <span class="issue">the content-type must be multipart</span>. I specified that in my service file's post request, but it then asked for the "boundary", which is not something I can specify myself to the best of my knowledge. It's a backend string that the code generates under the hood.
+            <br>
+            <hr><br>
+            <h5 class="subheading">Solution</h5>: Instead of calling the post function in the service file, I did a work around where <span class="solution">I made the server request in the ts file</span>. <br>
+            -- I first captured the image from the upload image event, then in the edit function, I made new FormData and appended the image to it (if the image exists). <br>
+            -- I then made the put request right there in the ts file, properly capturing the relevant ID and passing in the FormData. <br>
+              Below is an image of the code: <br>
+              <img src="/assets/Images/Using formData to escape multipart error.png" alt="">
+        </div>
+        <br>
+      </div>
+    </div>
+    <hr>
+
+
+    <button class="collapseBtn" (click)="toggleCollapse()">{{collapsed ? "Close" : "Collapse"}}</button>
+    <div (click)="backToTop()" class="backToTopBtn" style="color: aliceblue;">^</div>
+  </section>
