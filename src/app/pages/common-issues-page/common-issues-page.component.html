@@ -83,14 +83,17 @@
       </button>
       <div class="dark" *ngIf="active4 == true">
         <div class="text">
-            <h5 class="subheading">Issue</h5>: I was trying to post an image to a backend server in an edit operation, but it kept failing and telling me <span class="issue">the content-type must be multipart</span>. I specified that in my service file's post request, but it then asked for the "boundary", which is not something I can specify myself to the best of my knowledge. It's a backend string that the code generates under the hood.
+            <h5 class="subheading">Issue</h5>: I was trying to post an image to a backend server in a post operation (and in the second instance an edit operation), but it kept failing and telling me <span class="issue">the content-type must be multipart</span>. I specified that in my service file's post request, but it then asked for the "boundary", which is not something I can specify by myself to the best of my knowledge. It's a backend string that the code generates under the hood.
             <br>
             <hr><br>
             <h5 class="subheading">Solution</h5>: Instead of calling the post function in the service file, I did a work around where <span class="solution">I made the server request in the ts file</span>. <br>
-            -- I first captured the image from the upload image event, then in the edit function, I made new FormData and appended the image to it (if the image exists). <br>
-            -- I then made the put request right there in the ts file, properly capturing the relevant ID and passing in the FormData. <br>
-              Below is an image of the code: <br>
-              <img src="/assets/Images/Using formData to escape multipart error.png" alt="">
+            -- I first <span class="solution">captured the image</span> from the upload image event, then in the same post function, I <span class="solution">made new FormData and appended the image to it</span>. <br>
+            -- I then made the create request right there in the ts file, passing in the FormData. <br>
+            -- Be careful of the formData.append syntax that you properly pass in the name, value, fileName respectively like so <span class="solution">formData.append(name, value, filename)</span><br>
+            Below is an image of the code: <br>
+              <img src="/assets/Images/post bypassing multipart error.png" alt=""> <br>
+              <h6>In The Edit Operation:</h6> I also encountered this issue in a put operation, and the solution was the same, but this time I appended the image to it only if the image exists, then properly captured the relevant ID (to edit by) and passed in the FormData.
+              <img src="/assets/Images/Using formData to escape multipart error.png" alt=""> <br>
         </div>
         <br>
       </div>

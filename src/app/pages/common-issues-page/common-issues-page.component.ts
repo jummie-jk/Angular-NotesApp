@@ -35,11 +35,20 @@ export class CommonIssuesPageComponent implements OnInit {
   }
 
   toggleBooleanValue(obj: any) {
-    this.collapsed = !this.collapsed;
+    let allFalse = true; // Initialize a flag to check if all properties are false
     for (const key of this.toSet) {
-      obj[key] = !obj[key];
+      if (obj[key]) {
+        allFalse = false; // If any property is true, set the flag to false
+        break; // No need to check further if one is true
+      }
     }
-  }
+
+    for (const key of this.toSet) {
+      obj[key] = allFalse ? true : false; // Toggle all properties based on the flag
+    }
+
+    this.collapsed = allFalse ? true : false; // Toggle the collapsed property based on the flag
+    }
 
 
   toggleAccordion1(): void {
