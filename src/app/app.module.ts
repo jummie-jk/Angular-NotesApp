@@ -13,9 +13,14 @@ import { BackData } from './BackData';
 import { FormsModule } from '@angular/forms';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
+
+    
+
   ],
   imports: [
     BrowserModule,

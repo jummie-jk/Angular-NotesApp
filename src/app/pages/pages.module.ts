@@ -19,6 +19,8 @@ import { CdnPageComponent } from './cdn-page/cdn-page.component';
 import { ComplexityPageComponent } from './complexity-page/complexity-page.component';
 import { StarsComponent } from '../Shared/stars.component';
 import { CommonIssuesPageComponent } from './common-issues-page/common-issues-page.component';
+import { MoviesComponent } from './movies/movies.component';
+import {MovieFooterComponent } from './movie-footer/movie-footer.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { CommonIssuesPageComponent } from './common-issues-page/common-issues-pa
     ComplexityPageComponent,
     StarsComponent,
     CommonIssuesPageComponent,
+    MoviesComponent,
+    MovieFooterComponent
   ],
   imports: [
     CommonModule,

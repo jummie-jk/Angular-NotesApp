@@ -1,0 +1,33 @@
+
+.movie-main-text{
+    text-align: center;
+    padding-top: 0.5;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.movie-text{
+    text-align: center;
+   font-weight: 500;
+   font-size: 1.2rem;
+   color: white;
+}
+.movie-container {
+    /* background-color: black; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+.movie-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+.movie-paragraph{
+    font-size: 0.7rem;
+}
+.form--container{
+  color: white;
+  text-align:  center;
+}
