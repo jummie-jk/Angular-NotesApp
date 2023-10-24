@@ -8,7 +8,7 @@ export class BackData implements InMemoryDbService {
             id: 1 ,
             firstName: 'Ife',
             lastName:' Daniels',
-            email: 'ife@example.com',
+            email: 'ifeee@example.com',
             favouriteMovie: "Star wars",
             movieYear: 1994,
           },
