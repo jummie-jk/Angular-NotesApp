@@ -11,11 +11,12 @@ export class CrudServices {
   // this below link is the link to the back end
   private baseUrl= 'api/data';
   private complexUrl= 'api/complexData';
+  private movieUrl= 'api/data';
 
   constructor (private http: HttpClient){ //without "private" http would be localized in the constructor and unavailable to the class
     // this console logs the BackData instantly.
     http.get(this.baseUrl).subscribe(response => {console.log('baseUrl content:', response);});
-}
+  }
 
 private newItem(): IData {
   return {

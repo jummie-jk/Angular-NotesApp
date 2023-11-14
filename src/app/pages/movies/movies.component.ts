@@ -4,6 +4,7 @@ import { Customer } from './customer';
 import { IMovie } from './movieInterface';
 import { MovieServices } from './movieFormService';
 import { Router } from '@angular/router';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 interface Movie {
   imageUrl: string;
@@ -20,6 +21,7 @@ interface Movie {
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
+[x: string]: any;
   title : string = 'The Movie Place'
   movieText: string = "Your ticket to a cinematic experience"
   imageWidth: number = 150;
@@ -27,6 +29,7 @@ export class MoviesComponent implements OnInit {
 
   customerForm!: FormGroup;
   customer :Customer = new Customer();
+  closeResult: string;
   MovieUsers: IMovie[] = [];
   edit = true;
   add = false;
@@ -74,6 +77,7 @@ export class MoviesComponent implements OnInit {
   constructor(
     private service: MovieServices,
     private router: Router,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -84,7 +88,7 @@ export class MoviesComponent implements OnInit {
       lastName: new FormControl(),
       email: new FormControl(),
       movie: new FormControl(),
-      movieDate: new FormControl(),
+      movieYear: new FormControl(),
     });
     this.getData();
   }
@@ -145,8 +149,46 @@ export class MoviesComponent implements OnInit {
     // ]);
   }
   
-  save() {
-    console.log(this.customerForm);
-    console.log('Saved: ' + JSON.stringify(this.customerForm.value));
+  save(): void {
+    if (this.customerForm.valid) {
+      if (this.customerForm.dirty) {
+        if (this.customerForm.value.id === null) {
+          this.service.createItem(this.customerForm.value)
+            .subscribe((response: any) => {
+              console.log(response);
+              this.getData();
+              this.resetValues();
+            });
+        } else {
+          this.service.updateItem(this.customerForm.value)
+            .subscribe((response) => {
+              console.log(response);
+              this.getData();
+              this.resetValues();
+            });
+        }
+      }
+    }
+  }
+  
+  
+
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

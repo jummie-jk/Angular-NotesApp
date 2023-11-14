@@ -14,6 +14,8 @@ import { CdnPageComponent } from 'src/app/pages/cdn-page/cdn-page.component';
 import { ComplexityPageComponent } from 'src/app/pages/complexity-page/complexity-page.component';
 import { CommonIssuesPageComponent } from './pages/common-issues-page/common-issues-page.component';
 import { MoviesComponent } from 'src/app/pages/movies/movies.component';
+import { MoviesModalComponent } from './pages/movies/movies-modal/movies-modal.component';
+
 
 
 const routes: Routes = [
@@ -32,6 +34,8 @@ const routes: Routes = [
   { path: 'pages/common-issues-page', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: CommonIssuesPageComponent },
   // Jummie
   { path: 'pages/movies', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: MoviesComponent},
+  { path: 'pages/movies/modal', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), component: MoviesModalComponent},
+
 ];
 
 @NgModule({

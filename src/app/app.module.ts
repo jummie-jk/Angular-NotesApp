@@ -9,8 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackData } from './BackData';
-
+import { movieData } from './pages/movies/MovieData';
 import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(BackData),
-    FormsModule
+    HttpClientInMemoryWebApiModule.forRoot(movieData),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

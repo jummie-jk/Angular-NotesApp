@@ -21,6 +21,8 @@ import { StarsComponent } from '../Shared/stars.component';
 import { CommonIssuesPageComponent } from './common-issues-page/common-issues-page.component';
 import { MoviesComponent } from './movies/movies.component';
 import {MovieFooterComponent } from './movie-footer/movie-footer.component';
+import { MoviesModalComponent } from './movies/movies-modal/movies-modal.component';
+
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import {MovieFooterComponent } from './movie-footer/movie-footer.component';
     StarsComponent,
     CommonIssuesPageComponent,
     MoviesComponent,
-    MovieFooterComponent
+    MovieFooterComponent,
+    MoviesModalComponent,
   ],
   imports: [
     CommonModule,

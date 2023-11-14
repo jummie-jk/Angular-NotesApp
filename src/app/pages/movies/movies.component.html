@@ -1,34 +1,16 @@
-<div>
-    <h1 class="movie-main-text">{{title}}</h1>
-    <p class="movie-text">{{movieText}}</p>
-</div>
-<div *ngIf="movies.length"  class="movie-container" >
-   <div *ngFor="let movie of movies" class="movie-card">
-      <!--  -->
-      <img [src]='movie.imageUrl' 
-            alt='movie-poster'
-            title="movie.movieName"
-            [style.width.px] = 'imageWidth'
-      >
-      <h3>{{movie.movieName}}</h3>
-      <p>{{movie.releaseDate}}</p>
-      <p>{{movie.description}}</p>
-      <!-- Nesting  Star Component-->
-      <p>Rating: <app-stars></app-stars></p>
-      <!-- Event Binding -->
-      <button (click)="toggleDetails(movie)"> Movie details </button>
-        <p *ngIf="movie.showDetails">{{movie.movieName}}</p>
-   </div>
-</div>
-
 <!-- Form section -->
 <div class="form--container">
   <div>
-   <p>Hi! Welcome</p>
-   <p>Kindly enter your details here</p>
+    <p>Hi! Welcome</p>
+    <p>Kindly enter your details here</p>
+    <div class="border">
+      <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+        <i class="fa fa-user"></i>New Movie
+      </button>
+    </div>
   </div>
   <div>
-   <form novalidate (ngSubmit)="save()" [formGroup]="customerForm">
+    <!-- <form novalidate (ngSubmit)="save()" [formGroup]="customerForm">
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="firstNameId"
           >First Name</label
@@ -119,7 +101,7 @@
           </span>
         </div>
       </div>
-<!-- Favourite movie -->
+
       <div class="form-group row mb-2">
          <label class="col-md-2 col-form-label" for="movieId"
            >Favourite movie</label
@@ -196,48 +178,111 @@
           >
             Save
           </button>
-          <!-- <button class="btn btn-outline-secondary" type="button">
-            Test Data
-          </button> -->
+
         </div>
       </div>
-    </form>
+    </form> -->
+
     <!-- Form table -->
-     <div class="form-table">
+    <div class="form-table">
       <section class="mt-5">
-         <table id="formUsers">
-           <tr>
-             <th class="col-md-2">S/N</th>
-             <th class="col-md-2">First Name</th>
-             <th class="col-md-2">Last Name</th>
-             <th class="col-md-2">Email</th>
-             <th class="col-md-2">Favourite Movie</th>
-             <th class="col-md-2">Movie</th>
-             <th class="col-md-2">Update</th>
-             <th class="col-md-2">Delete</th>
-           </tr>
-           <tr *ngFor="let MovieUser of MovieUsers">
-             <td>{{MovieUser.id}}</td>
-             <td (click)="getDataById(MovieUser.id)" class="cursor">
-               {{MovieUser.firstName }}
-             </td>
-             <td>{{MovieUser.lastName}}</td>
-             <td>{{MovieUser.email }}</td>
-             <td>{{MovieUser.favouriteMovie}}</td>
-             <td>{{MovieUser.movieYear}}</td>
-             <td>
+        <table id="formUsers">
+          <tr>
+            <th class="col-md-2">S/N</th>
+            <th class="col-md-2">First Name</th>
+            <th class="col-md-2">Last Name</th>
+            <th class="col-md-2">Email</th>
+            <th class="col-md-2">Favourite Movie</th>
+            <th class="col-md-2">Movie</th>
+            <th class="col-md-2">Update</th>
+            <th class="col-md-2">Delete</th>
+          </tr>
+          <tr *ngFor="let MovieUser of MovieUsers">
+            <td>{{ MovieUser.id }}</td>
+            <td (click)="getDataById(MovieUser.id)" class="cursor">
+              {{ MovieUser.firstName }}
+            </td>
+            <td>{{ MovieUser.lastName }}</td>
+            <td>{{ MovieUser.email }}</td>
+            <td>{{ MovieUser.favouriteMovie }}</td>
+            <td>{{ MovieUser.movieYear }}</td>
+            <!-- <td>
                <button (click)="update(MovieUser.id)">Edit</button>
              </td>
              <td>
                <button (click)="deleteItem(MovieUser.id)">Delete</button> 
-             </td>
-           </tr>
-         </table>
-       </section>
-     </div>
+             </td> -->
+            <td>
+              <!-- <button class="btn btn-sm btn-info">
+                <i class="fa fa-search"></i>Details</button> -->
+              <button class="btn btn-sm btn-warning" (click)="open(content)">
+                <i class="fa fa-edit"></i>Edit
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-danger" >
+                <i class="fa fa-remove"></i>Delete
+              </button>
+            </td>
+          </tr>
+        </table>
+      </section>
+    </div>
   </div>
-     <!-- Nesting  Footer Component-->
-      <div>
-         <app-movie-footer></app-movie-footer>
-      </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Movie</h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form novalidate (ngSubmit)="save()" [formGroup]="customerForm">
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <div class="input-group">
+            <input id="firstname" class="form-control" />
+          </div>
+          <label for="lastname">Lastname</label>
+          <div class="input-group">
+            <input id="lastname" class="form-control" />
+          </div>
+          <label for="email">Email</label>
+          <div class="input-group">
+            <input id="email" class="form-control" />
+          </div>
+          <label for="favouriteMovie">Favourite Movie</label>
+          <div class="input-group">
+            <input id="favouriteMovie" class="form-control" />
+          </div>
+          <label for="Movie Year">Movie Year</label>
+          <div class="input-group">
+            <input id="Movie Year" class="form-control" />
+          </div>
+          <div class="border text-center">
+            <button data-dismiss="modal" class="btn btn-info">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="modal.close('Save click')"
+      >
+        Save
+      </button>
+    </div>
+  </ng-template> 
+  <!-- Nesting  Footer Component-->
+  <div>
+    <app-movie-footer></app-movie-footer>
+  </div>
 </div>

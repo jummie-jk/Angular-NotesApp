@@ -1,7 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { IMovie } from './movieInterface';
 
-export class BackData implements InMemoryDbService {
+export class movieData implements InMemoryDbService {
       createDb(): { data: IMovie[]}{
         let data: IMovie[] = [
           {
@@ -37,7 +37,7 @@ export class BackData implements InMemoryDbService {
             movieYear: 2017
           },
         ];
-        return { data };
+        return { data};
       }
     }
     
